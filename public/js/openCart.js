@@ -84,29 +84,17 @@
 /******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
-/******/ ({
-
-/***/ "./resources/js/openCart.js":
-/*!**********************************!*\
-  !*** ./resources/js/openCart.js ***!
-  \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-eval("var btn = document.querySelector('#open-cart');\nvar ul = document.querySelector('#items-container');\nbtn.addEventListener('click', function () {});//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9yZXNvdXJjZXMvanMvb3BlbkNhcnQuanM/OTczYSJdLCJuYW1lcyI6WyJidG4iLCJkb2N1bWVudCIsInVsIl0sIm1hcHBpbmdzIjoiQUFBQSxJQUFNQSxHQUFHLEdBQUdDLFFBQVEsQ0FBUkEsY0FBWixZQUFZQSxDQUFaO0FBQ0EsSUFBTUMsRUFBRSxHQUFHRCxRQUFRLENBQVJBLGNBQVgsa0JBQVdBLENBQVg7QUFFQUQsR0FBRyxDQUFIQSwwQkFBOEIsWUFBVyxDQUF6Q0EiLCJmaWxlIjoiLi9yZXNvdXJjZXMvanMvb3BlbkNhcnQuanMuanMiLCJzb3VyY2VzQ29udGVudCI6WyJjb25zdCBidG4gPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKCcjb3Blbi1jYXJ0Jyk7XG5jb25zdCB1bCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoJyNpdGVtcy1jb250YWluZXInKTtcblxuYnRuLmFkZEV2ZW50TGlzdGVuZXIoJ2NsaWNrJywgZnVuY3Rpb24oKSB7XG5cbn0pXG4iXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./resources/js/openCart.js\n");
-
-/***/ }),
-
-/***/ 1:
+/******/ ([
+/* 0 */,
+/* 1 */
 /*!****************************************!*\
   !*** multi ./resources/js/openCart.js ***!
   \****************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/stas/junk/laravelPlayground/resources/js/openCart.js */"./resources/js/openCart.js");
+!(function webpackMissingModule() { var e = new Error("Cannot find module '/home/stas/junk/TWDProject/resources/js/openCart.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
 
 
 /***/ })
-
-/******/ });
+/******/ ]);
