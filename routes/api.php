@@ -5,4 +5,4 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::post('test', 'APIController@index');
+Route::resource('cart', 'CartController')->except(['show', 'edit', 'create']);

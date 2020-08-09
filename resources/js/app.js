@@ -13,4 +13,6 @@ require('./bootstrap');
  */
 
 require('./components/Cart');
+require('./components/Cart1');
+require('./components/Items');
 // require('./openCart');
