@@ -3,29 +3,37 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Cart;
-use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
-    public function index() {
-        // if not logged redirect to login
-        $logged_user = Auth::user();
 
+    public function index()
+    {
+        $cartItems = session('cart', 'empty');
         return response()
-            ->json(['user' => $logged_user], 200)
+            ->json($cartItems, 200)
             ->header('Content-Type', 'application/json');
     }
 
-    public function store() {
 
+    public function store(Request $request)
+    {
+        $item = collect(['id' => rand(1, 10000), 'name' => $request->get('name')]);
+        session(['cart' => $item]);
+        return response()
+            ->json($item, 200)
+            ->header('Content-Type', 'application/json');
     }
 
-    public function update($id) {
 
+    public function update(Request $request, $id)
+    {
+        //
     }
 
-    public function destroy($id) {
 
+    public function destroy($id)
+    {
+        //
     }
 }

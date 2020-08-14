@@ -12,7 +12,5 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-require('./components/Cart');
-require('./components/Cart1');
-require('./components/Items');
-// require('./openCart');
+require('./components/cart/cart');
+require('./components/product-list/product-list');

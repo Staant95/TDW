@@ -9,7 +9,7 @@
 </head>
 <body>
     <p>
-        {{ $name }}
+           {{ $data ?? 'not found' }}
     </p>
 </body>
 </html>

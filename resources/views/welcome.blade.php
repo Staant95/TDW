@@ -2,11 +2,6 @@
 
 @section('content')
 
-
-    <div id="cart1"></div>
-
-
-    <div id="items"></div>
-
+    <x-navbar/>
 
 @endsection
