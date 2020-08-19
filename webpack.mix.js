@@ -11,9 +11,6 @@ const mix = require('laravel-mix');
  |
  */
 
-
-mix.react('resources/js/app.js', 'public/js')
+mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
-    .js('node_modules/popper.js/dist/popper.js', 'public/js')
-    // .js('resources/js/openCart.js', 'public/js') // import only in homepage <script src="{{ asset('js/app.js') }}" defer></script>
     .sourceMaps();

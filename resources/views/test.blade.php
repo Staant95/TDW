@@ -1,7 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
-
-    <x-navbar/>
-
+    <example-component/>
 @endsection

@@ -8,14 +8,19 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/homepage', 'HomepageController@index')->name('homepage');
-Route::get('/services', 'HomepageController@index')->name('services');
+Route::get('/', function() {
+   if(!session()->has('cart')) {
+       session(['cart', []]);
+   }
+   $products = App\Product::paginate(5);
+   return view('test', ['products' => 'hi']);
+});
 
-Route::get('/login', 'HomepageController@index')->name('login');
-Route::get('/register', 'HomepageController@index')->name('register');
+Route::get('/filter', function() {
+   $results = App\Product::where('price', '<', 40)->paginate(3);
+   return view('welcome', ['products' => $results]);
+});
 
-Route::get('/profile/{user}', function($user) {
-    return view('profile', ['data' => $user]);
-})->name('profile');
+
 
 
