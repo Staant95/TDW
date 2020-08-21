@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Faker\Generator as Faker;
 
 class ProductTableSeeder extends Seeder
 {
@@ -9,8 +10,15 @@ class ProductTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(Faker $faker)
     {
-        factory(App\Product::class, 100)->create();
+        factory(App\Product::class, 100)
+        ->create()
+        ->each(function($product) use($faker) {
+            $product->formats()->save(
+                factory(App\Format::class)->make(),
+                ['quantity' => $faker->numberBetween(50, 200)]
+            );
+        });
     }
 }
