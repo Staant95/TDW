@@ -7,4 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class ShippingAddress extends Model
 {
     public $guarded = [];
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

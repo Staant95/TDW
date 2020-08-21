@@ -12,4 +12,9 @@ class Order extends Model
         {
             return $this->belongsTo('App\User');
         }
+
+    public function shippingcompany()
+    {
+        return $this->belongsTo('App\ShippingCompany');
+    }
 }

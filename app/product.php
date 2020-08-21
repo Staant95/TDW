@@ -13,4 +13,29 @@ class product extends Model
             {
                 return $this->belongsToMany(Cart::class);
             }
+
+    public function sale()
+    {
+        return $this->belongsTo('App\Sale');
+    }
+
+    public function productimgs()
+    {
+        return $this->hasMany('App\ProductIMG');
+    }
+
+    public function shop()
+    {
+        return $this->belongsTo('App\Shop');
+    }
+
+    public function categories()
+    {
+        return $this->hasMany('App\Category');
+    }
+
+    public function formats()
+    {
+        return $this->belongsToMany('App\Format');
+    }
 }
