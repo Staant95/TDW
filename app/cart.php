@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /*pony pony pony*/
-
+/*oppelallallerolallà*/
 class cart extends Model
 {
     public $guarded = [];
