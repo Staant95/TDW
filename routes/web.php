@@ -10,7 +10,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', function() {
 
-   return view('test');
+   return view('homepage.test');
 });
 
 

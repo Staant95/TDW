@@ -6,6 +6,23 @@
 
 require('./bootstrap');
 
+
+require('./scripts/colors')
+require('./scripts/slicknav.min')
+require('./scripts/owl-carousel')
+require('./scripts/magnific-popup')
+require('./scripts/facnybox.min')
+// require('./scripts/waypoints.min')
+require('./scripts/finalcountdown.min')
+// require('./scripts/nicesellect')
+// require('./scripts/ytplayer.min')
+require('./scripts/flex-slider')
+require('./scripts/scrollup')
+require('./scripts/onepage-nav.min')
+require('./scripts/easing')
+// require('./scripts/active');
+// require('./scripts/map-script')
+
 window.Vue = require('vue');
 
 /**

@@ -13,4 +13,20 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
+    .styles([
+        'resources/css/magnific-popup.css',
+        'resources/css/font-awesome.css',
+        'resources/css/themify-icons.css',
+        'resources/css/nice-select.css',
+        'resources/css/animate.css',
+        'resources/css/flex-slider.min.css',
+        'resources/css/owl-carousel.css',
+        'resources/css/slicknav.min.css',
+        'resources/css/animate.css',
+        'resources/css/reset.css',
+        'resources/css/style.css',
+        'resources/css/responsive.css',
+        'resources/css/color/color1.css',
+        'resources/css/testing.css',
+    ], 'public/css/something.css')
     .sourceMaps();
