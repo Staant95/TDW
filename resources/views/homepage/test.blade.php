@@ -26,6 +26,7 @@
                             </div>
 							<!-- Search Form -->
 							<div class="search-top">
+                            {{--  nice select should be here --}}
 								<form class="search-form">
 									<input type="text" placeholder="Search here..." name="search">
 									<button value="search" type="submit"><i class="ti-search"></i></button>
