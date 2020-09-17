@@ -10,15 +10,16 @@ class product extends Model
 
 
     public function carts()
-            {
-                return $this->belongsToMany(Cart::class);
-            }
+    {
+        return $this->belongsToMany(Cart::class);
+    }
 
     public function sale()
     {
         return $this->belongsTo('App\Sale');
     }
 
+    // this does not work
     public function productimgs()
     {
         return $this->hasMany('App\ProductIMG');
@@ -31,7 +32,7 @@ class product extends Model
 
     public function categories()
     {
-        return $this->hasMany('App\Category');
+        return $this->belongsToMany('App\Category');
     }
 
     public function formats()

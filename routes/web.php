@@ -14,6 +14,8 @@ Route::get('/', function() {
 });
 
 
+Route::get('homepage', 'HomepageController@index')->name('homepage');
+
 
 
 

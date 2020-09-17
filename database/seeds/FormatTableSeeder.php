@@ -11,6 +11,6 @@ class FormatTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(App\Format::class, 10)->create();
     }
 }
