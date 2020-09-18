@@ -3,10 +3,10 @@
 @section('content')
 
 <div class="container">
-				<div class="row">
-					<div class="col-lg-6 offset-lg-3 col-12">
-						<div class="login-form">
-							<h2>Reset Password</h2>
+	<div class="row">
+		<div class="col-lg-6 offset-lg-3 col-12">
+			<div class="login-form">
+				<h2>Reset Password</h2>
 							
 
 
@@ -57,8 +57,6 @@
                         <div class="col-12">
 							<div class="form-group login-btn">
                                 <button type="submit" class="btn">Reset Password</button>
-                                    
-                                
                             </div>
                         </div>
                     </form>

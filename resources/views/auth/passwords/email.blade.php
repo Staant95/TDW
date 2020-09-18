@@ -2,11 +2,11 @@
 
 @section('content')
 
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-6 offset-lg-3 col-12">
-						<div class="login-form">
-							<h2>Reset Password</h2>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-6 offset-lg-3 col-12">
+			<div class="login-form">
+				<h2>Reset Password</h2>
 							
 
                 <div class="card-body">
@@ -35,16 +35,15 @@
                                 @enderror
                            
 
-                                <div class="col-12">
-							<div class="form-group login-btn">
-                                <button class="btn" type="submit">Send Password Reset Link</button>
-                                 
-                            </div>
+                    <div class="col-12">
+						<div class="form-group login-btn">
+                            <button class="btn" type="submit">Send Password Reset Link</button>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 </div>
+
 @endsection
