@@ -16,6 +16,7 @@ Route::get('/', function() {
 
 Route::get('homepage', 'HomepageController@index')->name('homepage');
 
+Route::get('search', 'SearchResultsController@index')->name('search');
 
 
 
