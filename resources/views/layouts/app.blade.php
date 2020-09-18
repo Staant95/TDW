@@ -20,8 +20,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="css/something.css">
-    {{-- <link rel="stylesheet" href="{{ asset('css/something.css') }}"> --}}
+{{--    <link rel="stylesheet" href="css/something.css">--}}
+     <link rel="stylesheet" href="{{ asset('css/something.css') }}">
 </head>
 <body>
     <div id="app">

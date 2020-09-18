@@ -7,7 +7,7 @@
 					<div class="col-lg-6 offset-lg-3 col-12">
 						<div class="login-form">
 							<h2>Reset Password</h2>
-							
+
 
 
                 <div class="card-body">
@@ -23,14 +23,14 @@
                                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
                                 </div>
 							</div>
-                                
+
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                          
+                        </div>
 
                         <div class="col-12">
 							<div class="form-group">
@@ -38,14 +38,14 @@
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
                             </div>
                         </div>
-                                
+
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                         
+
 
                         <div class="col-12">
 							<div class="form-group">
@@ -57,12 +57,11 @@
                         <div class="col-12">
 							<div class="form-group login-btn">
                                 <button type="submit" class="btn">Reset Password</button>
-                                    
-                                
                             </div>
                         </div>
                     </form>
                 </div>
+
             </div>
         </div>
     </div>
