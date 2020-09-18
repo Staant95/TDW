@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 
 Auth::routes();
 
-Route::view('/home', 'home');
+// DA CAMBIARE CON LA NUOVA HOMEPAGE CHE DOBBIAMO CREARE
+Route::view('/home', 'home')->name('home');
 
 Route::get('/', function() {
 
