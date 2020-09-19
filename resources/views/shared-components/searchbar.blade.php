@@ -48,32 +48,57 @@
             <div class="col-lg-2 col-md-3 col-12">
                 <div class="right-bar">
                     <!-- Search Form -->
+
                     {{--    Wishlis          --}}
                     <div class="sinlge-bar">
                         <a href="#" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
                     </div>
 
+                    {{-- USER ACCOUNT --}}
                     <div class="sinlge-bar">
                         <a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
                     </div>
+
+                    {{-- CART --}}
                     <div class="sinlge-bar shopping">
-                        <a href="#" class="single-icon"><i class="ti-bag"></i> <span class="total-count">2</span></a>
+                                                                                            <!-- \Cart::getContent()->count() -->
+                        <a href="#" class="single-icon"><i class="ti-bag"></i> <span class="total-count">{{ $cartItems }}</span></a>
                         <!-- Shopping Item -->
                         <div class="shopping-item">
                             <div class="dropdown-cart-header">
+                                <!-- \Cart::getContent()->count() -->
                                 <span>2 Items</span>
+                                <!-- change link  -->
                                 <a href="#">View Cart</a>
                             </div>
                             <ul class="shopping-list">
+                                {{-- @foreach($item in $cart) --}}
                                 <li>
-                                    <a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
-                                    <a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
+                                    <!-- DELETE /cart/$item->id, CHANGE THE ACTION-->
+                                    <form method="POST" action="/cart/1">
+                                        @csrf
+                                        @method('delete')
+                                        <button class="remove" type="submit">
+                                            <i class="fa fa-remove"></i>
+                                        </button>
+{{--                                        <a href="#" class="remove" title="Remove this item">--}}
+{{--                                            <i class="fa fa-remove"></i>--}}
+{{--                                        </a>--}}
+                                    </form>
+
+                                    <a class="cart-img" href="#">
+                                        <img src="https://via.placeholder.com/70x70" alt="#">
+                                    </a>
                                     <h4><a href="#">Woman Ring</a></h4>
                                     <p class="quantity">1x - <span class="amount">$99.00</span></p>
                                 </li>
                                 <li>
-                                    <a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
-                                    <a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
+                                    <a href="#" class="remove" title="Remove this item">
+                                        <i class="fa fa-remove"></i>
+                                    </a>
+                                    <a class="cart-img" href="#">
+                                        <img src="https://via.placeholder.com/70x70" alt="#">
+                                    </a>
                                     <h4><a href="#">Woman Necklace</a></h4>
                                     <p class="quantity">1x - <span class="amount">$35.00</span></p>
                                 </li>
@@ -81,13 +106,19 @@
                             <div class="bottom">
                                 <div class="total">
                                     <span>Total</span>
+                                    <!-- \Cart::getTotal() -->
                                     <span class="total-amount">$134.00</span>
                                 </div>
+                                <!-- route('checkout') -->
                                 <a href="checkout.html" class="btn animate">Checkout</a>
                             </div>
                         </div>
                         <!--/ End Shopping Item -->
                     </div>
+
+                    {{-- END CART--}}
+
+
                 </div>
             </div>
         </div>
