@@ -3,19 +3,11 @@
 @section('content')
 
 <div class="container">
-<<<<<<< HEAD
-				<div class="row">
-					<div class="col-lg-6 offset-lg-3 col-12">
-						<div class="login-form">
-							<h2>Reset Password</h2>
-
-=======
 	<div class="row">
 		<div class="col-lg-6 offset-lg-3 col-12">
 			<div class="login-form">
 				<h2>Reset Password</h2>
 							
->>>>>>> 31c7c9be23f5b41e03c526210ad076211e0fe598
 
 
                 <div class="card-body">
@@ -38,7 +30,7 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                        </div>
+                        
 
                         <div class="col-12">
 							<div class="form-group">
@@ -67,6 +59,7 @@
                                 <button type="submit" class="btn">Reset Password</button>
                             </div>
                         </div>
+                      </div>  
                     </form>
                 </div>
 
