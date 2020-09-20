@@ -105,7 +105,7 @@
 {{--                        </div>--}}
                         <!--/ End Shopping Item -->
 
-                        <cart-component user-id="{{ Auth::id() }}"></cart-component>
+                        <cart-component user-id="1"></cart-component>
                     </div>
 
                     {{-- END CART--}}

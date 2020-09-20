@@ -1,5 +1,6 @@
 <template>
     <div>
+
         <a href="#" class="single-icon"><i class="ti-bag"></i> <span class="total-count"> {{ products.length }} </span></a>
         <!-- Shopping Item -->
         <div class="shopping-item">
@@ -12,15 +13,10 @@
             <ul class="shopping-list">
 
                 <li v-for="item in products" :key="item.id">
-                    <!-- DELETE /cart/$item->id, CHANGE THE ACTION-->
-                    <form method="POST" action="/cart/1">
-<!--                        @csrf-->
-<!--                        @method('delete')-->
-                        <button class="remove" type="submit">
+
+                        <button class="remove" @click="removeItem(item.id)">
                             <i class="fa fa-remove"></i>
                         </button>
-
-                    </form>
 
                     <a class="cart-img" href="#">
                         <img src="https://via.placeholder.com/70x70" alt="#">
@@ -34,14 +30,12 @@
                 <div class="total">
                     <span>Total</span>
                     <!-- \Cart::getTotal() -->
-                    <span class="total-amount"> {{ total }} $</span>
+                    <span class="total-amount"> {{ calcTotal }} $</span>
                 </div>
                 <!-- route('checkout') -->
                 <a href="checkout.html" class="btn animate">Checkout</a>
             </div>
         </div>
-
-
 
     </div>
 </template>
@@ -54,26 +48,47 @@
         mounted() {
             console.log('Daje ', this.userId);
         },
-
         data: function() {
             return {
                 products: [
                     {
                         id: 1,
                         name: 'Nikes',
-                        price: 99.00,
+                        price: 99,
+                        quantity: 2
+                    },
+                    {
+                        id: 2,
+                        name: 'Sneakers',
+                        price: 120,
                         quantity: 1
                     }
-                ]
+                ],
+                total: 0
             }
+
         },
 
         computed: {
-            total: function () {
-                // return this.producs.reduce((acc, curr) => acc.price + curr.price);
-                return 99;
+            calcTotal: function () {
+
+                return this.products.length > 1 ?
+                this.products.reduce((acc, cur) => {
+                    let temp = acc.price * acc.quantity;
+                    temp += cur.price * cur.quantity
+                    return temp;
+                })
+                :
+                this.products[0].price;
+
             }
 
+        },
+
+        methods: {
+            removeItem: function(productId) {
+                this.products = this.products.filter(el => el.id !== productId);
+            }
         }
     }
 </script>
