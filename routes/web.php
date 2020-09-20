@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', function() {
 
@@ -14,7 +14,7 @@ Route::get('/', function() {
 });
 
 
-Route::get('homepage', 'HomepageController@index')->name('homepage');
+Route::resource('homepage', 'HomepageController');
 
 Route::get('search', 'SearchResultsController@index')->name('search');
 
