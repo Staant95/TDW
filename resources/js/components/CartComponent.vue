@@ -41,6 +41,7 @@
 </template>
 
 <script>
+    import { EventBus } from '../app';
     export default {
         props: {
             userId: String
@@ -55,31 +56,29 @@
                         id: 1,
                         name: 'Nikes',
                         price: 99,
-                        quantity: 2
+                        quantity: 1
                     },
                     {
                         id: 2,
                         name: 'Sneakers',
                         price: 120,
                         quantity: 1
-                    }
+                    },
+
                 ],
-                total: 0
             }
 
         },
 
         computed: {
             calcTotal: function () {
+                let sum = 0;
+                if(this.products.length === 0) return 0;
 
-                return this.products.length > 1 ?
-                this.products.reduce((acc, cur) => {
-                    let temp = acc.price * acc.quantity;
-                    temp += cur.price * cur.quantity
-                    return temp;
-                })
-                :
-                this.products[0].price;
+                this.products.forEach(el => {
+                    sum += el.price
+                });
+                return sum;
 
             }
 
@@ -89,6 +88,19 @@
             removeItem: function(productId) {
                 this.products = this.products.filter(el => el.id !== productId);
             }
+        },
+        created: function() {
+            EventBus.$on('add-to-cart', data => {
+                if(this.products.filter(el => el.name === data.name).length) {
+                    // object should be mutated
+                    this.products.filter(el => el.name === data.name).map(el => el.quantity++)
+
+                }
+                else {
+                    console.log('called else')
+                    this.products.push({...data, quantity: 1})
+                }
+            })
         }
     }
 </script>

@@ -106,6 +106,7 @@
                         <!--/ End Shopping Item -->
 
                         <cart-component user-id="1"></cart-component>
+
                     </div>
 
                     {{-- END CART--}}

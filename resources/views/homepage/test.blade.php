@@ -4,7 +4,9 @@
 
 @section('content')
 
-
+<div id="productsContainer">
+    <product-component></product-component>
+</div>
 
 @endsection
 
