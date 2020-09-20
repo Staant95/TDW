@@ -19,10 +19,10 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-{{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
-    <link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
-    <link rel="stylesheet" href="css/something.css">
-    {{-- <link rel="stylesheet" href="{{ asset('css/something.css') }}"> --}}
+
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+{{--    <link rel="stylesheet" href="css/something.css">--}}
+     <link rel="stylesheet" href="{{ asset('css/something.css') }}">
 
 </head>
 <body>
