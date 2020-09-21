@@ -59,7 +59,7 @@
                         <div class="col-12">
 							<div class="form-group login-btn">
                                 <button class="btn" type="submit">Login</button>
-                                <a href="register.html" class="btn">Register</a>
+                                <a href="{{ route('register') }}" class="btn">Register</a>
                             </div>
                             <div class="checkbox">
 								<label class="checkbox-inline" for="2">
