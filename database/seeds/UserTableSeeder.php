@@ -11,6 +11,10 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\User::class, 5)->create();
+        factory(App\User::class, 5)
+            ->create()
+            ->each(function($user) {
+                App\Cart::create(['user_id' => $user->id]);
+            });
     }
 }
