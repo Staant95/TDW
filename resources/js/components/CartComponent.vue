@@ -30,7 +30,7 @@
                 <div class="total">
                     <span>Total</span>
                     <!-- \Cart::getTotal() -->
-                    <span class="total-amount"> {{ calcTotal }} $</span>
+                    <span class="total-amount"> {{ totalCart }} $</span>
                 </div>
                 <!-- route('checkout') -->
                 <a href="checkout.html" class="btn animate">Checkout</a>
@@ -47,7 +47,8 @@
             userId: String
         },
         mounted() {
-            console.log('Daje ', this.userId);
+            axios.get(`http://127.0.0.1:8000/api/cart?user=${this.userId}`)
+            .then(console.log)
         },
         data: function() {
             return {
@@ -69,19 +70,18 @@
             }
 
         },
-
         computed: {
-            calcTotal: function () {
+            totalCart: function() {
                 let sum = 0;
                 if(this.products.length === 0) return 0;
 
-                this.products.forEach(el => {
-                    sum += el.price
-                });
+                if(this.products.length > 1) {
+                    this.products.forEach(el => sum += el.quantity * el.price)
+                } else {
+                    sum = this.products[0].price;
+                }
                 return sum;
-
             }
-
         },
 
         methods: {
@@ -91,15 +91,15 @@
         },
         created: function() {
             EventBus.$on('add-to-cart', data => {
-                if(this.products.filter(el => el.name === data.name).length) {
-                    // object should be mutated
-                    this.products.filter(el => el.name === data.name).map(el => el.quantity++)
+                let {id, name, price} = data;
+                let product = {id, name, price, quantity: 1};
 
+                let index = this.products.findIndex(el => el.id === data.id);
+                console.log(index)
+                if(index !== -1) {
+                    this.products[index].quantity = this.products[index].quantity + 1;
                 }
-                else {
-                    console.log('called else')
-                    this.products.push({...data, quantity: 1})
-                }
+                else this.products.push(product);
             })
         }
     }

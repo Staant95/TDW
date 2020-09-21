@@ -14,7 +14,7 @@
             return {
                 product: {
                     id: 3,
-                    name: 'Jeans',
+                    name: 'Pantaloni',
                     price: 55
                 }
             }
@@ -22,6 +22,7 @@
         methods: {
             emitProductAdd: function() {
                 EventBus.$emit('add-to-cart', this.product);
+                console.log("event send");
             }
         }
     }

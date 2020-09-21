@@ -18,8 +18,6 @@ Route::resource('homepage', 'HomepageController');
 
 Route::get('search', 'SearchResultsController@index')->name('search');
 
-Route::delete('/cart/{id}', function() {
-    return view('test');
-});
+
 
 
