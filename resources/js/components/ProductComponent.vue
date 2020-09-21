@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <button @click="emitProductAdd">Emit</button>
+    <div class="container">
+        <button class="btn btn-danger" @click="emitProductAdd">Emit</button>
     </div>
 </template>
 
