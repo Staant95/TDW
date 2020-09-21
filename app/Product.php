@@ -19,15 +19,15 @@ class product extends Model
         return $this->belongsTo('App\Sale');
     }
 
-    // this does not work
-    public function productimgs()
+    
+    public function images()
     {
-        return $this->hasMany('App\ProductIMG');
+        return $this->hasMany('App\Image');
     }
 
     public function shop()
     {
-        return $this->belongsTo('App\Shop');
+        return $this->belongsToMany('App\Shop');
     }
 
     public function categories()
@@ -39,4 +39,5 @@ class product extends Model
     {
         return $this->belongsToMany('App\Format');
     }
+
 }
