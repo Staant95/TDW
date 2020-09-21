@@ -6,11 +6,15 @@ use Illuminate\Http\Request;
 
 Auth::routes();
 
+Route::redirect('/', 'home');
 
+Route::middleware('auth')->group(function() {
 
-Route::resource('homepage', 'HomepageController');
+    Route::resource('/home', 'HomepageController');
+    Route::resource('/search', 'SearchResultsController');
 
-Route::get('search', 'SearchResultsController@index')->name('search');
+});
+
 
 
 

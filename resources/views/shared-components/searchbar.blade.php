@@ -35,7 +35,7 @@
                 <div class="search-bar-top">
                     <div class="search-bar">
                         {{--  missing select option     --}}
-                        <form method="GET" action="{{ route('search') }}">
+                        <form method="GET" action="{{ route('search.index') }}">
                             <input name="search" placeholder="Search Products" type="search">
                             <button class="btnn"><i class="ti-search"></i></button>
                         </form>

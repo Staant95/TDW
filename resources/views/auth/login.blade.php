@@ -61,10 +61,12 @@
                                 <button class="btn" type="submit">Login</button>
                                 <a href="{{ route('register') }}" class="btn">Register</a>
                             </div>
+
                             <div class="checkbox">
 								<label class="checkbox-inline" for="2">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>Remember me</label>
 							</div>
+
                                 @if (Route::has('password.request'))
                                     <a class="lost-pass" href="{{ route('password.request') }}">
                                         {{ ('Forgot Your Password?') }}
@@ -79,5 +81,13 @@
         </div>
     </div>
 </section>
+
+
+<div class="container">
+    <div class="checkbox">
+        <label class="checkbox-inline" for="2">
+            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>Remember me</label>
+    </div>
+</div>
 
 @endsection
