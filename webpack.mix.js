@@ -26,6 +26,7 @@ mix.js('resources/js/app.js', 'public/js')
         'resources/css/style.css',
         'resources/css/responsive.css',
         'resources/css/color/color1.css',
+        'resources/css/changeColor.css',
     ], 'public/css/something.css')
     // .copy('node_modules/@fortawesome/fontawesome-free/webfonts', 'public/webfonts')
     .copy('resources/fonts', 'public/fonts')

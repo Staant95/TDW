@@ -16348,3 +16348,6 @@ Version:1.0
 .header.shop .nav li .new::before,.single-product .product-img .button-head .product-action a span::after{
 	border-top-color: #F7941D;
 }
+.test {
+    color: #f7941d;
+}
