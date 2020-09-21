@@ -14,7 +14,7 @@ class UserTableSeeder extends Seeder
         factory(App\User::class, 5)
             ->create()
             ->each(function($user) {
-                App\Cart::create(['user_id' => $user->id]);
+                $cart = App\Cart::create(['user_id' => $user->id]);
             });
     }
 }
