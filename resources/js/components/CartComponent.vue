@@ -14,9 +14,13 @@
 
                 <li v-for="item in products" :key="item.id">
 
+<!--                        <input type="hidden" name="_token" :value="csrf">-->
+
                         <button class="remove" @click="removeItem(item.id)">
                             <i class="fa fa-remove"></i>
                         </button>
+
+
 
                     <a class="cart-img" href="#">
                         <img src="https://via.placeholder.com/70x70" alt="#">
@@ -43,30 +47,20 @@
 <script>
     import { EventBus } from '../app';
     export default {
-        props: {
-            userId: String
-        },
+        props: [
+            'userId'
+        ],
         mounted() {
-            axios.get(`http://127.0.0.1:8000/api/cart?user=${this.userId}`)
-            .then(console.log)
+            axios.get(`http://127.0.0.1:8000/api/user/${this.userId}/cart`)
+            .then(res => {
+                res.data.forEach(el => this.products.push((({id, name, price, pivot: {quantity}}) => ({id, name, price, quantity}))(el)))
+            });
         },
         data: function() {
             return {
                 products: [
-                    {
-                        id: 1,
-                        name: 'Nikes',
-                        price: 99,
-                        quantity: 1
-                    },
-                    {
-                        id: 2,
-                        name: 'Sneakers',
-                        price: 120,
-                        quantity: 1
-                    },
-
                 ],
+                csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
             }
 
         },
@@ -86,7 +80,8 @@
 
         methods: {
             removeItem: function(productId) {
-                this.products = this.products.filter(el => el.id !== productId);
+                axios.delete(`http://127.0.0.1:8000/api/user/${this.userId}/cart/${productId}`)
+                .then(_ => this.products = this.products.filter(el => el.id !== productId));
             }
         },
         created: function() {

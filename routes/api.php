@@ -4,4 +4,4 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 
-Route::apiResource('cart', 'API\CartController')->except('show');
+Route::apiResource('user/{user}/cart', 'API\CartController')->except('show');
