@@ -2,6 +2,7 @@
     <section class="hero-slider">
     <!-- Single Slider -->
     <div class="single-slider">
+{{--        <img src="{{ asset('storage/hero1.jpg') }}" style="object-fit: fill; display: block"/>--}}
         <div class="container">
             <div class="row no-gutters">
                 <div class="col-lg-9 offset-lg-3 col-12">

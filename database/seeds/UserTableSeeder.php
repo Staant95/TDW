@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class UserTableSeeder extends Seeder
 {
@@ -16,5 +17,6 @@ class UserTableSeeder extends Seeder
             ->each(function($user) {
                 $cart = App\Cart::create(['user_id' => $user->id]);
             });
+        App\User::create(['name' => 'stas', 'email' => 'stas@gmail.com', 'password' => Hash::make('secret')]);
     }
 }

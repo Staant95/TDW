@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Category;
 
 class HomepageController extends Controller
 {
 
     public function index()
     {
-        return view('homepage.homepage');
+        return view('homepage.homepage')->with(['categories' => Category::all()]);
     }
 
     /**

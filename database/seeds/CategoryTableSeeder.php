@@ -12,14 +12,15 @@ class CategoryTableSeeder extends Seeder
      */
     public function run()
     {
-        Category::create(['name' => "Donna"]);
-        Category::create(['name' => "Uomo"]);
+        Category::create(['name' => 'Deals']);
+        Category::create(['name' => "Women"]);
+        Category::create(['name' => "Men"]);
         Category::create(['name' => "Jeans"]);
-        Category::create(['name' => "Scarpe"]);
+        Category::create(['name' => "Shoes"]);
         Category::create(['name' => "T-shirt"]);
-        Category::create(['name' => "Pantaloni"]);
-        Category::create(['name' => "Intimo"]);
-        Category::create(['name' => "Sportivo"]);
-        Category::create(['name' => "Bambino"]);
+        Category::create(['name' => "Sunglasses"]);
+        Category::create(['name' => "Underwear"]);
+        Category::create(['name' => "Sport"]);
+        Category::create(['name' => "Kid"]);
     }
 }
