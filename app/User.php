@@ -45,9 +45,9 @@ class User extends Authenticatable
         }
 
     public function orders()
-            {
-                return $this->hasMany('App\Order');
-            }
+       {
+            return $this->hasMany('App\Order');
+       }
 
     public function role()
         {
@@ -59,12 +59,18 @@ class User extends Authenticatable
             return $this->hasOne('App\FavoriteList');
         }
 
-    public function cart() {
-        return $this->hasOne(Cart::class);
-    }
+    public function cart()
+        {
+            return $this->hasOne(Cart::class);
+        }
 
     public function shops()
         {
             return $this->belongsToMany('App\Shop');
         }
+
+    public function reviews()
+        {
+            return $this->hasMany('App\Review');
+        }   
 }
