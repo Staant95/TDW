@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Role;
 
 class RoleTableSeeder extends Seeder
 {
@@ -11,11 +12,9 @@ class RoleTableSeeder extends Seeder
      */
     public function run()
     {
-        Role::create(['name' => "Utente"]);
-        Role::create(['name' => "Venditore"]);
-        Role::create(['name' => "Admin"]);
-        Role::create(['description' => "Compratore"]);
-        Role::create(['description' => "Utente che può vendere"]);
-        Role::create(['description' => "Amministratore"]);
+        Role::create(['name' => 'Utente', ' description' => 'Compratore']);
+        Role::create(['name' => 'Venditore' , 'description' => 'Utente che può vendere']);
+        Role::create(['name' => 'Admin' , 'description' => 'Amministratore']);
+        
     }
 }
