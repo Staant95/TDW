@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Permission;
+use App\Role;
 
 class PermissionTableSeeder extends Seeder
 {
@@ -12,25 +13,31 @@ class PermissionTableSeeder extends Seeder
      */
     public function run()
     {
-    
+
     $permissions = collect([
-        $permission = Permission::create(['action' => "Buy"]),
-        $permission = Permission::create(['action' => "Create Review"]),
-        $permission = Permission::create(['action' => "Open Sell"]),
-        $permission = Permission::create(['action' => "Close Sell"]),
-        $permission = Permission::create(['action' => "Edit Sell"]),
-        $permission = Permission::create(['action' => "Ban User"]),
-        $permission = Permission::create(['action' => "Delete Sell"]),
-        $permission = Permission::create(['action' => "Delete Review"])
+        Permission::create(['action' => "Create Review"]),
+        Permission::create(['action' => "Open Sell"]),
+        Permission::create(['action' => "Close Sell"]),
+        Permission::create(['action' => "Edit Sell"]),
+        Permission::create(['action' => "Ban User"]),
+        Permission::create(['action' => "Buy"]),
+        Permission::create(['action' => "Delete Sell"]),
+        Permission::create(['action' => "Delete Review"])
     ]);
 
-        $admin = App\Role::where('name','=','Admin')->get();
-        $admin->permissions()->attach($permissions->keys());
+        $admin = Role::where('name','=','Admin')->first();
+        $permissions->each(function($permission, $key) use ($admin) {
+            $admin->permissions()->attach($permission);
+        });
 
-        $venditore = App\Role::where('name', '=', 'Venditore')->get();
-        $venditore->permissions()->attach($permissions->keys()->slice(1,5));
+        $venditore = Role::where('name', '=', 'Venditore')->first();
+        $permissions->splice(1,4)->each(function($permission) use ($venditore) {
+            $venditore->permissions()->attach($permission);
+        });
 
-        $utente = App\Role::where('name', '=', 'Utente')->get();
-        $utente->permissions()->attach($permissions->keys()->slice(1,2));
+
+        $utente = Role::where('name', '=', 'Utente')->first();
+        $utente->permissions()->attach(1);
+
     }
 }
