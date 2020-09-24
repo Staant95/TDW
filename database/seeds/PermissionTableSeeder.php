@@ -12,8 +12,25 @@ class PermissionTableSeeder extends Seeder
      */
     public function run()
     {
-        $permission = Permission::create(['action' => "Sell"]);
-        $permission->roles()->attach(App\Role::first());
+    
+    $permissions = collect([
+        $permission = Permission::create(['action' => "Buy"]),
+        $permission = Permission::create(['action' => "Create Review"]),
+        $permission = Permission::create(['action' => "Open Sell"]),
+        $permission = Permission::create(['action' => "Close Sell"]),
+        $permission = Permission::create(['action' => "Edit Sell"]),
+        $permission = Permission::create(['action' => "Ban User"]),
+        $permission = Permission::create(['action' => "Delete Sell"]),
+        $permission = Permission::create(['action' => "Delete Review"])
+    ]);
 
+        $admin = App\Role::where('name','=','Admin')->get();
+        $admin->permissions()->attach($permissions->keys());
+
+        $venditore = App\Role::where('name', '=', 'Venditore')->get();
+        $venditore->permissions()->attach($permissions->keys()->slice(1,5));
+
+        $utente = App\Role::where('name', '=', 'Utente')->get();
+        $utente->permissions()->attach($permissions->keys()->slice(1,2));
     }
 }
