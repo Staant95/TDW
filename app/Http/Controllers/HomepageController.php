@@ -11,7 +11,11 @@ class HomepageController extends Controller
 
     public function index()
     {
-        return view('homepage.homepage')->with(['categories' => Category::all()]);
+
+        return view('homepage.homepage')
+            ->with([
+                'categories' => Category::all(),
+            ]);
     }
 
     /**

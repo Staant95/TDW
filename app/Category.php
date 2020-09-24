@@ -8,7 +8,7 @@ class Category extends Model
 {
     public $guarded = [];
 
-    public function product()
+    public function products()
     {
         return $this->belongsToMany('App\Product');
     }
