@@ -8,7 +8,6 @@ Auth::routes();
 
 Route::redirect('/', 'home');
 
-
 Route::middleware('auth')->group(function() {
 
     Route::resource('/home', 'HomepageController');
