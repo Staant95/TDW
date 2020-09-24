@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Permission;
 
 class PermissionTableSeeder extends Seeder
 {
@@ -11,7 +12,8 @@ class PermissionTableSeeder extends Seeder
      */
     public function run()
     {
-        Permission::create(['actions' => "Vendite"]);
-        Permission::create(['actions' => "Fa cose"]);
+        $permission = Permission::create(['action' => "Sell"]);
+        $permission->roles()->attach(App\Role::first());
+
     }
 }
