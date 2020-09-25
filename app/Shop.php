@@ -10,7 +10,7 @@ class Shop extends Model
 
     public function products()
     {
-        return $this->hasMany('App\Product');
+        return $this->belongsToMany('App\Product')->withPivot('sale', 'start', 'end');
     }
 
     public function shopdetails()

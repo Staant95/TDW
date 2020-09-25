@@ -25,9 +25,9 @@ class product extends Model
         return $this->hasMany('App\Image');
     }
 
-    public function shop()
+    public function shops()
     {
-        return $this->belongsToMany('App\Shop');
+        return $this->belongsToMany('App\Shop')->withPivot('sale', 'start', 'end');
     }
 
     public function categories()

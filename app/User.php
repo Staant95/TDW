@@ -73,4 +73,9 @@ class User extends Authenticatable
         {
             return $this->hasMany('App\Review');
         }   
+
+    public function coupons()
+        {
+            return $this->belongsToMany('App\Coupon')->withPivot('code');
+        }
 }

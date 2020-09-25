@@ -18,6 +18,9 @@ class CreateProductShopTable extends Migration
             $table->timestamps();
             $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('shop_id');
+            $table->decimal('sale', 5, 2);
+            $table->date('start');
+            $table->date('end');
             $table->foreign('product_id')->references('id')->on('products');
             $table->foreign('shop_id')->references('id')->on('shops');
         });
