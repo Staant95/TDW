@@ -49,7 +49,7 @@
                                                             <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
                                                         </div>
                                                         <div class="product-action-2">
-                                                            <a title="Add to cart" href="#">Add to cart</a>
+                                                            <a title="Add to cart" @click="emitAddToCartEvent(product)">Add to cart</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -77,9 +77,11 @@
 </template>
 
 <script>
+    import { EventBus } from "../app";
+
     export default {
         mounted() {
-            console.log('Hello world');
+
             this.getCategories();
         },
         methods : {
@@ -100,6 +102,9 @@
             },
             updatedCurrent: function(category) {
                 this.currentCategory = category
+            },
+            emitAddToCartEvent: function(product) {
+                EventBus.$emit('add-to-cart', product);
             }
 
         },
