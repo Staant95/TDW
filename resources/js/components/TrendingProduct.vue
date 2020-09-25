@@ -35,9 +35,7 @@
 <script>
     export default {
         mounted() {
-            console.log(this.categoryId)
-            // this.getProducts(this.categoryId);
-
+            this.getProducts(this.categoryId);
         },
         props: [
             'categoryId'
@@ -49,8 +47,17 @@
         },
         methods: {
             getProducts: function(category) {
-                axios.get(`http://localhost:8000/api/category/${category}/products`)
-                .then(res => this.products = res.data);
+                let categoryId = parseInt(category);
+                axios.get(`http://localhost:8000/api/category/${categoryId}/products`)
+                .then(res => {
+                    this.products = res.data;
+                    console.log(this.products)
+                });
+            }
+        },
+        computed: {
+            getProductsOfSelectedTab: function() {
+                console.log('changed')
             }
         }
     }
