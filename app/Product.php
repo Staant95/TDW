@@ -14,12 +14,7 @@ class product extends Model
         return $this->belongsToMany(Cart::class);
     }
 
-    public function sale()
-    {
-        return $this->belongsTo('App\Sale');
-    }
-
-    
+        
     public function images()
     {
         return $this->hasMany('App\Image');
