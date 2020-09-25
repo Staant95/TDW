@@ -9,8 +9,8 @@
     @include('homepage.components.hero')
     @include('homepage.components.banner')
 {{--    @include('homepage.components.product')--}}
-    <div id="trendingContainer">
-        <trending-component></trending-component>
+    <div id="trendingListContainer">
+        <trending-products-list></trending-products-list>
     </div>
     @include('homepage.components.mediumBanner')
 {{--    @include('homepage.popularProducts')--}}

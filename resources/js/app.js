@@ -40,10 +40,11 @@ window.Vue = require('vue');
 export const EventBus = new Vue();
 Vue.component('cart-component', require('./components/CartComponent').default);
 // Vue.component('product-component',require('./components/ProductComponent').default);
-Vue.component('trending-component', require('./components/TrendingItemComponent').default);
 
-new Vue({el: '#trendingContainer'});
+Vue.component('trending-products-list', require('./components/TrendingProductsList').default);
 
+
+new Vue({el: '#trendingListContainer'});
 // new Vue({el: "#productsContainer"});
 /**
  * Next, we will create a fresh Vue application instance and attach it to
