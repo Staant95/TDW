@@ -75,7 +75,7 @@
                 } else {
                     sum = this.products[0].price;
                 }
-                return sum;
+                return sum.toFixed(2);
             }
         },
 

@@ -10,7 +10,11 @@
                 </div>
             </div>
 
-
+            <div v-if="showAlert" class="alert alert-success"
+                 style="position: fixed; left: 50%; top: 10%; width: 50%; transform: translate(-50%, -50%); z-index: 100;"
+                 role="alert">
+                <strong>Items has been added to your cart</strong>
+            </div>
 
             <div class="row">
                 <div class="col-12">
@@ -42,19 +46,23 @@
                                                         <img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
                                                         <img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
                                                     </a>
-                                                    <div class="button-head">
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-                                                            <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-                                                            <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
+                                                    <div class="button-head" >
+                                                        <div class="product-action" style="right: 18%!important;">
+                                                            <a href="#" ><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
                                                         </div>
-                                                        <div class="product-action-2">
-                                                            <a title="Add to cart" @click="emitAddToCartEvent(product)">Add to cart</a>
+
+                                                        <div class="product-action-2" >
+                                                            <button class="btn btn-primary"
+                                                                    style="border: none; height: 100%; margin: 0"
+                                                                    @click="emitAddToCartEvent(product)">
+                                                                Add to cart
+                                                            </button>
+
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="product-content">
-                                                    <h3><a href="product-details.html">{{ product.name }}</a></h3>
+                                                    <h5>{{ product.name }}</h5>
                                                     <div class="product-price">
                                                         <span>$ {{ product.price }}</span>
                                                     </div>
@@ -105,6 +113,8 @@
             },
             emitAddToCartEvent: function(product) {
                 EventBus.$emit('add-to-cart', product);
+                this.showAlert = true;
+                setTimeout(() => this.showAlert = false, 1500);
             }
 
         },
@@ -114,6 +124,7 @@
                 products: [],
                 currentCategory: {},
                 test : 5,
+                showAlert: false,
             }
         },
         computed: {

@@ -15,6 +15,7 @@
     @include('homepage.components.mediumBanner')
 {{--    @include('homepage.popularProducts')--}}
     @include('homepage.components.saleProducts')
+
     @include('homepage.components.shopService')
     @include('homepage.components.newsletter')
 
