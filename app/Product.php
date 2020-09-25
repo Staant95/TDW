@@ -40,4 +40,8 @@ class product extends Model
         return $this->belongsToMany('App\Format');
     }
 
+    public function reviews()
+    {
+        return $this->hasMany('App\Review');
+    }
 }
