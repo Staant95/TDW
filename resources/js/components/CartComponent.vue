@@ -75,14 +75,17 @@
                 } else {
                     sum = this.products[0].price;
                 }
-                return sum.toFixed(2);
+                return sum;
             }
         },
 
         methods: {
             removeItem: function(productId) {
                 axios.delete(`http://127.0.0.1:8000/api/users/${this.userId}/cart/${productId}`)
-                .then(_ => this.products = this.products.filter(el => el.id !== productId));
+                .then(res => {
+                    this.products = [];
+                    res.data.forEach(el => this.products.push((({id, name, price, pivot: {quantity}}) => ({id, name, price, quantity}))(el)))
+                });
             },
             addItem: function(productId) {
                 console.log(`Product id being added: ${productId.id}`)
