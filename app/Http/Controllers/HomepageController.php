@@ -12,24 +12,20 @@ class HomepageController extends Controller
     public function index()
     {
 
-        // Category::all() per il menu manca
-
-
         $categories = collect([
             Category::find(1),
             Category::find(2),
             Category::find(3)
         ]);
-        $products = collect([]);
-        $categories->each(function($category) use ($products) {
-            $products->push($category->products->slice(1,3));
+        $categories->map(function($item) {
+            $item->products = $item->products->slice(1,3);
         });
 
 
         return view('homepage.homepage')
             ->with([
-                'categories' => $categories,
-                'products' => $products
+                'categories' => Category::limit(10)->get(),
+                'saleCategories' => $categories
             ]);
     }
 
