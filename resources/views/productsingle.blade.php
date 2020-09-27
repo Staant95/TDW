@@ -69,10 +69,10 @@
 											<div class="color">
 												<h4>Available Options <span>Color</span></h4>
 												<ul>
-													<li><a href="#" class="one"><i class="ti-check"></i></a></li>
-													<li><a href="#" class="two"><i class="ti-check"></i></a></li>
-													<li><a href="#" class="three"><i class="ti-check"></i></a></li>
-													<li><a href="#" class="four"><i class="ti-check"></i></a></li>
+													@php $format=$product->formats->all(); @endphp
+													@foreach($format as $format)
+													<li><a href="#" background-color: {{ $format->color }}><i class="ti-check"></i></a></li>
+																									
 												</ul>
 											</div>
 											<!--/ End Color -->
@@ -80,11 +80,8 @@
 											<div class="size">
 												<h4>Size</h4>
 												<ul>
-													<li><a href="#" class="one">S</a></li>
-													<li><a href="#" class="two">M</a></li>
-													<li><a href="#" class="three">L</a></li>
-													<li><a href="#" class="four">XL</a></li>
-													<li><a href="#" class="four">XXL</a></li>
+													<li><a href="#" class="one">{{ $format->size }}</a></li>
+													@endforeach
 												</ul>
 											</div>
 											<!--/ End Size -->
@@ -113,10 +110,8 @@
 													<a href="#" class="btn min"><i class="ti-heart"></i></a>
 													<a href="#" class="btn min"><i class="fa fa-compress"></i></a>
 												</div>
-												@php $category = $product->categories->first(); @endphp
-												<p class="cat">Category :<a href="#">{{ $category->name }}</a></p>
-												@php $quantity = $product->formats->first(); @endphp
-												<p class="availability">Availability : {{ $quantity->quantity}} Products In Stock</p>
+												
+												<p class="cat">Category :<a href="#">{{ $product->categories->first()->name }}</a></p>
 											</div>
 											<!--/ End Product Buy -->
 										</div>
@@ -166,51 +161,47 @@
 															<div class="col-12">
 																<div class="ratting-main">
 																	<div class="avg-ratting">
-																		<h4>4.5 <span>(Overall)</span></h4>
-																		<span>Based on 1 Comments</span>
+																	@php $rating = $product->reviews->avg('stars'); @endphp
+																		<h4>{{ $rating }} <span>(Overall)</span></h4>
+																		<span>Based on {{ $product->reviews->count() }} Comments</span>
 																	</div>
 																	<!-- Single Rating -->
+																	@php $review = $product->reviews->all(); @endphp
+																	@foreach($review as $review) 																	
 																	<div class="single-rating">
 																		<div class="rating-author">
 																			<img src="https://via.placeholder.com/200x200" alt="#">
 																		</div>
 																		<div class="rating-des">
-																			<h6>Naimur Rahman</h6>
+																			<h6>{{ $review->user->name }}</h6>
 																			<div class="ratings">
 																				<ul class="rating">
-																					<li><i class="fa fa-star"></i></li>
-																					<li><i class="fa fa-star"></i></li>
-																					<li><i class="fa fa-star"></i></li>
-																					<li><i class="fa fa-star-half-o"></i></li>
-																					<li><i class="fa fa-star-o"></i></li>
+																				@php $singlerating = $review->stars; @endphp  
+
+																					@foreach(range(1,5) as $i)
+																						<span class="fa-stack" style="width:1em">
+																							<i class="far fa-star fa-stack-1x"></i>
+
+																								@if($singlerating >0)
+																									@if($singlerating >0.5)
+																									<i class="fas fa-star fa-stack-1x"></i>
+																									@else
+																									<i class="fas fa-star-half fa-stack-1x"></i>
+																									@endif
+																								@endif
+																					@php $singlerating--; @endphp
+																					</span>
+																					@endforeach
 																				</ul>
-																				<div class="rate-count">(<span>3.5</span>)</div>
+																				<div class="rate-count">(<span>{{ $review->stars }}</span>)</div>
 																			</div>
-																			<p>Duis tincidunt mauris ac aliquet congue. Donec vestibulum consequat cursus. Aliquam pellentesque nulla dolor, in imperdiet.</p>
+																			
+																			<p>{{ $review->description }}</p>
 																		</div>
 																	</div>
+																	@endforeach
 																	<!--/ End Single Rating -->
-																	<!-- Single Rating -->
-																	<div class="single-rating">
-																		<div class="rating-author">
-																			<img src="https://via.placeholder.com/200x200" alt="#">
-																		</div>
-																		<div class="rating-des">
-																			<h6>Advin Geri</h6>
-																			<div class="ratings">
-																				<ul class="rating">
-																					<li><i class="fa fa-star"></i></li>
-																					<li><i class="fa fa-star"></i></li>
-																					<li><i class="fa fa-star"></i></li>
-																					<li><i class="fa fa-star"></i></li>
-																					<li><i class="fa fa-star"></i></li>
-																				</ul>
-																				<div class="rate-count">(<span>5.0</span>)</div>
-																			</div>
-																			<p>Duis tincidunt mauris ac aliquet congue. Donec vestibulum consequat cursus. Aliquam pellentesque nulla dolor, in imperdiet.</p>
-																		</div>
-																	</div>
-																	<!--/ End Single Rating -->
+																	
 																</div>
 																<!-- Review -->
 																<div class="comment-review">
