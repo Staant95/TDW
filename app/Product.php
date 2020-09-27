@@ -32,7 +32,7 @@ class product extends Model
 
     public function formats()
     {
-        return $this->belongsToMany('App\Format');
+        return $this->belongsToMany('App\Format')->withPivot('quantity');
     }
 
     public function reviews()

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
 <!-- Shop Single -->
@@ -38,15 +38,30 @@
 												<h4>{{ $product['name'] }}</h4>
 												<div class="rating-main">
 													<ul class="rating">
-														<li><i class="fa fa-star"></i></li>
-														<li><i class="fa fa-star"></i></li>
-														<li><i class="fa fa-star"></i></li>
-														<li><i class="fa fa-star-half-o"></i></li>
-														<li class="dark"><i class="fa fa-star-o"></i></li>
+													@php $rating = $product->reviews->avg('stars'); @endphp  
+
+														@foreach(range(1,5) as $i)
+															<span class="fa-stack" style="width:1em">
+															<i class="far fa-star fa-stack-1x"></i>
+
+																@if($rating >0)
+																	@if($rating >0.5)
+																	<i class="fas fa-star fa-stack-1x"></i>
+																	@else
+																	<i class="fas fa-star-half fa-stack-1x"></i>
+																	@endif
+																@endif
+													@php $rating--; @endphp
+															</span>
+														@endforeach
+														
 													</ul>
-													<a href="#" class="total-review">(102) Review</a>
+													<a href="#" class="total-review">({{ $product->reviews->count() }})</a>
 												</div>
-												<p class="price"><span class="discount">{{ $product['price'] }}€</span><s>{{ $product['sale'] }}</s> </p>
+
+													
+												
+												<p class="price"><span class="discount">{{ $product['price'] }}€</span><s>{{ $product->shops->avg('sale') }}</s> </p>
 												<p class="description">{{ $product['description'] }}</p>
 											</div>
 											<!--/ End Description -->
