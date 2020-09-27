@@ -113,8 +113,10 @@
 													<a href="#" class="btn min"><i class="ti-heart"></i></a>
 													<a href="#" class="btn min"><i class="fa fa-compress"></i></a>
 												</div>
-												<p class="cat">Category :<a href="#">Clothing</a></p>
-												<p class="availability">Availability : 180 Products In Stock</p>
+												@php $category = $product->categories->first(); @endphp
+												<p class="cat">Category :<a href="#">{{ $category->name }}</a></p>
+												@php $quantity = $product->formats->first(); @endphp
+												<p class="availability">Availability : {{ $quantity->quantity}} Products In Stock</p>
 											</div>
 											<!--/ End Product Buy -->
 										</div>
