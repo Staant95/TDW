@@ -16,15 +16,6 @@
 													<li data-thumb="https://via.placeholder.com/570x520" rel="adjustX:10, adjustY:">
 														<img src="https://via.placeholder.com/570x520" alt="#">
 													</li>
-													<li data-thumb="https://via.placeholder.com/570x520">
-														<img src="https://via.placeholder.com/570x520" alt="#">
-													</li>
-													<li data-thumb="https://via.placeholder.com/570x520">
-														<img src="https://via.placeholder.com/570x520" alt="#">
-													</li>
-													<li data-thumb="https://via.placeholder.com/570x520">
-														<img src="https://via.placeholder.com/570x520" alt="#">
-													</li>
 												</ul>
 											</div>
 											<!-- End Images slider -->
@@ -106,9 +97,16 @@
 													<!--/ End Input Order -->
 												</div>
 												<div class="add-to-cart">
-													<a href="#" class="btn">Add to cart</a>
-													<a href="#" class="btn min"><i class="ti-heart"></i></a>
-													<a href="#" class="btn min"><i class="fa fa-compress"></i></a>
+													<form action"/cart" method="post">
+														<input name="product_id" value="{{ $product->id }}" hidden>
+														<button type="submit" class="btn btn-primary">Add to cart</button>
+															<form action"/favorites" method="post">
+																<input name="product_id" value="{{ $product->id }}" hidden>
+																<button type="submit" class="btn min"><i class="ti-heart"></i></button>
+															</form>
+													</form>
+													
+													
 												</div>
 												
 												<p class="cat">Category :<a href="#">{{ $product->categories->first()->name }}</a></p>
@@ -161,8 +159,8 @@
 															<div class="col-12">
 																<div class="ratting-main">
 																	<div class="avg-ratting">
-																	@php $rating = $product->reviews->avg('stars'); @endphp
-																		<h4>{{ $rating }} <span>(Overall)</span></h4>
+																	
+																		<h4>{{ $product->reviews->avg('stars') }} <span>(Overall)</span></h4>
 																		<span>Based on {{ $product->reviews->count() }} Comments</span>
 																	</div>
 																	<!-- Single Rating -->
@@ -207,7 +205,7 @@
 																<div class="comment-review">
 																	<div class="add-review">
 																		<h5>Add A Review</h5>
-																		<p>Your email address will not be published. Required fields are marked</p>
+																		
 																	</div>
 																	<h4>Your Rating</h4>
 																	<div class="review-inner">
@@ -224,24 +222,21 @@
 																</div>
 																<!--/ End Review -->
 																<!-- Form -->
-																<form class="form" method="post" action="mail/mail.php">
+																<form class="form" method="post" action="/review">
 																	<div class="row">
 																		<div class="col-lg-6 col-12">
 																			<div class="form-group">
-																				<label>Your Name<span>*</span></label>
-																				<input type="text" name="name" required="required" placeholder="">
-																			</div>
-																		</div>
-																		<div class="col-lg-6 col-12">
-																			<div class="form-group">
-																				<label>Your Email<span>*</span></label>
-																				<input type="email" name="email" required="required" placeholder="">
+																				<label>Your Name: {{ Auth::user()->name }}</label>
 																			</div>
 																		</div>
 																		<div class="col-lg-12 col-12">
 																			<div class="form-group">
-																				<label>Write a review<span>*</span></label>
-																				<textarea name="message" rows="6" placeholder="" ></textarea>
+																				<label>Write a review</label>
+																				@csrf
+																				<input name="product_id" value="{{ $product->id }}" hidden>
+																				<input name="user_id" value="{{ Auth::user()->id }}" hidden>
+																				<input name="stars" rows="6" placeholder="stelle test" ></input>
+																				<textarea name="description" rows="6" placeholder="descrizione test" ></textarea>
 																			</div>
 																		</div>
 																		<div class="col-lg-12 col-12">
