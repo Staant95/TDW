@@ -71,7 +71,7 @@
 												<ul>
 													
 													@foreach($format as $format)
-													<li><a href="#" background-color: {{ $format->color }}><i class="ti-check"></i></a></li>
+												<li><a href="#" style="background-color: {{ $format->color }}"><i class="ti-check"></i></a></li>
 																									
 												</ul>
 											</div>
