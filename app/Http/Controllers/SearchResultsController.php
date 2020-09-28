@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
 use Illuminate\Http\Request;
 
 class SearchResultsController extends Controller
@@ -13,9 +14,12 @@ class SearchResultsController extends Controller
      */
     public function index(Request $request)
     {
-        $searchedProduct = $request->query('search');
-        // search product and return the view with product details
-        dd($searchedProduct);
+        $searched = \App\Product::where('name','like',$request->input('search').'%')->get();
+        $products = \App\Product::all();
+        $random = $products->random(5);
+        return view('searchresults')->with(['searched' => $searched,
+                                            'products' => $products,
+                                            'random' => $random]);
     }
 
     /**
