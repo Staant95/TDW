@@ -38,7 +38,7 @@
 												<h4>{{ $product['name'] }}</h4>
 												<div class="rating-main">
 													<ul class="rating">
-													@php $rating = $product->reviews->avg('stars'); @endphp  
+													
 
 														@foreach(range(1,5) as $i)
 															<span class="fa-stack" style="width:1em">
@@ -69,7 +69,7 @@
 											<div class="color">
 												<h4>Available Options <span>Color</span></h4>
 												<ul>
-													@php $format=$product->formats->all(); @endphp
+													
 													@foreach($format as $format)
 													<li><a href="#" background-color: {{ $format->color }}><i class="ti-check"></i></a></li>
 																									
@@ -166,7 +166,7 @@
 																		<span>Based on {{ $product->reviews->count() }} Comments</span>
 																	</div>
 																	<!-- Single Rating -->
-																	@php $review = $product->reviews->all(); @endphp
+																	
 																	@foreach($review as $review) 																	
 																	<div class="single-rating">
 																		<div class="rating-author">
