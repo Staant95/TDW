@@ -6,8 +6,9 @@ use Illuminate\Http\Request;
 
 Auth::routes();
 
+// FIXME: Move all the routes in auth middleware
 Route::redirect('/', 'home');
-Route::view('/aboutus', 'aboutus');
+Route::view('/aboutus', 'aboutus'); // TODO: about-us
 Route::post('/review', 'ReviewController@store');
 Route::get('/products/{product}', 'ProductController@index');
 

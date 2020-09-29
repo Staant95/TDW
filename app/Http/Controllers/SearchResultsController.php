@@ -14,12 +14,18 @@ class SearchResultsController extends Controller
      */
     public function index(Request $request)
     {
-        $searched = \App\Product::where('name','like',$request->input('search').'%')->get();
-        $products = \App\Product::all();
+        // IMPROVE: Puoi semplicemente far visualizzare un messaggio nel template dicendo che non ci sono prodotti con quel nome
+        // avrai un if per controllare la size della collection, quindi @if($searched->count()) iteri e fai vedere la roba
+        // altrimenti mostri una scritta "nessun risultato" o qualcosa del genere
+        $searched = Product::where('name', 'like', $request->input('search') . '%')->get();
+        $products = Product::all();
         $random = $products->random(5);
-        return view('searchresults')->with(['searched' => $searched,
-                                            'products' => $products,
-                                            'random' => $random]);
+
+        return view('searchresults')->with([
+            'searched' => $searched,
+            'products' => $products,
+            'random' => $random
+        ]);
     }
 
     /**
