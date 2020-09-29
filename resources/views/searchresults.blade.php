@@ -18,17 +18,29 @@
                                     
 									<div class="single-post first">
 										<div class="image">
+										<a href="/products/{{ $random->id }}">
 											<img src="https://via.placeholder.com/75x75" alt="#">
 										</div>
+										</a>
 										<div class="content">
 											<h5><a href="/products/{{ $random->id }}">{{ $random->name }}</a></h5>
 											<p class="price">{{ $random->price }}€</p>
 											<ul class="reviews">
-												<li class="yellow"><i class="ti-star"></i></li>
-												<li class="yellow"><i class="ti-star"></i></li>
-												<li class="yellow"><i class="ti-star"></i></li>
-												<li><i class="ti-star"></i></li>
-												<li><i class="ti-star"></i></li>
+											@php $rating = $random->reviews->avg('stars'); @endphp
+											@foreach(range(1,5) as $i)
+															<span class="fa-stack" style="width:1em">
+															<i class="far fa-star fa-stack-1x"></i>
+
+																@if($rating >0)
+																	@if($rating >0.5)
+																	<i class="fas fa-star fa-stack-1x"></i>
+																	@else
+																	<i class="fas fa-star-half fa-stack-1x"></i>
+																	@endif
+																@endif
+													@php $rating--; @endphp
+															</span>
+														@endforeach
 											</ul>
 										</div>
                                     </div>
