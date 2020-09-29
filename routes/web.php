@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 Auth::routes();
 
 Route::redirect('/', 'home');
+Route::view('/aboutus', 'aboutus');
 Route::post('/review', 'ReviewController@store');
 Route::get('/products/{product}', 'ProductController@index');
 
