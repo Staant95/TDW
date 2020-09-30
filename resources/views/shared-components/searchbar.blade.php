@@ -51,7 +51,7 @@
 
                     {{--    Wishlis          --}}
                     <div class="sinlge-bar">
-                        <a href="#" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                        <a href="/wishlist" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
                     </div>
 
                     {{-- USER ACCOUNT --}}
