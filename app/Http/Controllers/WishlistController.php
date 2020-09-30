@@ -20,8 +20,10 @@ class WishlistController extends Controller
         $wishlist = $user->wishlist;
                        
         
-        return view ('wishlist')->with(['wishlist' => $wishlist,
-                                        'user' => $user]);            
+        return view ('wishlist')->with([
+            'wishlist' => $wishlist,
+            'user' => $user
+            ]);            
     }
 
     public function addProduct()
@@ -31,13 +33,15 @@ class WishlistController extends Controller
 
     }
 
-
+    // CHANGE: Devi rispettare i nomi convenzionali rest, quindi questo si dovrebbe chiamare destroy
+    // basta fare php artisan route:list e vedere le altre route come si chiamano
     public function removeProduct($product_id)
     {
         $user = Auth::user();
         $wishlist = $user->wishlist;
-       WTF: $wishlist->products->detach($product->id);
+        // $wishlist->products->detach($product->id);
 
         return redirect()->back();
 
-    } 
+    }
+} 

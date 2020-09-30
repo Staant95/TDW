@@ -17,8 +17,9 @@
 								<th class="text-center">PRICE</th>
 								<th class="text-center"><i class="ti-trash remove-icon"></i></th>
 							</tr>
-                        </thead>
-                        @foreach($wishlist->products as $product)
+						</thead>
+						{{-- CHANGE: prima era $wishlist->products --}}
+                        @foreach($products as $product)
 							<tr>
 								<td class="image" data-title="No"><a href="/products/{{ $product->id }}"><img src="https://via.placeholder.com/100x100" alt="#"></td></a>
 								<td class="product-des" data-title="Description">
@@ -28,8 +29,15 @@
 								<td class="price" data-title="Price"><span>{{ $product->price }}€ </span></td>
 								
                                 							
-								TODO:<td class="action" data-title="Remove"><a href="/removewishlist/{{ $product->id }}">@csrf
-									<i class="ti-trash remove-icon"></i></a></td>
+								<td class="action" data-title="Remove">
+									<form action="{{ route('wishlists.products.destroy', ['wishlist' => Auth::user()->wishlist->id, 'product' => $product->id]) }}" method="POST">
+										@csrf
+										@method('DELETE')
+										<button class="btn">
+											<i class="ti-trash remove-icon"></i>
+										</button>
+									</form>
+								</td>
 							</tr>
 							@endforeach 
 							
