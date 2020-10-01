@@ -31,9 +31,9 @@ class WishlistProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Wishlist $wishlist, Product $product)
+    public function store(Wishlist $wishlist, Request $request)
     {
-        dd($product);
+        $product = $request->input('product');
         $wishlist->products()->attach($product);
         return redirect()->back();
     }
