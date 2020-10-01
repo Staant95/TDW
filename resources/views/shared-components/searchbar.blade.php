@@ -51,7 +51,7 @@
 
                     {{--    Wishlis          --}}
                     <div class="sinlge-bar">
-                        <a href="#" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                        <a href="{{ route('wishlists.products.index', ['wishlist' => Auth::user()->wishlist->id]) }}" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
                     </div>
 
                     {{-- USER ACCOUNT --}}
@@ -61,50 +61,8 @@
 
                     {{-- CART --}}
                     <div class="sinlge-bar shopping" id="cartContainer">
-                                                                                            <!-- \Cart::getContent()->count() -->
-                    {{--                        <a href="#" class="single-icon"><i class="ti-bag"></i> <span class="total-count">{{ $cartItems }}</span></a>--}}
-{{--                        <!-- Shopping Item -->--}}
-{{--                        <div class="shopping-item">--}}
-
-{{--                            <div class="dropdown-cart-header">--}}
-{{--                                <!-- \Cart::getContent()->count() -->--}}
-{{--                                <span>{{ $cartItems }}</span>--}}
-{{--                                <!-- change link  -->--}}
-{{--                                <a href="#">View Cart</a>--}}
-{{--                            </div>--}}
-{{--                            <ul class="shopping-list">--}}
-{{--                                --}}{{-- @foreach($item in $cart) --}}
-{{--                                <li>--}}
-{{--                                    <!-- DELETE /cart/$item->id, CHANGE THE ACTION-->--}}
-{{--                                    <form method="POST" action="/cart/1">--}}
-{{--                                        @csrf--}}
-{{--                                        @method('delete')--}}
-{{--                                        <button class="remove" type="submit">--}}
-{{--                                            <i class="fa fa-remove"></i>--}}
-{{--                                        </button>--}}
-
-{{--                                    </form>--}}
-
-{{--                                    <a class="cart-img" href="#">--}}
-{{--                                        <img src="https://via.placeholder.com/70x70" alt="#">--}}
-{{--                                    </a>--}}
-{{--                                    <h4><a href="#">Woman Ring</a></h4>--}}
-{{--                                    <p class="quantity">1x - <span class="amount">$99.00</span></p>--}}
-{{--                                </li>--}}
-
-{{--                            </ul>--}}
-{{--                            <div class="bottom">--}}
-{{--                                <div class="total">--}}
-{{--                                    <span>Total</span>--}}
-{{--                                    <!-- \Cart::getTotal() -->--}}
-{{--                                    <span class="total-amount">$134.00</span>--}}
-{{--                                </div>--}}
-{{--                                <!-- route('checkout') -->--}}
-{{--                                <a href="checkout.html" class="btn animate">Checkout</a>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-                        <!--/ End Shopping Item -->
-
+   
+                        {{-- FIXME: da cambiare id in {{ Auth::id() }} --}}
                         <cart-component user-id="1"></cart-component>
 
                     </div>

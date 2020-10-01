@@ -39,4 +39,9 @@ class product extends Model
     {
         return $this->hasMany('App\Review');
     }
+
+    public function wishlists()
+    {
+        return $this->belongsToMany('App\Wishlist');
+    }
 }

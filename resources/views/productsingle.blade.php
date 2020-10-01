@@ -97,14 +97,18 @@
 													<!--/ End Input Order -->
 												</div>
 												<div class="add-to-cart">
+
 													<form action"/cart" method="post">
 														<input name="product_id" value="{{ $product->id }}" hidden>
 														<button type="submit" class="btn btn-primary">Add to cart</button>
-															<form action"/favorites" method="post">
-																<input name="product_id" value="{{ $product->id }}" hidden>
-																<button type="submit" class="btn min"><i class="ti-heart"></i></button>
-															</form>
 													</form>
+
+													<form action="{{ route('wishlists.products.store', ['wishlist' => Auth::user()->wishlist->id]) }}" method="post">
+														@csrf
+														<input type="text" hidden name="product" value="{{ $product->id }}">
+														<button type="submit" class="btn min"><i class="ti-heart"></i></button>
+													</form>
+													
 													
 													
 												</div>
@@ -222,7 +226,7 @@
 																</div>
 																<!--/ End Review -->
 																<!-- Form -->
-																<form class="form" method="post" action="/review">
+																<form class="form" method="post" action="/reviews">
 																	<div class="row">
 																		<div class="col-lg-6 col-12">
 																			<div class="form-group">
