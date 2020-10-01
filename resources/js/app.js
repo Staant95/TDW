@@ -14,7 +14,6 @@ require('./scripts/colors')
 require('waypoints/lib/jquery.waypoints')
 
 require('slicknav/jquery.slicknav');
-require('slicknav/dist/jquery.slicknav.min')
 
 require('./scripts/scrollup')
 require('./scripts/onepage-nav.min')
@@ -42,7 +41,9 @@ jQuery(window).on('scroll', function() {
 });
 
 
-
+$('.top-search a').on( "click", function(){
+    $('.search-top').toggleClass('active');
+});
 
 window.Vue = require('vue');
 
