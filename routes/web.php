@@ -16,7 +16,7 @@ Route::middleware('auth')->group(function() {
 
     Route::resource('/home', 'HomepageController');
     Route::resource('/search', 'SearchResultsController');
-    Route::resource('carts.products', 'CartProductController');
+    Route::resource('users.carts.products', 'CartProductController');
 });
 
 

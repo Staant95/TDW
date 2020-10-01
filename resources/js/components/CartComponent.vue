@@ -8,7 +8,7 @@
                 <!-- \Cart::getContent()->count() -->
                 <span> {{ products.length }} </span>
                 <!-- change link  -->
-                <a href="users/{user}/carts/{cart}/products">View Cart</a>
+                <a :href="'users/'+parseInt(this.userId)+'/carts/'+parseInt(this.cartId)+'/products'">View Cart</a>
             </div>
             <ul class="shopping-list">
 
@@ -44,9 +44,11 @@
     import { EventBus } from '../app';
     export default {
         props: {
-            userId: String
+            userId: String,
+            cartId: String
         },
         mounted() {
+            console.log(this.userId, this.cartId);
             axios.get(`http://127.0.0.1:8000/api/cart?user=${this.userId}`)
             .then(console.log)
         },

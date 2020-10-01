@@ -46,13 +46,13 @@
                                 </td>
                                 <td class="total-amount" data-title="Total"><span>$220.88</span></td>
 								<td class="action" data-title="Remove">
-									<form action="{{ route('carts.products.destroy', ['cart' => Auth::user()->cart->id, 'product' => $product->id]) }}" method="POST">
+									{{-- <form action="{{ route('carts.products.destroy', ['cart' => Auth::user()->cart->id, 'product' => $product->id]) }}" method="POST">
 										@csrf
 										@method('DELETE')
 										<button class="btn">
 											<i class="ti-trash remove-icon"></i>
 										</button>
-									</form>
+									</form> --}}
 								</td>
                             </tr>
                             @endforeach

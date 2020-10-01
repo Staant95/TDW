@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Cart;
 
 class CartProductController extends Controller
 {
@@ -11,8 +12,9 @@ class CartProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Cart $cart)
+    public function index($cart_id)
     {
+        $cart = Cart::find($cart_id);
         return view('cart')->with(['products' => $cart->products]);
     }
 
@@ -79,6 +81,6 @@ class CartProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        dd('called');
     }
 }
