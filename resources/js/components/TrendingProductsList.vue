@@ -11,7 +11,7 @@
             </div>
 
             <div v-if="showAlert" class="alert alert-success"
-                 style="position: fixed; left: 50%; top: 10%; width: 50%; transform: translate(-50%, -50%); z-index: 100;"
+                 style="position: fixed; left: 50%; top: 12%; width: 50%; transform: translate(-50%, -50%); z-index: 100;"
                  role="alert">
                 <strong>Items has been added to your cart</strong>
             </div>
@@ -51,9 +51,9 @@
                                                             <a href="#" ><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
                                                         </div>
 
-                                                        <div class="product-action-2" >
-                                                            <button class="btn btn-primary"
-                                                                    style="border: none; height: 100%; margin: 0"
+                                                        <div class="product-action-2" style="top:0!important">
+                                                            <button class="btn"
+                                                                    style="border: none; height: 100%; margin: 0;"
                                                                     @click="emitAddToCartEvent(product)">
                                                                 Add to cart
                                                             </button>
