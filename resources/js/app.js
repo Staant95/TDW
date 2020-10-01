@@ -8,19 +8,21 @@ require('./bootstrap');
 
 
 require('./scripts/colors')
-require('./scripts/slicknav.min')
+require('./scripts/active')
+require('slicknav/dist/jquery.slicknav')
+
 require('./scripts/owl-carousel')
 require('./scripts/magnific-popup')
-require('./scripts/facnybox.min')
-// require('./scripts/waypoints.min')
+require('./scripts/facnybox.min') // zoom on images
+require('waypoints/lib/jquery.waypoints')
 require('./scripts/finalcountdown.min')
-// require('./scripts/nicesellect')
+require('jquery-nice-select/js/jquery.nice-select')
+
 // require('./scripts/ytplayer.min')
 require('./scripts/flex-slider')
 require('./scripts/scrollup')
 require('./scripts/onepage-nav.min')
 require('./scripts/easing')
-// require('./scripts/active');
 // require('./scripts/map-script')
 
 window.Vue = require('vue');

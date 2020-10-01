@@ -5,7 +5,9 @@
 
                 <div class="col-lg-3">
                     <div class="all-category">
-                        <h3 class="cat-heading"><i class="fa fa-bars" aria-hidden="true"></i>CATEGORIES</h3>
+                        <h3 class="cat-heading">
+                            <i class="fa fa-bars" aria-hidden="true"></i>CATEGORIES
+                        </h3>
                         <ul class="main-category">
                             @foreach($categories as $category)
                             <li><a href="#"> {{ $category->name }} </a></li>
