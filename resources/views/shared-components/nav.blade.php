@@ -4,10 +4,19 @@
             <div class="row">
 
                 <div class="col-lg-3">
-                    <div class="all-category">
-                        <h3 class="cat-heading">
-                            <i class="fa fa-bars" aria-hidden="true"></i>CATEGORIES
-                        </h3>
+                    <div class="all-category"
+                    style="height: 100%; display:flex; justify-content: center; align-items: center;"
+                    >
+
+                        <label 
+                        class="cat-heading" 
+                        for="toggle-nav"
+                        style="height:100%; display: inline-block; align-self: stretch; padding-top: 1em"
+                        >
+                            <i class="fa fa-bars" aria-hidden="true"></i>
+                            Categories
+                        </label>
+                        <input type="checkbox" hidden id="toggle-nav">
                         <ul class="main-category">
                             @foreach($categories as $category)
                             <li><a href="#"> {{ $category->name }} </a></li>

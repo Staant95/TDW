@@ -27,11 +27,15 @@
                     <!--/ End Search Form -->
                 </div>
                 <!--/ End Search Form -->
-                <div class="mobile-nav"></div>
+
+                <div class="mobile-nav">
+                    {{-- slicknav should add the navigation --}}
+                </div>
+
             </div>
 
 
-            <div class="col-lg-7 col-md-7 col-12">
+            <div class="col-lg-8 col-md-7 col-12">
                 <div class="search-bar-top">
                     <div class="search-bar">
                         {{--  missing select option     --}}
@@ -45,7 +49,7 @@
             </div>
 
 
-            <div class="col-lg-3 col-md-3 col-12">
+            <div class="col-lg-2 col-md-3 col-12">
                 <div class="right-bar">
                     <!-- Search Form -->
 

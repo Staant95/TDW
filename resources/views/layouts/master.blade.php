@@ -15,7 +15,7 @@
     <link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
 {{--    <link rel="stylesheet" href="css/something.css">--}}
      <link rel="stylesheet" href="{{ asset('css/something.css') }}">
-
+     
 </head>
 <body>
 
@@ -26,5 +26,6 @@
 @include('shared-components.footer')
 
 <script src="{{ asset('js/app.js') }}"></script>
+{{-- <a id="scrollUp" href="#top" style="display: none; position: fixed; z-index: 2147483647;"><span><i class="fa fa-angle-up"></i></span></a> --}}
 </body>
 </html>

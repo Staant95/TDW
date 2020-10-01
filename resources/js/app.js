@@ -9,20 +9,19 @@ require('./bootstrap');
 
 require('./scripts/colors')
 
-require('slicknav/dist/jquery.slicknav')
 
 
-require('./scripts/magnific-popup')
-require('./scripts/facnybox.min') // zoom on images
 require('waypoints/lib/jquery.waypoints')
 
+require('slicknav/jquery.slicknav');
 
 require('./scripts/scrollup')
 require('./scripts/onepage-nav.min')
 
-require('./scripts/easing')
+// require('./scripts/easing')
 
 require('./scripts/active')
+
 window.Vue = require('vue');
 
 /**

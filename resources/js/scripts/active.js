@@ -36,7 +36,8 @@ Version:1.0
 		
 		/*====================================
 			Mobile Menu
-		======================================*/ 	
+		======================================*/ 
+		// IS NOT BEING ACTIVATED	
 		$('.menu').slicknav({
 			prependTo:".mobile-nav",
 			duration:300,
