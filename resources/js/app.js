@@ -19,10 +19,6 @@ require('./scripts/scrollup')
 require('./scripts/onepage-nav.min')
 
 
-require('./scripts/active') // can be removed...
-
-
-
 
 $('.menu').slicknav({
     prependTo:".mobile-nav",

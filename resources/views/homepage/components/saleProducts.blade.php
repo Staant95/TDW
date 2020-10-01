@@ -26,7 +26,8 @@
                                         <a href="/products/{{ $product->id }}" class="buy"
                                            style="display: flex; justify-items: center; align-items: center; padding: 0!important;">
 {{--                                            <i class="fa fa-shopping-bag"></i>--}}
-                                            <i style="width: 100%; padding: 0!important; margin: 0!important;" class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                            <i style="width: 100%; padding: 0!important; margin: 0!important;" class="fa fa-shopping-bag" aria-hidden="true"></i>
+
                                         </a>
                                     </div>
                                 </div>

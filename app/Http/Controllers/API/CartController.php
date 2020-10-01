@@ -28,7 +28,7 @@ class CartController extends Controller
         if($cartProducts->contains($product)) {
             $cartProducts->map(function($item) use ($product) {
                 if($item->id == $product->id) {
-                    $item->pivot->quantity++;
+                    $item->pivot->quantity = $item->pivot->quantity + 1;
                     $item->push();
                 }
             });

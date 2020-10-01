@@ -75,6 +75,7 @@
                 } else {
                     sum = this.products[0].price;
                 }
+                sum = parseFloat(sum).toFixed(2);
                 return sum;
             }
         },

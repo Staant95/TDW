@@ -31,7 +31,7 @@ Version:1.0
 [End Activation Code]
 =========================================*/ 
 (function($) {
-	console.log('IN SLICKNAV')
+	
    
      $(document).on('ready', function() {	
 		
