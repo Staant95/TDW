@@ -9,7 +9,7 @@
 
     <title>@yield('title')</title>
 
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    
 
 
     <link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
@@ -25,5 +25,6 @@
 
 @include('shared-components.footer')
 
+<script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
