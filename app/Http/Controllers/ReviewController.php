@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Product;
 use App\Review;
 use Illuminate\Support\Facades\Auth;
@@ -9,14 +10,14 @@ use Illuminate\Http\Request;
 class ReviewController extends Controller
 {
     public function store(Request $request)
-{
-    Review::create([
-        'product_id' => $request->product_id,
-        'user_id' => $request->user_id,
-        'stars' => $request->stars,
-        'description' => $request->description
-    ]);
+    {
+        Review::create([
+            'product_id' => $request->product_id,
+            'user_id' => $request->user_id,
+            'stars' => $request->stars,
+            'description' => $request->description
+        ]);
 
-    return redirect()->back(); 
-}
+        return redirect()->back();
+    }
 }
