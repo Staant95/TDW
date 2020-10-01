@@ -14,13 +14,35 @@ require('./scripts/colors')
 require('waypoints/lib/jquery.waypoints')
 
 require('slicknav/jquery.slicknav');
+require('slicknav/dist/jquery.slicknav.min')
 
 require('./scripts/scrollup')
 require('./scripts/onepage-nav.min')
 
-// require('./scripts/easing')
 
 require('./scripts/active')
+
+
+
+
+$('.menu').slicknav({
+    prependTo:".mobile-nav",
+    duration:300,
+    animateIn: 'fadeIn',
+    animateOut: 'fadeOut',
+    closeOnClick:true,
+});
+
+jQuery(window).on('scroll', function() {
+    if ($(this).scrollTop() > 200) {
+        $('.header').addClass("sticky");
+    } else {
+        $('.header').removeClass("sticky");
+    }
+});
+
+
+
 
 window.Vue = require('vue');
 

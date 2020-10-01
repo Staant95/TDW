@@ -11,7 +11,7 @@
                         <label 
                         class="cat-heading" 
                         for="toggle-nav"
-                        style="height:100%; display: inline-block; align-self: stretch; padding-top: 1em"
+                        style="height:100%; display: inline-block; align-self: stretch; padding-top: 1em; padding-bottom: 0"
                         >
                             <i class="fa fa-bars" aria-hidden="true"></i>
                             Categories

@@ -31,13 +31,15 @@ Version:1.0
 [End Activation Code]
 =========================================*/ 
 (function($) {
-    "use strict";
+	console.log('IN SLICKNAV')
+   
      $(document).on('ready', function() {	
 		
 		/*====================================
 			Mobile Menu
 		======================================*/ 
 		// IS NOT BEING ACTIVATED	
+		
 		$('.menu').slicknav({
 			prependTo:".mobile-nav",
 			duration:300,
@@ -45,6 +47,7 @@ Version:1.0
 			animateOut: 'fadeOut',
 			closeOnClick:true,
 		});
+		
 		
 		/*====================================
 		03. Sticky Header JS
@@ -315,3 +318,4 @@ Version:1.0
 	
 	 
 })(jQuery);
+console.log('AFTER SLICKNAV')
