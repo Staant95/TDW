@@ -3,13 +3,30 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Category;
 
 class HomepageController extends Controller
 {
 
     public function index()
     {
-        return view('homepage.test');
+
+        $categories = collect([
+            Category::find(1),
+            Category::find(2),
+            Category::find(3)
+        ]);
+        $categories->map(function($item) {
+            $item->products = $item->products->slice(1,3);
+        });
+
+
+        return view('homepage.homepage')
+            ->with([
+                'categories' => Category::limit(10)->get(),
+                'saleCategories' => $categories
+            ]);
     }
 
     /**

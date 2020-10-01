@@ -1,0 +1,6 @@
+
+
+#toggle-nav:checked ~ .main-category{
+    display: none!important;
+}
+

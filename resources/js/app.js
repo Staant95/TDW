@@ -8,20 +8,38 @@ require('./bootstrap');
 
 
 require('./scripts/colors')
-require('./scripts/slicknav.min')
-require('./scripts/owl-carousel')
-require('./scripts/magnific-popup')
-require('./scripts/facnybox.min')
-// require('./scripts/waypoints.min')
-require('./scripts/finalcountdown.min')
-// require('./scripts/nicesellect')
-// require('./scripts/ytplayer.min')
-require('./scripts/flex-slider')
+
+
+
+require('waypoints/lib/jquery.waypoints')
+
+require('slicknav/jquery.slicknav');
+
 require('./scripts/scrollup')
 require('./scripts/onepage-nav.min')
-require('./scripts/easing')
-// require('./scripts/active');
-// require('./scripts/map-script')
+
+
+
+$('.menu').slicknav({
+    prependTo:".mobile-nav",
+    duration:300,
+    animateIn: 'fadeIn',
+    animateOut: 'fadeOut',
+    closeOnClick:true,
+});
+
+jQuery(window).on('scroll', function() {
+    if ($(this).scrollTop() > 200) {
+        $('.header').addClass("sticky");
+    } else {
+        $('.header').removeClass("sticky");
+    }
+});
+
+
+$('.top-search a').on( "click", function(){
+    $('.search-top').toggleClass('active');
+});
 
 window.Vue = require('vue');
 
@@ -38,11 +56,12 @@ window.Vue = require('vue');
 
 
 export const EventBus = new Vue();
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('cart-component', require('./components/CartComponent').default);
-Vue.component('product-component',require('./components/ProductComponent').default);
+Vue.component('trending-products-list', require('./components/TrendingProductsList').default);
 
-new Vue({el: "#productsContainer"})
+
+new Vue({el: '#trendingListContainer'});
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

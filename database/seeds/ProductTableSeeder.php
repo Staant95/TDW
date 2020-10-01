@@ -12,7 +12,7 @@ class ProductTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        factory(App\Product::class, 50)
+        factory(App\Product::class, 100)
         ->create()
         ->each(function($product) use($faker) {
 
@@ -24,13 +24,6 @@ class ProductTableSeeder extends Seeder
                 [ 'quantity' => $faker->numberBetween(5,40)]
             );
 
-            $categoriesSize = App\Category::count();
-            $randomCategory = $faker->numberBetween(1,$categoriesSize);
-
-            $category = App\Category::find($randomCategory);
-            $product->categories()->attach(
-                $category
-            );
         });
     }
 }

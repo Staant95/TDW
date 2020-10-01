@@ -27,7 +27,11 @@
                     <!--/ End Search Form -->
                 </div>
                 <!--/ End Search Form -->
-                <div class="mobile-nav"></div>
+
+                <div class="mobile-nav">
+                    {{-- slicknav should add the navigation --}}
+                </div>
+
             </div>
 
 
@@ -49,22 +53,23 @@
                 <div class="right-bar">
                     <!-- Search Form -->
 
-                    {{--    Wishlis          --}}
                     <div class="sinlge-bar">
                         <a href="{{ route('wishlists.products.index', ['wishlist' => Auth::user()->wishlist->id]) }}" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
                     </div>
 
-                    {{-- USER ACCOUNT --}}
-                    <div class="sinlge-bar">
-                        <a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
-                    </div>
-
                     {{-- CART --}}
                     <div class="sinlge-bar shopping" id="cartContainer">
-   
-                        {{-- FIXME: da cambiare id in {{ Auth::id() }} --}}
-                        <cart-component user-id="1"></cart-component>
 
+
+                        <cart-component user-id="{{ Auth::id() }}" ></cart-component>
+
+                    </div>
+
+                    <div class="sinlge-bar">
+                        <a href="{{ route('profile.index') }}" class="single-icon">
+                            {{-- Hi, {{ Auth::user()->name }}</i>--}}
+                            <i class="fa fa-user-o" aria-hidden="true"></i>
+                        </a>
                     </div>
 
                     {{-- END CART--}}
