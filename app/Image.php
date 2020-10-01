@@ -4,12 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Sales extends Model
+class Image extends Model
 {
     public $guarded = [];
 
-    public function products()
+    public function product()
     {
-        return $this->hasMany('App\Product');
+        return $this->belongsTo('App\Product');
     }
 }

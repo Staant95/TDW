@@ -54,11 +54,12 @@
                     <!-- Search Form -->
 
                     <div class="sinlge-bar">
-                        <a href="#" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                        <a href="{{ route('wishlists.products.index', ['wishlist' => Auth::user()->wishlist->id]) }}" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
                     </div>
 
                     {{-- CART --}}
                     <div class="sinlge-bar shopping" id="cartContainer">
+
 
                         <cart-component user-id="{{ Auth::id() }}" ></cart-component>
 

@@ -45,21 +45,37 @@ class User extends Authenticatable
         }
 
     public function orders()
-            {
-                return $this->hasMany('App\Order');
-            }
+       {
+            return $this->hasMany('App\Order');
+       }
 
     public function role()
         {
             return $this->belongsTo('App\Role');
         }
 
-    public function favorite_list()
+    public function wishlist()
         {
-            return $this->hasOne('App\FavoriteList');
+            return $this->hasOne('App\Wishlist');
         }
 
-    public function cart() {
-        return $this->hasOne(Cart::class);
-    }
+    public function cart()
+        {
+            return $this->hasOne(Cart::class);
+        }
+
+    public function shops()
+        {
+            return $this->belongsToMany('App\Shop');
+        }
+
+    public function reviews()
+        {
+            return $this->hasMany('App\Review');
+        }   
+
+    public function coupons()
+        {
+            return $this->belongsToMany('App\Coupon')->withPivot('code');
+        }
 }

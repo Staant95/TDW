@@ -19,7 +19,7 @@
                     <div class="single-footer links">
                         <h4>Information</h4>
                         <ul>
-                            <li><a href="#">About Us</a></li>
+                            <li><a href="/aboutus">About Us</a></li>
                             <li><a href="#">Faq</a></li>
                             <li><a href="#">Terms & Conditions</a></li>
                             <li><a href="#">Contact Us</a></li>

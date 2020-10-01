@@ -16,6 +16,7 @@ class UserTableSeeder extends Seeder
             ->create()
             ->each(function($user) {
                 $cart = App\Cart::create(['user_id' => $user->id]);
+
             });
         $me = App\User::create(['name' => 'stas', 'email' => 'stas@gmail.com', 'password' => Hash::make('secret')]);
         App\Cart::create(['user_id' => $me->id]);

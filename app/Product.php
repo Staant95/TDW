@@ -14,20 +14,15 @@ class product extends Model
         return $this->belongsToMany(Cart::class);
     }
 
-    public function sale()
+        
+    public function images()
     {
-        return $this->belongsTo('App\Sale');
+        return $this->hasMany('App\Image');
     }
 
-    // this does not work
-    public function productimgs()
+    public function shops()
     {
-        return $this->hasMany('App\ProductIMG');
-    }
-
-    public function shop()
-    {
-        return $this->belongsTo('App\Shop');
+        return $this->belongsToMany('App\Shop')->withPivot('sale', 'start', 'end');
     }
 
     public function categories()
@@ -38,5 +33,15 @@ class product extends Model
     public function formats()
     {
         return $this->belongsToMany('App\Format')->withPivot('quantity');
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany('App\Review');
+    }
+
+    public function wishlists()
+    {
+        return $this->belongsToMany('App\Wishlist');
     }
 }
