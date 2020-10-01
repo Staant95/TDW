@@ -14,7 +14,7 @@
 
                 <li v-for="item in products" :key="item.id">
 
-<!--                        <input type="hidden" name="_token" :value="csrf">-->
+                       <input type="hidden" name="_token" :value="csrf">
 
                         <button class="remove" @click="removeItem(item.id)">
                             <i class="fa fa-remove"></i>

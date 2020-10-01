@@ -16,8 +16,11 @@
                             <i class="fa fa-bars" aria-hidden="true"></i>
                             Categories
                         </label>
-                        <input type="checkbox" hidden id="toggle-nav">
+                        <input type="checkbox" hidden id="toggle-nav" checked="false">
                         <ul class="main-category">
+                            @php
+                                $categories = App\Category::limit(9)->get();
+                            @endphp
                             @foreach($categories as $category)
                             <li><a href="#"> {{ $category->name }} </a></li>
                             @endforeach

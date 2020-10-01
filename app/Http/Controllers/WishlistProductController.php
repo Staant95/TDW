@@ -33,9 +33,12 @@ class WishlistProductController extends Controller
      */
     public function store(Wishlist $wishlist, Request $request)
     {
+        
         $product = $request->input('product');
-        $wishlist->products()->attach($product);
-        return redirect()->back();
+        $products = $wishlist->products;
+        if(! $products->contains($product))
+            $wishlist->products()->attach($product);
+        return view('wishlist')->with(['products' => $wishlist->products]);
     }
 
     /**

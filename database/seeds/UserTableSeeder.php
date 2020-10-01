@@ -15,11 +15,11 @@ class UserTableSeeder extends Seeder
         factory(App\User::class, 5)
             ->create()
             ->each(function($user) {
-                $cart = App\Cart::create(['user_id' => $user->id]);
-
+                App\Cart::create(['user_id' => $user->id]);
+                App\Wishlist::create(['user_id' => $user->id]);
             });
         $me = App\User::create(['name' => 'stas', 'email' => 'stas@gmail.com', 'password' => Hash::make('secret')]);
         App\Cart::create(['user_id' => $me->id]);
-
+        App\Wishlist::create(['user_id' => $me->id]);
     }
 }

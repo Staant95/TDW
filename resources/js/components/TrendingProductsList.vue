@@ -48,7 +48,21 @@
                                                     </a>
                                                     <div class="button-head" >
                                                         <div class="product-action" style="right: 18%!important;">
-                                                            <a href="#" ><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
+                                                            <form 
+                                                            :action="'/wishlists/'+parseInt(wishlistId)+'/products'" 
+                                                            method="post">
+                                                                <input type="hidden" name="_token" :value="csrf">
+                                                                <input type="hidden"  name="product" :value="product.id"> 
+                                                                <button 
+                                                                style=" border: none; background-color: white; font-size: 1.3em"
+                                                                type="submit"
+                                                                >
+                                                                    <i class=" ti-heart "></i>
+                                                                    
+                                                                </button>
+                                                                
+                                                            </form>
+                                                            
                                                         </div>
 
                                                         <div class="product-action-2" style="top:0!important">
@@ -88,8 +102,11 @@
     import { EventBus } from "../app";
 
     export default {
+        props: {
+            wishlistId: String
+        },
         mounted() {
-
+            console.log('wishlist id ' + this.wishlistId)
             this.getCategories();
         },
         methods : {
@@ -125,6 +142,7 @@
                 currentCategory: {},
                 test : 5,
                 showAlert: false,
+                csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
             }
         },
         computed: {

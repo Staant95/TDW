@@ -21,6 +21,7 @@ Route::middleware('auth')->group(function() {
     Route::resource('wishlists.products', 'WishlistProductController');
     Route::post('/reviews', 'ReviewController@store');
     Route::get('/products/{product}', 'ProductController@index');
+    Route::resource('profile', 'ProfileController');
 
 });
 

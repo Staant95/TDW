@@ -24,7 +24,7 @@ class HomepageController extends Controller
 
         return view('homepage.homepage')
             ->with([
-                'categories' => Category::limit(10)->get(),
+                // 'categories' => Category::limit(10)->get(),
                 'saleCategories' => $categories
             ]);
     }
