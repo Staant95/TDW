@@ -8,7 +8,7 @@
                 <!-- \Cart::getContent()->count() -->
                 <span> {{ products.length }} </span>
                 <!-- change link  -->
-                <a href="#">View Cart</a>
+                <a href="users/{user}/carts/{cart}/products">View Cart</a>
             </div>
             <ul class="shopping-list">
 
