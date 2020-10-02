@@ -8,16 +8,17 @@ use Illuminate\Http\Request;
 
 Auth::routes();
 
-// FIXME: Move all the routes in auth middleware
-Route::redirect('/', 'home');
-Route::view('/aboutus', 'aboutus'); // TODO: about-us
 
+Route::redirect('/', 'home');
+Route::view('/aboutus', 'aboutus');
 
 Route::middleware('auth')->group(function() {
 
     Route::resource('/home', 'HomepageController');
     Route::resource('/search', 'SearchResultsController');
     
+    Route::get('/checkout', 'CheckoutController@index');
+    Route::post('/checkout', 'CheckoutController@store')->name('checkout.store');
     Route::resource('carts.products', 'CartProductController');
 
     Route::resource('wishlists.products', 'WishlistProductController');
