@@ -8,7 +8,6 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    public $guarded = [];
 
     use Notifiable;
 
@@ -39,9 +38,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function shippingaddresses()
+    public function addresses()
         {
-            return $this->hasMany('App\ShippingAddress');
+            return $this->hasMany('App\Address');
         }
 
     public function orders()
