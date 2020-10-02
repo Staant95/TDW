@@ -25,12 +25,17 @@
                 <li class="list-group-item">Orders</li>
                 <li class="list-group-item">Addresses</li>
                 <li class="list-group-item">Payments</li>
-                <li class="list-group-item">Logout</li>
+                <li class="list-group-item">
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button class="logout-btn">Logout</button>
+                    </form>
+                </li>
             </ul>
            <div class="tab-content">
 
 
-             @yield('content')
+             @yield('panel-content')
 
            </div>
     </div>
