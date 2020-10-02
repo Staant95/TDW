@@ -54,9 +54,9 @@ class User extends Authenticatable
             return $this->belongsTo('App\Role');
         }
 
-    public function favorite_list()
+    public function wishlist()
         {
-            return $this->hasOne('App\FavoriteList');
+            return $this->hasOne('App\Wishlist');
         }
 
     public function cart()

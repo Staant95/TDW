@@ -31,12 +31,15 @@ Version:1.0
 [End Activation Code]
 =========================================*/ 
 (function($) {
-    "use strict";
+	
+   
      $(document).on('ready', function() {	
 		
 		/*====================================
 			Mobile Menu
-		======================================*/ 	
+		======================================*/ 
+		// IS NOT BEING ACTIVATED	
+		
 		$('.menu').slicknav({
 			prependTo:".mobile-nav",
 			duration:300,
@@ -44,6 +47,7 @@ Version:1.0
 			animateOut: 'fadeOut',
 			closeOnClick:true,
 		});
+		
 		
 		/*====================================
 		03. Sticky Header JS
@@ -169,31 +173,31 @@ Version:1.0
 		/*===========================
 		  Home Slider 4 JS
 		=============================*/ 
-		$('.home-slider-4').owlCarousel({
-			items:1,
-			autoplay:true,
-			autoplayTimeout:5000,
-			smartSpeed: 400,
-			autoplayHoverPause:true,
-			nav:true,
-			loop:true,
-			merge:true,
-			dots:false,
-			navText: ['<i class=" ti-arrow-left"></i>', '<i class=" ti-arrow-right"></i>'],
-		});
+		// $('.home-slider-4').owlCarousel({
+		// 	items:1,
+		// 	autoplay:true,
+		// 	autoplayTimeout:5000,
+		// 	smartSpeed: 400,
+		// 	autoplayHoverPause:true,
+		// 	nav:true,
+		// 	loop:true,
+		// 	merge:true,
+		// 	dots:false,
+		// 	navText: ['<i class=" ti-arrow-left"></i>', '<i class=" ti-arrow-right"></i>'],
+		// });
 		
 		/*====================================
 		14. CountDown
 		======================================*/ 
-		$('[data-countdown]').each(function() {
-			var $this = $(this),
-				finalDate = $(this).data('countdown');
-			$this.countdown(finalDate, function(event) {
-				$this.html(event.strftime(
-					'<div class="cdown"><span class="days"><strong>%-D</strong><p>Days.</p></span></div><div class="cdown"><span class="hour"><strong> %-H</strong><p>Hours.</p></span></div> <div class="cdown"><span class="minutes"><strong>%M</strong> <p>MINUTES.</p></span></div><div class="cdown"><span class="second"><strong> %S</strong><p>SECONDS.</p></span></div>'
-				));
-			});
-		});
+		// $('[data-countdown]').each(function() {
+		// 	var $this = $(this),
+		// 		finalDate = $(this).data('countdown');
+		// 	$this.countdown(finalDate, function(event) {
+		// 		$this.html(event.strftime(
+		// 			'<div class="cdown"><span class="days"><strong>%-D</strong><p>Days.</p></span></div><div class="cdown"><span class="hour"><strong> %-H</strong><p>Hours.</p></span></div> <div class="cdown"><span class="minutes"><strong>%M</strong> <p>MINUTES.</p></span></div><div class="cdown"><span class="second"><strong> %S</strong><p>SECONDS.</p></span></div>'
+		// 		));
+		// 	});
+		// });
 		
 		/*====================================
 		16. Flex Slider JS
@@ -271,11 +275,11 @@ Version:1.0
 		/*=====================================
 		15.  Video Popup JS
 		======================================*/ 
-		$('.video-popup').magnificPopup({
-			type: 'iframe',
-			removalDelay: 300,
-			mainClass: 'mfp-fade'
-		});
+		// $('.video-popup').magnificPopup({
+		// 	type: 'iframe',
+		// 	removalDelay: 300,
+		// 	mainClass: 'mfp-fade'
+		// });
 		
 		/*====================================
 			Scroll Up JS
@@ -292,33 +296,26 @@ Version:1.0
 	/*====================================
 	18. Nice Select JS
 	======================================*/	
-	$('select').niceSelect();
+	// $('select').niceSelect();
 		
 	/*=====================================
 	 Others JS
 	======================================*/ 	
-	$( function() {
-		$( "#slider-range" ).slider({
-			range: true,
-			min: 0,
-			max: 500,
-			values: [ 0, 500 ],
-			slide: function( event, ui ) {
-				$( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-			}
-		});
-		$( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-		  " - $" + $( "#slider-range" ).slider( "values", 1 ) );
-	} );
+	// $( function() {
+	// 	$( "#slider-range" ).flexslider({
+	// 		range: true,
+	// 		min: 0,
+	// 		max: 500,
+	// 		values: [ 0, 500 ],
+	// 		slide: function( event, ui ) {
+	// 			$( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+	// 		}
+	// 	});
+	// 	$( "#amount" ).val( "$" + $( "#slider-range" ).flexslider( "values", 0 ) +
+	// 	  " - $" + $( "#slider-range" ).flexslider( "values", 1 ) );
+	// } );
 	
-	/*=====================================
-	  Preloader JS
-	======================================*/ 	
-	//After 2s preloader is fadeOut
-	$('.preloader').delay(2000).fadeOut('slow');
-	setTimeout(function() {
-	//After 2s, the no-scroll class of the body will be removed
-	$('body').removeClass('no-scroll');
-	}, 2000); //Here you can change preloader time
+	
 	 
 })(jQuery);
+console.log('AFTER SLICKNAV')

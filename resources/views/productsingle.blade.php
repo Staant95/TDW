@@ -103,16 +103,18 @@
 														<button type="submit" class="btn btn-primary">Add to cart</button>
 														</form>
 														
-													
-															<form action"/favorites" method="post">
-																<input name="product_id" value="{{ $product->id }}" hidden>
-																<button type="submit" class="btn min"><i class="ti-heart"></i></button>
-															</form>
+		
+
+													<form action="{{ route('wishlists.products.store', ['wishlist' => Auth::user()->wishlist->id]) }}" method="post">
+														@csrf
+														<input type="text" hidden name="product" value="{{ $product->id }}">
+														<button type="submit" class="btn min"><i class="ti-heart"></i></button>
+
 													
 													
 													
 												</div>
-												
+												<!-- FIXME: da modificare -->
 												<p class="cat">Category :<a href="#">{{ $product->categories->first()->name }}</a></p>
 											</div>
 											<!--/ End Product Buy -->
@@ -226,7 +228,7 @@
 																</div>
 																<!--/ End Review -->
 																<!-- Form -->
-																<form class="form" method="post" action="/review">
+																<form class="form" method="post" action="/reviews">
 																	<div class="row">
 																		<div class="col-lg-6 col-12">
 																			<div class="form-group">
