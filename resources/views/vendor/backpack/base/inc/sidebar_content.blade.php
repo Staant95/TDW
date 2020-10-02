@@ -12,3 +12,4 @@
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('category') }}'><i class='nav-icon la la-question'></i> Categories</a></li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('coupon') }}'><i class='nav-icon la la-question'></i> Coupons</a></li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('format') }}'><i class='nav-icon la la-question'></i> Formats</a></li>
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('address') }}'><i class='nav-icon la la-question'></i> Addresses</a></li>
