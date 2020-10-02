@@ -8,7 +8,7 @@
                 <!-- \Cart::getContent()->count() -->
                 <span> {{ products.length }} </span>
                 <!-- change link  -->
-                <a :href="'users/'+parseInt(this.userId)+'/carts/'+parseInt(this.cartId)+'/products'">View Cart</a>
+                <a :href="'/carts/'+parseInt(this.cartId)+'/products'">View Cart</a>
             </div>
             <ul class="shopping-list">
 

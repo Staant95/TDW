@@ -81,8 +81,7 @@ class CartProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Cart $cart, Product $product)
-    {
-        
+    { 
         $cart->products()->detach($product);
         return redirect()->back();
     }
