@@ -60,8 +60,17 @@
                     {{-- CART --}}
                     <div class="sinlge-bar shopping" id="cartContainer">
 
+                                                                                            <!-- \Cart::getContent()->count() -->
+   
 
-                        <cart-component user-id="{{ Auth::id() }}" ></cart-component>
+                        <cart-component 
+                        user-id=" {{ Auth::id() }} "
+                        cart-id=" {{ Auth::user()->cart->id }} " 
+                        ></cart-component>
+
+
+
+                        {{-- <cart-component user-id="{{ Auth::id() }}" ></cart-component> --}}
 
                     </div>
 
