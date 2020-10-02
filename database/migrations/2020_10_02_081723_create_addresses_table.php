@@ -17,7 +17,7 @@ class CreateAddressesTable extends Migration
             $table->id();
             $table->string('city');
             $table->string('street');
-            $table->string('zip-code');
+            $table->string('zip');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });

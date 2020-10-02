@@ -23,8 +23,65 @@
     top: 0px;
 }
 
+.payment {
+    height: 246px!important;
+    position: relative;
+    z-index: 0;
+    top: 0px;
+}
+
+#add-payment {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#add-payment > img {
+    width: 70px; 
+    height: 70px; 
+    margin: auto; 
+    display:block;
+}
+#add-payment > p {
+    height: 40%;
+}
+
 * {
     transition: all 0.3s ease-out;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.links {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+}
+
+.remove-btn {
+    border: none;
+    border-radius: none;
+    background-color: white;
+    color: #0066c0;
+    
+}
+.app-link:nth-child(2) {
+    margin-left: 10px;
+}
+
+.payment:hover {
+    transition: all 0.2s ease-out;
+    box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
+    top: -4px;
+    border-radius: 7px;
+    background-color: white;
 }
 
 .order:hover {
@@ -35,11 +92,17 @@
     background-color: white;
 }
 
-.logout-btn {
-    border: none;
-    background-color: red;
-    width: 80%;
-    height: 70%;
-    padding: 0px;
-    margin: 0px;
+.logout {
+    padding: 0!important;
 }
+
+.logout-btn {
+    border-radius: 0px;
+    background-color: white;
+    font-size: 1em;
+    border: 0px;
+}
+
+
+
+

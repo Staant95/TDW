@@ -19,14 +19,26 @@
     </div>
 
     <div class="container-fluid menu-panel mt-5">
+
        
             <ul class="list-group list-left" style="margin-top: 10px">
-                <li class="list-group-item">Personal information</li>
-                <li class="list-group-item">Orders</li>
-                <li class="list-group-item">Addresses</li>
-                <li class="list-group-item">Payments</li>
                 <li class="list-group-item">
-                    <form action="{{ route('logout') }}" method="POST">
+                    <a href="{{ route('profile.personal-info') }}"> Personal information </a>
+                </li>
+                <li class="list-group-item">
+                    <a href="{{ route('profile.orders') }}">Orders</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="{{ route('profile.addresses.index') }}">Addresses</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="{{ route('profile.payments.index') }}">Payments</a>
+                </li>
+                <li class="list-group-item">
+                    <form 
+                    action="{{ route('logout') }}" 
+                    method="POST"
+                    >
                         @csrf
                         <button class="logout-btn">Logout</button>
                     </form>
