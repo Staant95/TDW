@@ -97,14 +97,18 @@
 													<!--/ End Input Order -->
 												</div>
 												<div class="add-to-cart">
-													<form action"/cart" method="post">
-														<input name="product_id" value="{{ $product->id }}" hidden>
+													<form action="{{ route('carts.products.store', ['cart' => Auth::user()->cart->id]) }}" method="post">
+														@csrf
+														<input type="text" hidden name="product" value="{{ $product->id }}">
 														<button type="submit" class="btn btn-primary">Add to cart</button>
+														</form>
+														
+													
 															<form action"/favorites" method="post">
 																<input name="product_id" value="{{ $product->id }}" hidden>
 																<button type="submit" class="btn min"><i class="ti-heart"></i></button>
 															</form>
-													</form>
+													
 													
 													
 												</div>

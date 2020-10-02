@@ -35,9 +35,13 @@ class CartProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Cart $cart,Request $request)
     {
-        //
+        $product = $request->input('product');
+        $products = $cart->products;
+        if(! $products->contains($product))
+            $cart->products()->attach($product);
+            return redirect()->back();
     }
 
     /**
