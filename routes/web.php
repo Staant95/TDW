@@ -32,6 +32,8 @@ Route::middleware('auth')->group(function() {
     Route::get('/profile/orders', 'Profile\OrdersController@index')->name('profile.orders');
     Route::get('/profile/payments', 'Profile\PaymentsController@index')->name('profile.payments.index');
     Route::post('/profile/payments', 'Profile\PaymentsController@store')->name('profile.payments.store');
+    Route::get('/profile/payments/create', 'Profile\PaymentsController@create')->name('profile.payments.create');
+    Route::delete('/profile/payments/{payment}', 'Profile\PaymentsController@destroy')->name('profile.payments.destroy');
     Route::post('/profile/addresses', 'Profile\AddressesController@store')->name('profile.addresses.store');
     Route::get('/profile/addresses', 'Profile\AddressesController@index')->name('profile.addresses.index');
     Route::get('profile/addresses/create', 'Profile\AddressesController@create')->name('profile.addresses.create');

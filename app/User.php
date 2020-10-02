@@ -39,42 +39,48 @@ class User extends Authenticatable
     ];
 
     public function addresses()
-        {
-            return $this->hasMany('App\Address');
-        }
+    {
+        return $this->hasMany('App\Address');
+    }
 
     public function orders()
-       {
-            return $this->hasMany('App\Order');
-       }
+    {
+        return $this->hasMany('App\Order');
+    }
 
     public function role()
-        {
-            return $this->belongsTo('App\Role');
-        }
+    {
+        return $this->belongsTo('App\Role');
+    }
 
     public function wishlist()
-        {
-            return $this->hasOne('App\Wishlist');
-        }
+    {
+        return $this->hasOne('App\Wishlist');
+    }
 
     public function cart()
-        {
-            return $this->hasOne(Cart::class);
-        }
+    {
+        return $this->hasOne(Cart::class);
+    }
 
     public function shops()
-        {
-            return $this->belongsToMany('App\Shop');
-        }
+    {
+        return $this->belongsToMany('App\Shop');
+    }
 
     public function reviews()
-        {
-            return $this->hasMany('App\Review');
-        }   
+    {
+        return $this->hasMany('App\Review');
+    }
 
     public function coupons()
-        {
-            return $this->belongsToMany('App\Coupon')->withPivot('code');
-        }
+    {
+        return $this->belongsToMany('App\Coupon')->withPivot('code');
+    }
+
+    public function payments()
+    {
+        return $this->belongsToMany(Payment::class)
+            ->withPivot('card_number', 'expiration_date', 'security_code');
+    }
 }
