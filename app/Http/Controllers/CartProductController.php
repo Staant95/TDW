@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Cart;
+use App\Product;
 
 class CartProductController extends Controller
 {
@@ -79,8 +80,10 @@ class CartProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Cart $cart, Product $product)
     {
-        dd('called');
+        
+        $cart->products()->detach($product);
+        return redirect()->back();
     }
 }
