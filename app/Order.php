@@ -13,8 +13,8 @@ class Order extends Model
             return $this->belongsTo('App\User');
         }
 
-    public function shippingcompany()
+    public function shipping()
     {
-        return $this->belongsTo('App\ShippingCompany');
+        return $this->belongsTo('App\Shipping');
     }
 }
