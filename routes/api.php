@@ -15,3 +15,5 @@ Route::get('categories/{category}/products', function(App\Category $category) {
     $products = collect($category->products)->slice(1,8);
    return response()->json($products, 200)->header('Content-Type', 'application/json');
 });
+
+Route::post('wishlists/{wishlist}/products', 'API\WishlistController@store');

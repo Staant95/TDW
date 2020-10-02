@@ -36,8 +36,10 @@ class WishlistProductController extends Controller
         
         $product = $request->input('product');
         $products = $wishlist->products;
-        if(! $products->contains($product))
+        if(! $products->contains($product)) {
             $wishlist->products()->attach($product);
+            $wishlist->push();
+        }
         return view('wishlist')->with(['products' => $wishlist->products]);
     }
 

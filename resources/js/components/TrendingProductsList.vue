@@ -13,7 +13,7 @@
             <div v-if="showAlert" class="alert alert-success"
                  style="position: fixed; left: 50%; top: 12%; width: 50%; transform: translate(-50%, -50%); z-index: 100;"
                  role="alert">
-                <strong>Items has been added to your cart</strong>
+                <strong>Items has been added</strong>
             </div>
 
             <div class="row">
@@ -48,20 +48,16 @@
                                                     </a>
                                                     <div class="button-head" >
                                                         <div class="product-action" style="right: 18%!important;">
-                                                            <form 
-                                                            :action="'/wishlists/'+parseInt(wishlistId)+'/products'" 
-                                                            method="post">
-                                                                <input type="hidden" name="_token" :value="csrf">
-                                                                <input type="hidden"  name="product" :value="product.id"> 
+                                               
                                                                 <button 
                                                                 style=" border: none; background-color: white; font-size: 1.3em"
                                                                 type="submit"
+                                                                @click="addProductToWishlist(product.id)"
                                                                 >
                                                                     <i class=" ti-heart "></i>
                                                                     
                                                                 </button>
-                                                                
-                                                            </form>
+                                                        
                                                             
                                                         </div>
 
@@ -110,6 +106,16 @@
             this.getCategories();
         },
         methods : {
+            addProductToWishlist(product) {
+                axios.post(`http://localhost:8000/api/wishlists/${this.wishlistId}/products`, {
+                    'product': product
+                })
+                .then(res => {
+                    console.log(res.data);
+                    this.showAlert = true;
+                    setTimeout(() => this.showAlert = false, 1500);
+                });
+            },
             getCategories: function() {
                 axios.get('http://localhost:8000/api/categories')
                     .then(res => {
