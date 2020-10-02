@@ -19,6 +19,7 @@ class CreateShippingAddressesTable extends Migration
             $table->string('via');
             $table->string('città');
             $table->string('provincia');
+            $table->unsignedBigInteger('user_id'); 
         });
     }
 

@@ -8,7 +8,6 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    public $guarded = [];
 
     use Notifiable;
 
