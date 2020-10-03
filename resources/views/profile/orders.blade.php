@@ -6,7 +6,7 @@
 
     @for ($i = 0; $i < 5; $i++)
         
-        <div class="order">
+        <div class="app-order">
 
             <div class="card" style="height: 100%">
                 <img 

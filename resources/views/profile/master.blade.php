@@ -18,10 +18,10 @@
         </div>
     </div>
 
-    <div class="container-fluid menu-panel mt-5">
+    <div class="container-fluid app-menu-panel mt-5">
 
        
-            <ul class="list-group list-left" style="margin-top: 10px">
+            <ul class="list-group app-list-left" style="margin-top: 10px">
                 <li class="list-group-item">
                     <a href="{{ route('profile.personal-info') }}"> Personal information </a>
                 </li>
@@ -40,16 +40,18 @@
                     method="POST"
                     >
                         @csrf
-                        <button class="logout-btn">Logout</button>
+                        <button class="app-logout-btn">Logout</button>
                     </form>
                 </li>
             </ul>
-           <div class="tab-content">
 
+
+           <div class="app-tab-content">
 
              @yield('panel-content')
 
            </div>
+
     </div>
 
 
