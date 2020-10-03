@@ -75,7 +75,7 @@
                     </div>
 
                     <div class="sinlge-bar">
-                        <a href="{{ route('profile.index') }}" class="single-icon">
+                        <a href="{{ route('profile') }}" class="single-icon">
                             {{-- Hi, {{ Auth::user()->name }}</i>--}}
                             <i class="fa fa-user-o" aria-hidden="true"></i>
                         </a>
