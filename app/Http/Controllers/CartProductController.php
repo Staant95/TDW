@@ -16,7 +16,10 @@ class CartProductController extends Controller
     public function index($cart_id)
     {
         $cart = Cart::find($cart_id);
-        return view('cart')->with(['products' => $cart->products]);
+        $products= $cart->products;
+        $total = $products->sum('price');
+        return view('cart')->with(['products' => $cart->products,
+                                    'total' => $total]);
     }
 
     /**

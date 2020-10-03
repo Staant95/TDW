@@ -44,7 +44,7 @@
 									</div>
 									<!--/ End Input Order -->
                                 </td>
-                                <td class="total-amount" data-title="Total"><span>$220.88</span></td>
+                                <td class="total-amount" data-title="Total"><span>{{ $total }}€</span></td>
 								<td class="action" data-title="Remove">
                                       <form action= "{{ route('carts.products.destroy', ['cart'=>Auth::user()->cart->id,'product'=>$product->id]) }}" method="POST">
                                         
@@ -83,14 +83,14 @@
 							<div class="col-lg-4 col-md-7 col-12">
 								<div class="right">
 									<ul>
-										<li>Cart Subtotal<span>$330.00</span></li>
+										<li>Cart Subtotal<span>{{ $total }}</span></li>
 										<li>Shipping<span>Free</span></li>
-										<li>You Save<span>$20.00</span></li>
-										<li class="last">You Pay<span>$310.00</span></li>
+										<li>You Save<span>//</span></li>
+										<li class="last">You Pay<span>{{ $total }}</span></li>
 									</ul>
 									<div class="button5">
-										<a href="#" class="btn">Checkout</a>
-										<a href="#" class="btn">Continue shopping</a>
+										<a href="/checkout" class="btn">Checkout</a>
+										<a href="/" class="btn">Continue shopping</a>
 									</div>
 								</div>
 							</div>

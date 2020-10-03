@@ -37,7 +37,7 @@
                     <span class="total-amount"> {{ totalCart }} $</span>
                 </div>
                 <!-- route('checkout') -->
-                <a href="checkout.html" class="btn animate">Checkout</a>
+                <a href="/checkout" class="btn animate">Checkout</a>
             </div>
         </div>
 
