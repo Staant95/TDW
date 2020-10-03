@@ -11,6 +11,7 @@ Auth::routes();
 
 Route::redirect('/', 'home');
 Route::view('/aboutus', 'aboutus');
+Route::view('/contact', 'contact');
 
 Route::middleware('auth')->group(function() {
 
