@@ -14,10 +14,10 @@ class ReviewController extends Controller
         Review::create([
             'product_id' => $request->product_id,
             'user_id' => $request->user_id,
-            'stars' => $request->stars,
+            'stars' => $request->input('star'),
             'description' => $request->description
         ]);
 
-        return redirect()->back();
+        return redirect()->route('product', ['product' => $request->product_id]);
     }
 }

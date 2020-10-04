@@ -15,11 +15,16 @@ class ProductController extends Controller
     public function index(Product $product)
     {   
        
-        return view('productsingle')->with(['product' => $product ,
-                                            'rating' => $product->reviews->avg('stars'),
-                                            'format' => $product->formats->all(),
-                                            'review' => $product->reviews->all()]);
+        return view('productsingle')
+        ->with(['product' => $product ,
+                'rating' => $product->reviews->avg('stars'),
+                'formats' => $product->formats->all(),
+                'review' => $product->reviews->all()
+        ]);
     }
+
+
+
 
     
 }

@@ -16,17 +16,17 @@ Route::view('/contact', 'contact');
 Route::middleware('auth')->group(function() {
 
     Route::resource('/home', 'HomepageController');
-
+    
     Route::resource('/search', 'SearchResultsController');
     
     Route::get('/checkout', 'CheckoutController@index');
     Route::post('/checkout', 'CheckoutController@store')->name('checkout.store');
     Route::resource('carts.products', 'CartProductController');
-
+    
     Route::resource('wishlists.products', 'WishlistProductController');
+    Route::get('/products/{product}', 'ProductController@index')->name('product');
 
-    Route::post('/reviews', 'ReviewController@store');
-    Route::get('/products/{product}', 'ProductController@index');
+    Route::post('/reviews', 'ReviewController@store')->name('review.store');
     
     Route::redirect('/profile', '/profile/orders')->name('profile');
     Route::get('/profile/orders', 'Profile\OrdersController@index')->name('profile.orders');

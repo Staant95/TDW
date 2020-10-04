@@ -8199,7 +8199,7 @@ a.text-dark:hover {
 @font-face {
     font-family: 'FontAwesome';
     src: url(/fonts/fontawesome-webfont.eot?674f50d287a8c48dc19ba404d20fe713);
-    src: url(/fonts/fontawesome-webfont.eot?674f50d287a8c48dc19ba404d20fe713?#iefix&v=4.7.0) format('embedded-opentype'), url(/fonts/fontawesome-webfont.woff2?af7ae505a9eed503f8b8e6982036873e) format('woff2'), url(/fonts/fontawesome-webfont.woff?fee66e712a8a08eef5805a46892932ad) format('woff'), url(/fonts/fontawesome-webfont.ttf?b06871f281fee6b241d60582ae9369b9) format('truetype'), url(/fonts/fontawesome-webfont.svg?acf3dcb7ff752b5296ca23ba2c7c2606#fontawesomeregular) format('svg');
+    src: url(/fonts/fontawesome-webfont.eot?674f50d287a8c48dc19ba404d20fe713?#iefix&v=4.7.0) format('embedded-opentype'), url(/fonts/fontawesome-webfont.woff2?af7ae505a9eed503f8b8e6982036873e) format('woff2'), url(/fonts/fontawesome-webfont.woff?fee66e712a8a08eef5805a46892932ad) format('woff'), url(/fonts/fontawesome-webfont.ttf?b06871f281fee6b241d60582ae9369b9) format('truetype'), url(/fonts/fontawesome-webfont.svg?912ec66d7572ff821749319396470bde#fontawesomeregular) format('svg');
     font-weight: normal;
     font-style: normal
 }
@@ -11226,7 +11226,7 @@ a.text-dark:hover {
 	src:url(/fonts/themify.eot?2c454669bdf3aebf32a1bd8ac1e0d2d6?#iefix) format('embedded-opentype'),
 		url(/fonts/themify.woff?a1ecc3b826d01251edddf29c3e4e1e97) format('woff'),
 		url(/fonts/themify.ttf?e23a7dcaefbde4e74e263247aa42ecd7) format('truetype'),
-		url(/fonts/themify.svg?cba68f986e60df8c74f4a53c3e39595c) format('svg');
+		url(/fonts/themify.svg?9c8e96ecc7fa01e6ebcd196495ed2db5) format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -14732,157 +14732,6 @@ object {
 	margin: 0.8075em 0;
 }
 
-
-.app-menu-panel {
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
-}
-.app-list-left {
-    width: 25vw;
-}
-
-.app-tab-content {
-    margin:0 auto;
-    width: 70vw;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    padding: 10px;
-    gap: 10px;
-}
-
-.app-order {
-    height: 290px;
-    position: relative;
-    z-index: 0;
-    top: 0px;
-}
-
-.app-payment {
-    height: 246px!important;
-    position: relative;
-    z-index: 0;
-    top: 0px;
-}
-
-#app-add-payment {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-#app-add-payment > img {
-    width: 70px; 
-    height: 70px; 
-    margin: auto; 
-    display:block;
-}
-#app-add-payment > p {
-    height: 40%;
-}
-
-* {
-    transition: all 0.3s ease-out;
-}
-
-.app-card-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
-
-.app-links {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-}
-
-.app-remove-btn {
-    border: none;
-    border-radius: none;
-    background-color: white;
-    color: #0066c0;
-    
-}
-.app-link:nth-child(2) {
-    margin-left: 10px;
-}
-
-.app-payment:hover {
-    transition: all 0.2s ease-out;
-    box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
-    top: -4px;
-    border-radius: 7px;
-    background-color: white;
-}
-
-.app-order:hover {
-    transition: all 0.2s ease-out;
-    box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
-    top: -4px;
-    border-radius: 7px;
-    background-color: white;
-}
-
-.app-logout {
-    padding: 0!important;
-}
-
-.app-logout-btn {
-    border-radius: 0px;
-    background-color: white;
-    font-size: 1em;
-    border: 0px;
-}
-
-.app-container {
-    margin-top: 6em!important;
-    margin-bottom: 5em!important;
-}
-
-
-@charset "UTF-8";
-
-/*!
- * Bootstrap v4.5.2 (https://getbootstrap.com/)
- * Copyright 2011-2020 The Bootstrap Authors
- * Copyright 2011-2020 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
- */
-
-:root {
-  --blue: #3490dc;
-  --indigo: #6574cd;
-  --purple: #9561e2;
-  --pink: #f66d9b;
-  --red: #e3342f;
-  --orange: #f6993f;
-  --yellow: #ffed4a;
-  --green: #38c172;
-  --teal: #4dc0b5;
-  --cyan: #6cb2eb;
-  --white: #fff;
-  --gray: #6c757d;
-  --gray-dark: #343a40;
-  --primary: #3490dc;
-  --secondary: #6c757d;
-  --success: #38c172;
-  --info: #6cb2eb;
-  --warning: #ffed4a;
-  --danger: #e3342f;
-  --light: #f8f9fa;
-  --dark: #343a40;
-  --breakpoint-xs: 0;
-  --breakpoint-sm: 576px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 992px;
-  --breakpoint-xl: 1200px;
-  --font-family-sans-serif: "Nunito", sans-serif;
-  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-
 .wp-caption-text {
 	text-align: center;
 }
@@ -14911,7 +14760,6 @@ object {
 
 .gallery-columns-4 .gallery-item {
 	max-width: 25%;
-
 }
 
 .gallery-columns-5 .gallery-item {
@@ -20625,9 +20473,68 @@ Version:1.0
     top: 0px;
 }
 
+.app-payment {
+    height: 246px!important;
+    position: relative;
+    z-index: 0;
+    top: 0px;
+}
+
+#app-add-payment {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#app-add-payment > img {
+    width: 70px; 
+    height: 70px; 
+    margin: auto; 
+    display:block;
+}
+#app-add-payment > p {
+    height: 40%;
+}
+
 * {
     transition: all 0.3s ease-out;
 }
+
+
+.app-card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.app-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.app-remove-btn {
+    border: none;
+    border-radius: none;
+    background-color: white;
+    color: #0066c0;
+    
+}
+.app-link:nth-child(2) {
+    margin-left: 10px;
+}
+
+.app-payment:hover {
+    transition: all 0.2s ease-out;
+    box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
+    top: -4px;
+    border-radius: 7px;
+    background-color: white;
+}
+
 
 .app-order:hover {
     transition: all 0.2s ease-out;
@@ -20637,14 +20544,67 @@ Version:1.0
     background-color: white;
 }
 
+.app-logout {
+    padding: 0!important;
+}
+
 .app-logout-btn {
-    border: none;
-    background-color: red;
-    width: 80%;
-    height: 70%;
-    padding: 0px;
-    margin: 0px;
-}@charset "UTF-8";
+    border-radius: 0px;
+    background-color: white;
+    font-size: 1em;
+    border: 0px;
+}
+
+.app-container {
+    margin-top: 6em!important;
+    margin-bottom: 5em!important;
+}
+
+
+
+.app-add-to-cart {
+    display: flex!important;
+}div.stars {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding-left: 0px;
+    width: 300px;
+    display: inline-block;
+  }
+  
+  input.star { display: none; }
+  
+  label.star {
+    float: right;
+    padding: 10px;
+    font-size: 36px;
+    color: #444;
+    transition: all .2s;
+  }
+  
+  input.star:checked ~ label.star:before {
+    /* font awesome unicode for star */
+    content: '\F005';
+    color: #FD4;
+    transition: all .25s;
+  }
+  
+  input.star-5:checked ~ label.star:before {
+    color: #FE7;
+    text-shadow: 0 0 20px #952;
+  }
+  
+  input.star-1:checked ~ label.star:before { color: #F62; }
+  
+  label.star:hover { 
+      transform: rotate(-15deg) scale(1.3); 
+    }
+  
+  label.star:before {
+    /* 'empty' star unicode */
+    content: '\F006';
+    font-family: FontAwesome;
+  }@charset "UTF-8";
 
 /*!
  * Font Awesome Free 5.14.0 by @fontawesome - https://fontawesome.com

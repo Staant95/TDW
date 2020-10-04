@@ -40,7 +40,7 @@ class WishlistProductController extends Controller
             $wishlist->products()->attach($product);
             $wishlist->push();
         }
-        return view('wishlist')->with(['products' => $wishlist->products]);
+        return redirect()->route('wishlists.products.index', ['wishlist' => $wishlist->id]);
     }
 
     /**
