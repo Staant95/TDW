@@ -103,6 +103,9 @@
     border: 0px;
 }
 
-
+.app-container {
+    margin-top: 6em!important;
+    margin-bottom: 5em!important;
+}
 
 

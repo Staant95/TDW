@@ -1,11 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('title', 'Profile')
 
 @section('content')
 
 
-    <div class="container">
+    <div class="container mt-5">
 
         <div style="display: flex; justify-content: center; align-items: center; flex-direction: column; widht: 70%; margin: 2em auto">
             <img src="{{ asset('storage/user.svg') }}"
@@ -18,13 +18,10 @@
         </div>
     </div>
 
-    <div class="container-fluid app-menu-panel mt-5">
+    <div class="container-fluid app-menu-panel app-container">
 
        
             <ul class="list-group app-list-left" style="margin-top: 10px">
-                <li class="list-group-item">
-                    <a href="{{ route('profile.personal-info') }}"> Personal information </a>
-                </li>
                 <li class="list-group-item">
                     <a href="{{ route('profile.orders') }}">Orders</a>
                 </li>
@@ -56,12 +53,6 @@
 
 
 
-    {{-- <div class="container">
-        <h1> Hi, {{ Auth::user()->name }}</h1>
-        <form action="{{ route('logout') }}" method="POST">
-            @csrf
-            <button class="btn btn-danger">Logout</button>
-        </form>
-    </div> --}}
+  
 
 @endsection

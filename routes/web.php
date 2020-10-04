@@ -27,8 +27,7 @@ Route::middleware('auth')->group(function() {
     Route::post('/reviews', 'ReviewController@store');
     Route::get('/products/{product}', 'ProductController@index');
     
-    Route::redirect('/profile', '/profile/details')->name('profile');
-    Route::get('/profile/details', 'Profile\PersonalInfoController@index')->name('profile.personal-info');
+    Route::redirect('/profile', '/profile/orders')->name('profile');
     Route::get('/profile/orders', 'Profile\OrdersController@index')->name('profile.orders');
     Route::get('/profile/payments', 'Profile\PaymentsController@index')->name('profile.payments.index');
     Route::post('/profile/payments', 'Profile\PaymentsController@store')->name('profile.payments.store');
