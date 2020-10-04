@@ -14732,6 +14732,157 @@ object {
 	margin: 0.8075em 0;
 }
 
+
+.app-menu-panel {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+}
+.app-list-left {
+    width: 25vw;
+}
+
+.app-tab-content {
+    margin:0 auto;
+    width: 70vw;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    padding: 10px;
+    gap: 10px;
+}
+
+.app-order {
+    height: 290px;
+    position: relative;
+    z-index: 0;
+    top: 0px;
+}
+
+.app-payment {
+    height: 246px!important;
+    position: relative;
+    z-index: 0;
+    top: 0px;
+}
+
+#app-add-payment {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#app-add-payment > img {
+    width: 70px; 
+    height: 70px; 
+    margin: auto; 
+    display:block;
+}
+#app-add-payment > p {
+    height: 40%;
+}
+
+* {
+    transition: all 0.3s ease-out;
+}
+
+.app-card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.app-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.app-remove-btn {
+    border: none;
+    border-radius: none;
+    background-color: white;
+    color: #0066c0;
+    
+}
+.app-link:nth-child(2) {
+    margin-left: 10px;
+}
+
+.app-payment:hover {
+    transition: all 0.2s ease-out;
+    box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
+    top: -4px;
+    border-radius: 7px;
+    background-color: white;
+}
+
+.app-order:hover {
+    transition: all 0.2s ease-out;
+    box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
+    top: -4px;
+    border-radius: 7px;
+    background-color: white;
+}
+
+.app-logout {
+    padding: 0!important;
+}
+
+.app-logout-btn {
+    border-radius: 0px;
+    background-color: white;
+    font-size: 1em;
+    border: 0px;
+}
+
+.app-container {
+    margin-top: 6em!important;
+    margin-bottom: 5em!important;
+}
+
+
+@charset "UTF-8";
+
+/*!
+ * Bootstrap v4.5.2 (https://getbootstrap.com/)
+ * Copyright 2011-2020 The Bootstrap Authors
+ * Copyright 2011-2020 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ */
+
+:root {
+  --blue: #3490dc;
+  --indigo: #6574cd;
+  --purple: #9561e2;
+  --pink: #f66d9b;
+  --red: #e3342f;
+  --orange: #f6993f;
+  --yellow: #ffed4a;
+  --green: #38c172;
+  --teal: #4dc0b5;
+  --cyan: #6cb2eb;
+  --white: #fff;
+  --gray: #6c757d;
+  --gray-dark: #343a40;
+  --primary: #3490dc;
+  --secondary: #6c757d;
+  --success: #38c172;
+  --info: #6cb2eb;
+  --warning: #ffed4a;
+  --danger: #e3342f;
+  --light: #f8f9fa;
+  --dark: #343a40;
+  --breakpoint-xs: 0;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --font-family-sans-serif: "Nunito", sans-serif;
+  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
 .wp-caption-text {
 	text-align: center;
 }
@@ -14760,6 +14911,7 @@ object {
 
 .gallery-columns-4 .gallery-item {
 	max-width: 25%;
+
 }
 
 .gallery-columns-5 .gallery-item {

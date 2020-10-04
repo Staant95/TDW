@@ -1,11 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('title', 'Profile')
 
 @section('content')
 
 
-    <div class="container">
+    <div class="container mt-5">
 
         <div style="display: flex; justify-content: center; align-items: center; flex-direction: column; widht: 70%; margin: 2em auto">
             <img src="{{ asset('storage/user.svg') }}"
@@ -18,36 +18,41 @@
         </div>
     </div>
 
-    <div class="container-fluid menu-panel mt-5">
+    <div class="container-fluid app-menu-panel app-container">
+
        
-            <ul class="list-group list-left" style="margin-top: 10px">
-                <li class="list-group-item">Personal information</li>
-                <li class="list-group-item">Orders</li>
-                <li class="list-group-item">Addresses</li>
-                <li class="list-group-item">Payments</li>
+            <ul class="list-group app-list-left" style="margin-top: 10px">
                 <li class="list-group-item">
-                    <form action="{{ route('logout') }}" method="POST">
+                    <a href="{{ route('profile.orders') }}">Orders</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="{{ route('profile.addresses.index') }}">Addresses</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="{{ route('profile.payments.index') }}">Payments</a>
+                </li>
+                <li class="list-group-item">
+                    <form 
+                    action="{{ route('logout') }}" 
+                    method="POST"
+                    >
                         @csrf
-                        <button class="logout-btn">Logout</button>
+                        <button class="app-logout-btn">Logout</button>
                     </form>
                 </li>
             </ul>
-           <div class="tab-content">
 
+
+           <div class="app-tab-content">
 
              @yield('panel-content')
 
            </div>
+
     </div>
 
 
 
-    {{-- <div class="container">
-        <h1> Hi, {{ Auth::user()->name }}</h1>
-        <form action="{{ route('logout') }}" method="POST">
-            @csrf
-            <button class="btn btn-danger">Logout</button>
-        </form>
-    </div> --}}
+  
 
 @endsection

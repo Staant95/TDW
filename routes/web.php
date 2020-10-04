@@ -27,11 +27,16 @@ Route::middleware('auth')->group(function() {
     Route::post('/reviews', 'ReviewController@store');
     Route::get('/products/{product}', 'ProductController@index');
     
-    Route::redirect('/profile', '/profile/details')->name('profile');
-    Route::get('/profile/details', 'ProfileController@index')->name('profile.details');
-    Route::get('/profile/orders', 'ProfileController@orders')->name('profile.orders');
-    Route::get('/profile/payments', 'ProfileController@payments')->name('profile.payments');
-    Route::get('/profile/addresses', 'ProfileController@addresses')->name('profile.addresses');
+    Route::redirect('/profile', '/profile/orders')->name('profile');
+    Route::get('/profile/orders', 'Profile\OrdersController@index')->name('profile.orders');
+    Route::get('/profile/payments', 'Profile\PaymentsController@index')->name('profile.payments.index');
+    Route::post('/profile/payments', 'Profile\PaymentsController@store')->name('profile.payments.store');
+    Route::get('/profile/payments/create', 'Profile\PaymentsController@create')->name('profile.payments.create');
+    Route::delete('/profile/payments/{payment}', 'Profile\PaymentsController@destroy')->name('profile.payments.destroy');
+    Route::post('/profile/addresses', 'Profile\AddressesController@store')->name('profile.addresses.store');
+    Route::get('/profile/addresses', 'Profile\AddressesController@index')->name('profile.addresses.index');
+    Route::get('profile/addresses/create', 'Profile\AddressesController@create')->name('profile.addresses.create');
+    Route::delete('/profile/addresses/{address}', 'Profile\AddressesController@destroy')->name('profile.addresses.destroy');
 
 
 });

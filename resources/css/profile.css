@@ -23,9 +23,68 @@
     top: 0px;
 }
 
+.app-payment {
+    height: 246px!important;
+    position: relative;
+    z-index: 0;
+    top: 0px;
+}
+
+#app-add-payment {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#app-add-payment > img {
+    width: 70px; 
+    height: 70px; 
+    margin: auto; 
+    display:block;
+}
+#app-add-payment > p {
+    height: 40%;
+}
+
 * {
     transition: all 0.3s ease-out;
 }
+
+
+.app-card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.app-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.app-remove-btn {
+    border: none;
+    border-radius: none;
+    background-color: white;
+    color: #0066c0;
+    
+}
+.app-link:nth-child(2) {
+    margin-left: 10px;
+}
+
+.app-payment:hover {
+    transition: all 0.2s ease-out;
+    box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
+    top: -4px;
+    border-radius: 7px;
+    background-color: white;
+}
+
 
 .app-order:hover {
     transition: all 0.2s ease-out;
@@ -33,6 +92,22 @@
     top: -4px;
     border-radius: 7px;
     background-color: white;
+}
+
+.app-logout {
+    padding: 0!important;
+}
+
+.app-logout-btn {
+    border-radius: 0px;
+    background-color: white;
+    font-size: 1em;
+    border: 0px;
+}
+
+.app-container {
+    margin-top: 6em!important;
+    margin-bottom: 5em!important;
 }
 
 .app-logout-btn {
@@ -43,3 +118,4 @@
     padding: 0px;
     margin: 0px;
 }
+
