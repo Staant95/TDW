@@ -14,7 +14,10 @@ class WishlistController extends Controller
     public function store(Request $request, Wishlist $wishlist)
     {
         $product = Product::find($request->input('product'));
-        $wishlist->products()->attach($product);
+        $products = $wishlist->products;
+        if(!$products->contains($product)) {
+            $wishlist->products()->attach($product);
+        }
         return response()->json([], 201)->header('Content-Type', 'application/json');
     }
 

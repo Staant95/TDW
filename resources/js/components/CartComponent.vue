@@ -97,7 +97,10 @@
                 })
                 .then(res => {
                     this.products = [];
-                    res.data.forEach(el => this.products.push((({id, name, price, pivot: {quantity}}) => ({id, name, price, quantity}))(el)))
+                    res.data.forEach(el => {
+                        let temp = ( ({id, name, price, pivot: {quantity}}) => ({id, name, price, quantity}) )(el);
+                        this.products.push(temp);
+                    });
                 })
                 .catch(err => console.log(`error in adding item ${err}`));
             }

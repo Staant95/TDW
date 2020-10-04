@@ -21,22 +21,24 @@ class CartController extends Controller
 
     public function store(User $user, Request $request)
     {
-        $product = Product::findOrFail($request->input('product_id'));
+        
+        $product = $request->input('product_id');
         $cartProducts = $user->cart->products;
 
-
         if($cartProducts->contains($product)) {
-            $cartProducts->map(function($item) use ($product) {
-                if($item->id == $product->id) {
+
+            $cartProducts->filter(function($item) use ($product, $user) {
+                if($item->id == $product) {
                     $item->pivot->quantity = $item->pivot->quantity + 1;
-                    $item->push();
+                    $user->cart->push();
                 }
             });
+            
         } else {
             $user->cart->products()->attach($product);
         }
-        $fresh = User::find($user->id);
-        return response($fresh->cart->products);
+        $user->cart->refresh();
+        return response($user->cart->products);
     }
 
 
