@@ -18,6 +18,7 @@ class CreateFormatsTable extends Migration
             $table->timestamps();
             $table->string('color');
             $table->string('size');
+            $table->string('brand');
         });
     }
 

@@ -22,7 +22,7 @@ class product extends Model
 
     public function shops()
     {
-        return $this->belongsToMany('App\Shop')->withPivot('sale', 'start', 'end');
+        return $this->belongsToMany('App\Shop')->withPivot('sale', 'start', 'end', 'price');
     }
 
     public function categories()

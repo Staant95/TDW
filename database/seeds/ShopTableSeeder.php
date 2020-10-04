@@ -26,11 +26,12 @@ class ShopTableSeeder extends Seeder
             $endIndex = $faker->numberBetween(1, $totalShops);
             $sliceOfShops = $shops->slice(1, $endIndex);
 
-            $sliceOfShops->each(function($shop) use ($product){
+            $sliceOfShops->each(function($shop) use ($product, $faker){
                 $product->shops()->attach($shop, [
                     'sale' => 10,
                     'start' => Carbon::now(),
-                    'end' => Carbon::now()->addDays(7)
+                    'end' => Carbon::now()->addDays(7),
+                    'price' => $faker->numberBetween(30, 200)
                 ]);
             });
         });

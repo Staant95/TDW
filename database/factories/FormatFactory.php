@@ -9,5 +9,6 @@ $factory->define(Format::class, function (Faker $faker) {
     return [
         'color' => $faker->safeColorName(),
         'size' => $faker->numberBetween(20, 50),
+        'brand' => $faker->domainWord
     ];
 });

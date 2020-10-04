@@ -21,6 +21,7 @@ class CreateProductShopTable extends Migration
             $table->decimal('sale', 5, 2);
             $table->date('start');
             $table->date('end');
+            $table->decimal('price', 10, 2);
             $table->foreign('product_id')->references('id')->on('products');
             $table->foreign('shop_id')->references('id')->on('shops');
         });
