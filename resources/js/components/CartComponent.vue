@@ -36,8 +36,8 @@
                     <!-- \Cart::getTotal() -->
                     <span class="total-amount"> {{ totalCart }} $</span>
                 </div>
-                <!-- route('checkout') -->
-                <a href="/checkout" class="btn animate">Checkout</a>
+                
+                <a v-if="products.length" href="/checkout" class="btn animate">Checkout</a>
             </div>
         </div>
 
