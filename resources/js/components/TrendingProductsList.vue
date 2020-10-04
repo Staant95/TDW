@@ -38,7 +38,7 @@
                                 <div class="tab-single">
                                     <div class="row">
 
-                                        <div v-for="product in products" class="col-xl-3 col-lg-4 col-md-4 col-12">
+                                        <div v-for="product in products" :key="product.id" class="col-xl-3 col-lg-4 col-md-4 col-12">
                                             <div class="single-product">
                                                 <div class="product-img">
                                                     <!--       CHANGE LINK      -->

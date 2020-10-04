@@ -53,6 +53,7 @@
     transition: all 0.3s ease-out;
 }
 
+
 .app-card-content {
     display: flex;
     flex-direction: column;
@@ -84,6 +85,7 @@
     background-color: white;
 }
 
+
 .app-order:hover {
     transition: all 0.2s ease-out;
     box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
@@ -108,4 +110,12 @@
     margin-bottom: 5em!important;
 }
 
+.app-logout-btn {
+    border: none;
+    background-color: red;
+    width: 80%;
+    height: 70%;
+    padding: 0px;
+    margin: 0px;
+}
 
