@@ -17,11 +17,11 @@
                     </div>
                     <!-- Search Form -->
                     <div class="search-top">
-                        <form class="search-form" action="" method="GET">
+                        <form class="search-form" action="{{ route('search') }}" method="GET">
                             @csrf
 
-                            <input type="text" placeholder="Search me" name="search">
-                            <button value="search" type="submit"><i class="ti-search"></i></button>
+                            <input type="text" placeholder="Search me" name="product">
+                            <button type="submit"><i class="ti-search"></i></button>
                         </form>
                     </div>
                     <!--/ End Search Form -->
@@ -37,10 +37,11 @@
 
             <div class="col-lg-8 col-md-7 col-12">
                 <div class="search-bar-top">
+
                     <div class="search-bar">
-                        {{--  missing select option     --}}
-                        <form method="GET" action="{{ route('search.index') }}">
-                            <input name="search" placeholder="Search Products" type="search">
+
+                        <form method="GET" action="{{ route('search') }}">
+                            <input name="product" placeholder="Search Products">
                             <button class="btnn"><i class="ti-search"></i></button>
                         </form>
 
