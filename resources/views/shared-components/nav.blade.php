@@ -39,7 +39,7 @@
                                         <li><a href="#">New Arrivals</a></li>
                                         <li><a href="#">Today's Deal</a></li>
                                         <li><a href="#">Sell</a></li>
-                                        <li><a href="#">Contact Us</a></li>
+                                        <li><a href="/contact">Contact Us</a></li>
                                     </ul>
                                 </div>
                             </div>

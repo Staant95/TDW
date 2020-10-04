@@ -33,8 +33,8 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-12 no-padding">
                                     <div class="content">
-                                        <h4 class="title"><a href="#"> {{ $product->name }} </a></h4>
-                                        <p class="price with-discount"> {{ $product->price }} </p>
+                                        <h4 class="title"><a href="/products/{{ $product->id }}"> {{ $product->name }} </a></h4>
+                                        <p class="price with-discount"> {{ $product->price }} €</p>
                                     </div>
                                 </div>
                             </div>
