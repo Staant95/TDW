@@ -9,88 +9,119 @@
 <section class="product-area shop-sidebar shop section" style="padding-top: 2em!important">
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-3 col-md-4 col-12 mt-5">
-				<div class="shop-sidebar">
+			<div class="col-lg-3 col-md-4 col-12" style="margin-top: 1.5em!important">
+				<div class="shop-sidebar ">
 
-
-					<div class="single-widget range">
-						<h3 class="title">Shop by Price</h3>
-						
-						
-						<form action="{{ route('filter') }}" method="post">
-							@csrf
-
-							<input type="text" name="product" value="{{ request('product') }}" hidden>
-
-
-							<div class="checkbox-light">
-
-								<div class="form-check">
-									<input class="form-check-inline" type="radio" name="price-range" id="low" value="low"
-									>
-									<label class="checkbox-inline" for="low">
-									  20$ - 50$ 
-									</label>
-								</div>
-								<div class="form-check">
-									<input class="form-check-inline" type="radio" name="price-range" id="medium" value="medium"
-									>
-									<label class="checkbox-inline" for="medium">
-										50$ - 100$ 
-									</label>
-								</div>
-								<div class="form-check">
-									<input class="form-check-inline" type="radio" name="price-range" id="high" value="high"
-									>
-									<label class="checkbox-inline" for="high">
-										100$ - 300$ 
-									</label>
-								</div>
-
-								
-							</div>
-
-
-							<button type="submit" class="btn">Apply</button>
+					
+					<form action="{{ route('filter', ['product' => request('product')]) }}" method="post" id="filter">
+						@csrf
+						<div class="single-widget range">
 							
 
-						</form>
+								<input type="text" name="product" value="{{ request('product') }}" hidden>
 
-					</div>
+								<h3 class="title">Shop by Price</h3>
+			
+						
+										<div class="checkbox-light">
+
+											<div class="form-check">
+												<input class="form-check-inline app-radio" type="radio" name="price" id="low" 
+												value="low"
+												{{ old('price') == 'low' ? 'checked' : '' }}
+												onclick="!this.input.checked"
+												>
+												<label class="checkbox-inline" for="low">
+													20$ - 50$ 
+												</label>
+											</div>
+											<div class="form-check">
+												<input class="form-check-inline app-radio" type="radio" name="price" id="medium" value="medium"
+												{{ old('price') == 'medium' ? 'checked' : '' }}
+												>
+												<label class="checkbox-inline" for="medium">
+													50$ - 100$ 
+												</label>
+											</div>
+											<div class="form-check">
+												<input class="form-check-inline app-radio" type="radio" name="price" id="high" value="high"
+												{{ old('price') == 'high' ? 'checked' : '' }}
+												>
+												<label class="checkbox-inline" for="high">
+													100$ - 500$ 
+												</label>
+											</div>
+
+											
+										</div>
+									
+										
+							
+
+						</div>
 
 
-						<!-- Single Widget -->
+							<!-- Single Widget -->
 						<div class="single-widget category">
 							<h3 class="title">Brands</h3>
+
 							
+
 							<ul class="categor-list">
 
+								
 								@foreach ($brands as $brand)
-									<li>
-										<a href="#"> {{ $brand }} </a>
-									</li>
+								
+
+										<li>										
+						
+											<input class="app-checkbox" type="checkbox" value="{{ $brand }}" id="{{ $brand }}" name="{{ $brand }}"
+											{{ old($brand) == $brand ? 'checked' : '' }}
+											>
+											<label for="{{ $brand }}"> {{ $brand }}</label>
+											
+										</li>
+									
 								@endforeach
+								
+								
 								
 							</ul>
 						</div>
 						<!--/ End Single Widget -->
 						
-					
-	
+						<div class="single-widget" style="display: flex; justify-content: center">
+							<button class="btn">Apply</button>
+							<button  id="reset-btn" class="btn">Reset</button>
+						</div>
+					</form>
 				</div>
 			</div>
+			
+			<script>
+				const btn = document.querySelector('#reset-btn');
+				const form = document.querySelector('#filter');
+				btn.addEventListener('click', function(event) {
+					
+					const radio = document.querySelectorAll('.app-radio')
+					const checkboxes = document.querySelectorAll('.app-checkbox')
 
+					radio.forEach(el => el.checked = false);
+					checkboxes.forEach(el => el.checked = false);
+					form.submit();
+				})
+			</script>
 
 
 
 			<div class="col-lg-9 col-md-8 col-12">
 				@if ($products->count())
 				
-					<div class="row">
+					<div class="row" id="productCard">
 
 						@foreach ($products as $product)
 							
-							<div class="col-lg-4 col-md-6 col-12" >
+							{{-- <div class="col-lg-4 col-md-6 col-12" >
 
 								<div class="single-product app-product">
 									<div class="product-img">
@@ -115,7 +146,11 @@
 									</div>
 								</div>
 
-							</div>
+							</div> --}}
+						
+							<product-card :product="{{ $product }}" >
+							</product-card>
+					
 						@endforeach					
 		
 					</div>

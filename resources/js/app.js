@@ -17,7 +17,7 @@ require('slicknav/jquery.slicknav');
 
 require('./scripts/scrollup')
 require('./scripts/onepage-nav.min')
-
+require('./app-filter');
 
 
 $('.menu').slicknav({
@@ -58,8 +58,9 @@ window.Vue = require('vue');
 export const EventBus = new Vue();
 Vue.component('cart-component', require('./components/CartComponent').default);
 Vue.component('trending-products-list', require('./components/TrendingProductsList').default);
+Vue.component('product-card', require('./components/ProductCard.vue').default);
 
-
+new Vue({el: '#productCard'});
 new Vue({el: '#trendingListContainer'});
 
 /**

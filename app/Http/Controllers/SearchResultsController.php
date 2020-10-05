@@ -3,99 +3,116 @@
 namespace App\Http\Controllers;
 
 use App\Product;
-use App\Category;
+use App\Format;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class SearchResultsController extends Controller
 {
-    
+
     public function search(Request $request)
     {
-        if($request->has('category')) {
+        $products = collect([]);
 
-            $category = Category::findOrFail($request->query('category'));     
-            return view('searchresults')
-            ->with([
-                'products' => $category->products
-            ]);
 
-        } else {
+        $products = Product::where('name', 'like', $request->query('product') . '%')->get();
 
-            $products = Product::where('name', 'like', $request->query('product') . '%')->get();
 
-            $brands = collect([]);
+        $brands = $this->getBrands($products);
 
-            $products->each(function($product) use ($brands) {
-                $product->formats->each(function($format) use($brands) {
-                    $brands->push($format->brand);
-                });
-            });
-
-            return view('searchresults')
+        return view('searchresults')
             ->with([
                 'products' => $products,
                 'brands' => $brands
             ]);
-        }
-
-
     }
 
-    public function filter(Request $request) {
-
-        $searchedProduct = Product::where('name', 'like', $request->query('product') . '%')->get();
-
-
-        if($request->has('price-range')) {
-
-            $products = $this->filterByPrice($request->input('price-range'), $request->input('product'));
-             
-            return view('searchresults')->with(['products' => $products]);
-        }
-
-        return view('searchresults')->with(['products' => $searchedProduct]);
-
-    }
+    public function filter(Request $request)
+    {
 
 
+        $request->flash();
 
-
-    private function filterByPrice($price, $product) {
+        $formBrands = collect($request->except('_token', 'price', 'product'));
         
+        $products = Product::where('name', 'like', $request->query('product') . '%')->get();
+        
+        $brands = $this->getBrands($products);
+
+        if($request->has('price')) {
+            $priceRange = $this->determinePriceRange($request->input('price'));
+
+            $products = $this->filterByPrice($products, $priceRange);
+        }
+        
+        
+        
+        if($formBrands->count()) {
+            $products = $this->filterByBrand($products, $formBrands);
+        }
+        
+        return view('searchresults')->with([
+            'products' => $products,
+            'brands' => $brands
+        ]);
+    }
+
+
+
+
+    private function getBrands($products)
+    {
+
+        $brands = collect([]);
+
+        $products->each(function ($product) use ($brands) {
+            $product->formats->each(function ($format) use ($brands) {
+                $brands->push($format->brand);
+            });
+        });
+
+        return $brands->unique();
+    }
+
+
+    private function determinePriceRange($price)
+    {
+
         $priceRange = collect([]);
 
-        switch($price) {
-            case "low" : 
+        switch ($price) {
+            case "low":
                 $priceRange->push(20, 50);
                 break;
-            case "medium" : 
-                $priceRange->push(50,100);
+            case "medium":
+                $priceRange->push(50, 100);
                 break;
-            case "high" : 
-                $priceRange->push(100, 300);
+            case "high":
+                $priceRange->push(100, 500);
                 break;
         }
 
-        $products = DB::table('products')
-                    ->where('name', 'like', $product .'%')
-                    ->whereBetween('price', [$priceRange[0], $priceRange[1]])
-                    ->get();
 
-        return $products;
-
+        return $priceRange;
     }
-    
 
-   public function filterByBrand($products) {
-       $brands = collect([]);
-       $products->each(function($product) use ($brands) {
-            $product = Product::find($product->id);
-                $product->shops->each(function($shop) use ($brands) {
-                    $brands->push($shop->pivot->brand);
-                });
-         });
 
-     return $brands->unique();
-   }
+    private function filterByPrice($products, $priceRange)
+    {
+        return $products->whereBetween('price', [$priceRange[0], $priceRange[1]]);
+    }
+
+
+    public function filterByBrand($products, $arrayOfBrands)
+    {
+        $result = collect([]);
+
+        $products->each(function($product) use ($result, $arrayOfBrands) {
+            $product->formats->each(function($format) use ($result, $arrayOfBrands, $product){
+                if($arrayOfBrands->contains($format->brand)) $result->push($product);
+            });
+        });
+
+        return $result;
+    }
 }
