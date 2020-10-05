@@ -10,21 +10,36 @@
 
     <div class="single-product app-product">
         <div class="product-img">
-            <a :href="'/products/' + this.product.id ">
+            <a :href="'/products/' + this.product.id">
                 <img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
                 <img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
             </a>
             <div class="button-head">
-                <div class="product-action">
-                    <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
+                <div class="product-action" style="right: 18%!important;">
+                        <button 
+                        style=" border: none; background-color: white; font-size: 1.3em;"
+                        type="submit"
+                        @click="addProductToWishlist(product.id)"
+                        >
+                            <i class=" ti-heart "></i>
+                            
+                        </button>
+
+                    <!-- <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a> -->
                 </div>
-                <div class="product-action-2">
-                    <a title="Add to cart" href="#">Add to cart</a>
+                <div class="product-action-2" style="top:0!important">
+
+                    <button class="btn"
+                    style="border: none; height: 100%; margin: 0;"
+                    @click="emitAddToCartEvent(product)">
+                        Add to cart
+                    </button>
+                    <!-- <a title="Add to cart" href="#">Add to cart</a> -->
                 </div>
             </div>
         </div>
         <div class="product-content">
-            <h3><a href="product-details.html"> {{ this.product.name }} </a></h3>
+            <h3><a :href="'/products/' + this.product.id"> {{ this.product.name }} </a></h3>
             <div class="product-price">
                 <span> {{ this.product.price }} </span>
             </div>
@@ -40,7 +55,8 @@ import { EventBus } from "../app";
 
     export default {
         props: {
-            product: Object
+            product: Object,
+            wishlistId: String
         },
         mounted() {
             
@@ -50,8 +66,17 @@ import { EventBus } from "../app";
                 EventBus.$emit('add-to-cart', product);
                 this.showAlert = true;
                 setTimeout(() => this.showAlert = false, 1500);
+            },
+            addProductToWishlist(product) {
+                axios.post(`http://localhost:8000/api/wishlists/${this.wishlistId}/products`, {
+                    'product': product
+                })
+                .then(res => {
+                    console.log(res.data);
+                    this.showAlert = true;
+                    setTimeout(() => this.showAlert = false, 1500);
+                });
             }
-
         },
        data: function() {
             return {

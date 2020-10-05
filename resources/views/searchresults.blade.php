@@ -148,7 +148,7 @@
 
 							</div> --}}
 						
-							<product-card :product="{{ $product }}" >
+							<product-card wishlist-id={{ Auth::user()->wishlist->id }} :product="{{ $product }}" >
 							</product-card>
 					
 						@endforeach					
