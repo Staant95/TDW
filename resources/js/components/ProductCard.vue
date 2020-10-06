@@ -25,7 +25,6 @@
                             
                         </button>
 
-                    <!-- <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a> -->
                 </div>
                 <div class="product-action-2" style="top:0!important">
 
@@ -34,7 +33,6 @@
                     @click="emitAddToCartEvent(product)">
                         Add to cart
                     </button>
-                    <!-- <a title="Add to cart" href="#">Add to cart</a> -->
                 </div>
             </div>
         </div>

@@ -1,0 +1,58 @@
+.app-heading {
+    margin-top: 1.5em;
+    margin-bottom: 10px;
+}
+.app-address-container {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.app-address-container > h5,hr {
+    margin: 0px;
+    padding: 0px;
+    margin-bottom: 3px;
+}
+
+
+
+.app-address {
+    display: flex;
+    margin-top: 10px;
+}
+
+.app-address > span {
+    margin-right: 5px;
+    margin-left: 2px;
+}
+
+.app-address > a {
+    color: #0066c0!important;
+    text-decoration: underline;
+}
+
+.address {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    padding: 0px;
+    margin: 0px;
+    margin-left: 10px;
+}
+
+.app-address:last-child {
+    margin-bottom: 10px;
+}
+
+.app-payment-method {
+    margin-left: 10px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.app-card-owner, .app-expiration {
+    text-align: center;
+}
+
+
