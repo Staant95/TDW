@@ -17,6 +17,8 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->timestamps();
             $table->unsignedBigInteger('shipping_id');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('address_id');
             $table->string('code');
             $table->date('expected');
             $table->decimal('total', 10, 2);

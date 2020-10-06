@@ -14,7 +14,7 @@
     @endif
 
 
-    <form method="POST" action="{{ route('profile.payments.store') }}" >
+    <form method="POST" action="{{ route('profile.payments.store', ['redirect' => request('redirect')]) }}" >
         @csrf  
         <label class="mr-sm-2" for="payments">Choose your payment method</label>
         <select name="payment_id" class="custom-select" id="payments">

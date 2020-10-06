@@ -34,6 +34,9 @@ class PaymentsController extends Controller
             'expiration_date' => $expiration,
             'security_code' => $request->input('security_code')
         ]);
+
+        if($request->has('redirect')) return redirect()->route('checkout.index');
+        
         return redirect()->route('profile.payments.index');
     }
 

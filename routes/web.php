@@ -20,7 +20,7 @@ Route::middleware('auth')->group(function() {
     Route::get('/search', 'SearchResultsController@search')->name('search');
     Route::post('/q', 'SearchResultsController@filter')->name('filter');
     
-    Route::get('/checkout', 'CheckoutController@index');
+    Route::get('/checkout', 'CheckoutController@index')->name('checkout.index');
     Route::post('/checkout', 'CheckoutController@store')->name('checkout.store');
     Route::resource('carts.products', 'CartProductController');
     
@@ -40,6 +40,7 @@ Route::middleware('auth')->group(function() {
     Route::get('profile/addresses/create', 'Profile\AddressesController@create')->name('profile.addresses.create');
     Route::delete('/profile/addresses/{address}', 'Profile\AddressesController@destroy')->name('profile.addresses.destroy');
 
+    
 
 });
 

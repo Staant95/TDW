@@ -2,6 +2,7 @@
 
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Cart;
@@ -9,6 +10,7 @@ use App\Product;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
 use App\Order;
+use App\Address;
 
 class CheckoutController extends Controller
 {
@@ -19,85 +21,51 @@ class CheckoutController extends Controller
      */
     public function index()
     {
-        $cart=Auth::user()->cart;
-        $products=$cart->products;
+        $cart = Auth::user()->cart;
+        $products = $cart->products;
+
         $total = $products->sum('price');
-        return view('checkout')->with(['total' => $total,
-                                        'products' => $products,
-                                        'cart' => $cart]);
+
+        $payments = Auth::user()->payments;
+
+        $addresses = Auth::user()->addresses;
+
+        return view('checkout')->with([
+            'total' => $total,
+            'products' => $products,
+            'cart' => $cart,
+            'payments' => $payments,
+            'addresses' => $addresses
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        $cart=Auth::user()->cart;
-        $products=$cart->products;
+        $validated = $request->validate([
+            'address' => 'bail|required',
+            'payment' => 'required'
+        ]);
+
+
+        $address = Address::find($validated['address']);
+        
+        $cart = Auth::user()->cart;
+        $products = $cart->products;
         $total = $products->sum('price');
         $cart->products()->detach();
-        Order::create(['shipping_id'=> 1,
-                            'code' => Str::random(5),
-                            'expected' => Carbon::now()->add(5, 'day'),
-                            'total' => $total]);
-        return redirect('home');                    
+
+        Order::create([
+            'shipping_id' => 1,
+            'code' => Str::random(5),
+            'expected' => Carbon::now()->add(5, 'day'),
+            'total' => $total,
+            'user_id' => Auth::id(),
+            'address_id' => $address->id
+        ]);
+        return redirect()->route('profile.orders');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        
-    }
+ 
 }

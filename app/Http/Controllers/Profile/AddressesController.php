@@ -22,7 +22,12 @@ class AddressesController extends Controller
             'zip' => $request->input('zip'),
             'user_id' => Auth::id()
         ]);
+       
+        if($request->has('redirect'))  return redirect()->route('checkout.index');
+        
+
         return redirect()->route('profile.addresses.index');
+        
     }
 
     public function create() {

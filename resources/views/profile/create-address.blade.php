@@ -1,7 +1,7 @@
 @extends('profile.master')
 
 @section('panel-content')
-    <form method="POST" action="{{ route('profile.addresses.store') }}" >
+    <form method="POST" action="{{ route('profile.addresses.store', ['redirect' => request('redirect')]) }}" >
         @csrf  
         <div class="form-group">
             <label for="city">City</label>

@@ -43,8 +43,8 @@
                                                 <div class="product-img">
                                                     <!--       CHANGE LINK      -->
                                                     <a :href="'/products/' + product.id">
-                                                        <img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
-                                                        <img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
+                                                        <img style="height: 100%; width: 100%" 
+                                                        class="default-img" :src="product.image"  alt="asd">
                                                     </a>
                                                     <div class="button-head" >
                                                         <div class="product-action" style="right: 18%!important;">
@@ -103,6 +103,7 @@
         },
         mounted() {
             console.log('wishlist id ' + this.wishlistId)
+            
             this.getCategories();
         },
         methods : {
@@ -126,7 +127,16 @@
             },
             getProductsOfCategory: function(categoryId) {
                   axios.get(`http://localhost:8000/api/categories/${categoryId}/products`)
-                  .then(res => this.products = res.data);
+                  .then(res => {
+                    this.products = res.data
+                    for(let p in this.products) {
+             
+                       this.products[p].image = this.products[p].image['0']['URL'] ? 
+                                            this.products[p].image['0']['URL'] 
+                                            : '';
+                    }
+                    
+                  });
             },
             isActive: function(category) {
                 return this.currentCategory.id === category;

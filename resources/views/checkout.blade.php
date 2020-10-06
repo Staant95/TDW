@@ -4,126 +4,126 @@
 
 @section('content')
 
-<!-- Start Checkout -->
+@if ($errors->any())
+<div class="alert alert-danger">
+    <ul style="display: flex; justify-content: center;align-items: center; flex-direction: column">
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
+
+
 <section class="shop checkout section">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-12">
-                <div>
-                    <h5 class="app-heading">Choose your shipping address</h5>
+        <form class="row" action="{{ route('checkout.store') }}" method="post">
+            @csrf
+                <div class="col-lg-8 col-12">
+                    <div>
+                        <h5 class="app-heading">Choose your shipping address</h5>
 
-                    <div class="app-address-container">
+                        <div class="app-address-container">
 
-                        <h5>Your addresses</h5>
-                        <hr>
-
-                        <div class="app-address">
-                            <input type="radio" name="address" id="address1">
-                            <label for="address1" class="address">
-                                <p>Viale T. Morroni, 38, Rieti, 02100</p>
+                            <h5>Your addresses</h5>
+                            <hr>
+                            @foreach ($addresses as $address)
                                 
-                            </label>
+                                <div class="app-address">
+                                    <input type="radio" name="address" id="{{ $address->id }}" value="{{ $address->id }}">
+                                    <label for="{{ $address->id }}" class="address">
+                                        <p> {{ $address->street }}, {{ $address->city }}, {{ $address->zip }}</p>
+                                    </label>
+                               
+                                </div>
+                            @endforeach
+        
+        
+                
+                            <div class="app-address">
+                                <span>
+                                    <i class="fa fa-plus" aria-hidden="true"></i>
+                                </span>
+                                <a href="{{ route('profile.addresses.create', ['redirect' => 'checkout']) }}"> Add address </a>
+                            </div>
+
                         </div>
-    
-    
-                        <div class="app-address">
-                            <input type="radio" name="address" id="address1">
-                            <label for="address1" class="address">
-                                <p>Via Vazia, 3, Rieti, 02100</p>
+
+
+
+                        <h5 class="app-heading">Choose your payment method</h5>
+
+                        <div class="app-address-container">
+
+                            <h5>Your payments</h5>
+                            <hr>
+
+
+                            @foreach ($payments as $payment)
                                 
-                            </label>
+                                <div class="app-address">
+                                    <input type="radio" name="payment" id="{{ $payment->id }}">
+                                    <label for="{{ $payment->id }}" class="app-payment-method">
+                                        <p>{{ $payment->type }} starting with {{ Str::substr($payment->pivot->card_number, 0, 4) }}</p>
+                                        <p class="app-card-owner">{{ Auth::user()->name }} {{ Auth::user()->lastname }}</p>
+                                        <p class="app-expiration"> {{ $payment->pivot->expiration_date }} </p>
+                                    </label>                             
+                                </div>
+
+                            @endforeach
+
+  
+
+                            <div class="app-address">
+
+                                <span>
+                                    <i class="fa fa-plus" aria-hidden="true"></i>
+                                </span>
+                                <a href="{{ route('profile.payments.create', ['redirect' => 'checkout']) }}"> Add payment method </a>
+                            </div>
+
+
                         </div>
 
-                        <div class="app-address">
-                            <span>
-                                <i class="fa fa-plus" aria-hidden="true"></i>
-                            </span>
-                            <a href=""> Add address </a>
-                        </div>
-
+                        
                     </div>
-
-
-
-                    <h5 class="app-heading">Choose your payment method</h5>
-
-                    <div class="app-address-container">
-
-                        <h5>Your payments</h5>
-                        <hr>
-
-                        <div class="app-address">
-                            <input type="radio" name="payment" id="payment1">
-                            <label for="payment1" class="app-payment-method">
-                                <p>Visa ending with 5969</p>
-                                <p class="app-card-owner">Stanislav Antokhi</p>
-                                <p class="app-expiration">03/2023</p>
-                            </label>
-                        </div>
-    
-    
-                        <div class="app-address">
-                            <input type="radio" name="payment" id="payment2">
-                            <label for="payment2" class="app-payment-method">
-                                <p>Master Card ending with 5969</p>
-                                <p class="app-card-owner">Stanislav Antokhi</p>
-                                <p class="app-expiration">03/2026</p>
-                            </label>
-                        </div>
-
-                        <div class="app-address">
-
-                            <span>
-                                <i class="fa fa-plus" aria-hidden="true"></i>
-                            </span>
-                            <a href=""> Add payment method </a>
-                        </div>
-
-
-                    </div>
-
-                    
                 </div>
-            </div>
-            <div class="col-lg-4 col-12">
-                <div class="order-details">
-                    <!-- Order Widget -->
-                    <div class="single-widget">
-                        <h2>CART  TOTALS</h2>
-                        <div class="content">
-                            <ul>
-                                <li>Sub Total<span>{{ $total }}€</span></li>
-                                <li>(+) Shipping<span>0.00€</span></li>
-                                <li class="last">Total<span>{{ $total }}€</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!--/ End Order Widget -->
-     
-                    <!-- Payment Method Widget -->
-                    <div class="single-widget payement">
-                        <div class="content">
-                            <img src="../../images/payment-method.png" alt="#">
-                        </div>
-                    </div>
-                    <!--/ End Payment Method Widget -->
-                    <!-- Button Widget -->
-                    <div class="single-widget get-button">
-                        <div class="content">
-                            <div class="button">
-                                <form action="{{ route('checkout.store') }}" method="post">
-                                    @csrf
-                                    <button class="btn">PAY</button>
-                                    
-                                </form>
-                                
+                <div class="col-lg-4 col-12">
+                    <div class="order-details">
+                        <!-- Order Widget -->
+                        <div class="single-widget">
+                            <h2>CART  TOTALS</h2>
+                            <div class="content">
+                                <ul>
+                                    <li>Sub Total<span>{{ $total }}€</span></li>
+                                    <li>(+) Shipping<span>0.00€</span></li>
+                                    <li class="last">Total<span>{{ $total }}€</span></li>
+                                </ul>
                             </div>
                         </div>
+                        <!--/ End Order Widget -->
+        
+                        <!-- Payment Method Widget -->
+                        <div class="single-widget payement">
+                            <div class="content">
+                                <img src="../../images/payment-method.png" alt="#">
+                            </div>
+                        </div>
+                        <!--/ End Payment Method Widget -->
+                        <!-- Button Widget -->
+                        <div class="single-widget get-button">
+                            <div class="content">
+                                <div class="button">      
+
+                                    <button class="btn" type="submit">PAY</button>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <!--/ End Button Widget -->
                     </div>
-                    <!--/ End Button Widget -->
                 </div>
-            </div>
-        </div>
+        </form>
     </div>
 </section>
 <!--/ End Checkout -->

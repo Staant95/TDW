@@ -4,7 +4,7 @@
 
 @section('panel-content')
 
-    @for ($i = 0; $i < 5; $i++)
+    @foreach ($orders as $order)
         
         <div class="app-order">
 
@@ -16,15 +16,18 @@
                 style="width: 240px; height: 120px; margin: 10px auto;"
                 >
                 <div class="card-body">
-                <h5 class="card-title">Order#: 1Af412</h5>
-                <p class="card-text"> Expected day of delivery: <strong>20 October</strong> </p>
+                <h5 class="card-title">Order#: {{ $order->code }}</h5>
+                <p class="card-text"> Expected day of delivery: <strong>{{ $order->expected }}</strong> </p>
                 <p class="card-text"> Shipping company: <strong> Bartolini </strong></p>
-
+                <p>Shipping address: <strong> {{ $order->address->street }} </strong> </p>
                 </div>
             </div>
         </div>
 
-    @endfor
+    @endforeach
+        
+
+    
    
 @endsection
 
