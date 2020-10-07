@@ -37,7 +37,7 @@ Route::middleware('auth')->group(function() {
     Route::resource('/home', 'HomepageController');
     
     Route::get('/search', 'SearchResultsController@search')->name('search');
-    Route::post('/q', 'SearchResultsController@filter')->name('filter');
+    Route::post('/search', 'SearchResultsController@filter')->name('filter');
     
     Route::get('/checkout', 'CheckoutController@index')->name('checkout.index');
     Route::post('/checkout', 'CheckoutController@store')->name('checkout.store');

@@ -11,8 +11,7 @@
     <div class="single-product app-product">
         <div class="product-img">
             <a :href="'/products/' + this.product.id">
-                <img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
-                <img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
+                <img class="default-img" :src="this.imageURL" alt="#">
             </a>
             <div class="button-head">
                 <div class="product-action" style="right: 18%!important;">
@@ -54,10 +53,14 @@ import { EventBus } from "../app";
     export default {
         props: {
             product: Object,
-            wishlistId: String
+            wishlistId: String,
+            image: String
         },
         mounted() {
             
+            this.imageURL = this.image  
+                    ? JSON.parse(this.image).URL 
+                    : "https://via.placeholder.com/550x750";
         },
         methods : {            
             emitAddToCartEvent: function(product) {
@@ -79,7 +82,8 @@ import { EventBus } from "../app";
        data: function() {
             return {
                 showAlert: false,
-                csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                imageURL: ''
             }
         },
         
