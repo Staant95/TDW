@@ -6,6 +6,7 @@ use App\Product;
 use App\Format;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Category;
 
 class SearchResultsController extends Controller
 {
@@ -35,9 +36,13 @@ class SearchResultsController extends Controller
 
         $formBrands = collect($request->except('_token', 'price', 'product'));
         
+    
+
         $products = Product::where('name', 'like', $request->query('product') . '%')->get();
         
-        $brands = $this->getBrands($products);
+
+        
+        $brands = $this->getBrands($products); 
 
         if($request->has('price')) {
             $priceRange = $this->determinePriceRange($request->input('price'));
@@ -108,9 +113,13 @@ class SearchResultsController extends Controller
         $result = collect([]);
 
         $products->each(function($product) use ($result, $arrayOfBrands) {
+
             $product->formats->each(function($format) use ($result, $arrayOfBrands, $product){
+
                 if($arrayOfBrands->contains($format->brand)) $result->push($product);
+
             });
+            
         });
 
         return $result;

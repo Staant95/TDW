@@ -46,6 +46,9 @@ Route::middleware('auth')->group(function() {
     Route::resource('wishlists.products', 'WishlistProductController');
     Route::get('/products/{product}', 'ProductController@index')->name('product');
 
+    Route::get('/categories/{category}', 'CategoryController@index')->name('category.index');
+    Route::post('/categories/{category}', 'CategoryController@sort')->name('category.sort');
+
     Route::post('/reviews', 'ReviewController@store')->name('review.store');
     
     Route::redirect('/profile', '/profile/orders')->name('profile');

@@ -11,7 +11,7 @@
     <div class="single-product app-product">
         <div class="product-img">
             <a :href="'/products/' + this.product.id">
-                <img class="default-img" :src="this.imageURL" alt="#">
+                <img class="default-img" :src="'/' + this.imageURL" alt="#">
             </a>
             <div class="button-head">
                 <div class="product-action" style="right: 18%!important;">
@@ -57,7 +57,7 @@ import { EventBus } from "../app";
             image: String
         },
         mounted() {
-            
+            console.log(this.image)
             this.imageURL = this.image  
                     ? JSON.parse(this.image).URL 
                     : "https://via.placeholder.com/550x750";

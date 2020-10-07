@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Storage;
-use App\Product;
 use App\Image;
 use App\Category;
 use Illuminate\Support\Facades\Http;
@@ -18,7 +17,6 @@ class ImageTableSeeder extends Seeder
     {
 
         $categories = Category::all();
-        $categories = $categories->except(1);
 
         $categories->each(function($category) {
 
@@ -46,39 +44,7 @@ class ImageTableSeeder extends Seeder
             });
 
         });
-        
-
-
-        // 500x600 -> detail product image
-        // 300x400 ->trending product
-
-
-        // $file = Storage::get('public/filepaths.txt');
     
-        // $paths = collect([]);
-        // $temp = "";
-    
-        // // split the string into array
-        // for($i = 0; $i < strlen($file); $i++) {
-    
-        //     if($file[$i] !== "\n"){
-        //         $temp = $temp . $file[$i];
-        //     } else {
-        //         $paths->push($temp);
-        //         $temp = "";
-        //     }
-        // }
-        // $pathCounter = 0;
-    
-        // $products = Product::all();
-    
-    
-        // for($i = 0; $i < $products->count(); $i++) {
-    
-        //     Image::create(['URL' => $paths->get($pathCounter), 'product_id' => $products->get($i)->id]);
-        //     $pathCounter = $pathCounter + 1;
-    
-        // }
-       
+      
     }
 }
