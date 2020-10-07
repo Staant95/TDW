@@ -1,12 +1,31 @@
 <?php
 
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
+use Faker\Generator as Faker;
+use App\Category;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Storage;
+use App\Product;
 
 
 Auth::routes();
+
+Route::get('testing', function(Faker $faker){
+
+    $pr = Product::find(10);
+   
+    $path = $pr->categories->first()->name . '/' . $pr->id . 'medium.jpg';
+
+    $img = Storage::get('public/'. $path);
+    dd($img);
+
+
+
+});
+
+
+
 
 
 Route::redirect('/', 'home');

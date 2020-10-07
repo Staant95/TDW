@@ -23,28 +23,33 @@ class CategoryTableSeeder extends Seeder
             Category::create(['name' => "Sunglasses"]),
             Category::create(['name' => "Underwear"]),
             Category::create(['name' => "Sport"]),
-            Category::create(['name' => "Kid"]),
-            Category::create(['name' => "Summer Sales"]),
-            Category::create(['name' => "Winter Sales"]),
-            Category::create(['name' => "Best Shoes"]),
-            Category::create(['name' => "Trending"]),
-            Category::create(['name' => "Best Shirts"]),
-            Category::create(['name' => "Best Hats"]),
-            Category::create(['name' => "Best Socks"]),
+            Category::create(['name' => "Kids"]),
+            // Category::create(['name' => "Summer Sales"]),
+            // Category::create(['name' => "Winter Sales"]),
+            // Category::create(['name' => "Trending"]),
+            Category::create(['name' => "Skirt"]),
+            Category::create(['name' => "Hats"]),
+            Category::create(['name' => "Socks"]),
             Category::create(['name' => "Gloves"]),
             Category::create(['name' => "Unisex"]),
-            Category::create(['name' => "Completo"])
+            Category::create(['name' => "Men-Suits"])
         ]);
 
         $products = App\Product::all();
 
-        $categories->each(function($category) use ($faker, $products) {
+        $arrOfProducts = $products->chunk(8);
+        $indexArray = 0;
 
-            $start = $faker->numberBetween(1, $products->count());
-            $end = $faker->numberBetween($start, $products->count());
-            $sliceOfProducts = $products->slice($start, $end)->keys();
+        // itero su ogni categoria, 
+       foreach($categories as $category) {
+            
+            foreach($arrOfProducts[$indexArray] as $product) {
 
-           $category->products()->attach($sliceOfProducts);
-        });
+                $category->products()->attach($product->id);
+
+            }
+
+            $indexArray += 1;
+       }
     }
 }

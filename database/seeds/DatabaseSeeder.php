@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             UserTableSeeder::class,
             PaymentTableSeeder::class,
             ShopTableSeeder::class,
+            ImageTableSeeder::class,
         ]);
     }
 }

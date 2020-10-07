@@ -15,8 +15,8 @@
 								<!-- Images slider -->
 								<div class="flexslider-thumbnails">
 									<ul class="slides">
-										<li data-thumb="https://via.placeholder.com/570x520" rel="adjustX:10, adjustY:">
-											<img src="https://via.placeholder.com/570x520" alt="#">
+										{{-- <li data-thumb="https://via.placeholder.com/570x520" rel="adjustX:10, adjustY:"> --}}
+											<img src="{{ asset($product->images->get(1)->URL) }}" alt="#">
 										</li>
 									</ul>
 								</div>

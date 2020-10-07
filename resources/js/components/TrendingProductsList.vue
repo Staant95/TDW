@@ -37,14 +37,14 @@
                             <div class="tab-pane fade show active" id="man" role="tabpanel">
                                 <div class="tab-single">
                                     <div class="row">
-
+                                        
                                         <div v-for="product in products" :key="product.id" class="col-xl-3 col-lg-4 col-md-4 col-12">
                                             <div class="single-product">
                                                 <div class="product-img">
                                                     <!--       CHANGE LINK      -->
                                                     <a :href="'/products/' + product.id">
-                                                        <img style="height: 100%; width: 100%" 
-                                                        class="default-img" :src="product.image"  alt="asd">
+                                                        <img style="height: 357; object-fit:cover;" 
+                                                        class="default-img" :src="product.image"  alt="Ops">
                                                     </a>
                                                     <div class="button-head" >
                                                         <div class="product-action" style="right: 18%!important;">
@@ -127,16 +127,7 @@
             },
             getProductsOfCategory: function(categoryId) {
                   axios.get(`http://localhost:8000/api/categories/${categoryId}/products`)
-                  .then(res => {
-                    this.products = res.data
-                    for(let p in this.products) {
-             
-                       this.products[p].image = this.products[p].image['0']['URL'] ? 
-                                            this.products[p].image['0']['URL'] 
-                                            : '';
-                    }
-                    
-                  });
+                  .then(res => this.products = res.data);
             },
             isActive: function(category) {
                 return this.currentCategory.id === category;
