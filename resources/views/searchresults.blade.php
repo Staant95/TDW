@@ -117,16 +117,20 @@
 			<div class="col-lg-9 col-md-8 col-12">
 				@if ($products->count())
 				
-					<div class="row" id="productCard">
+					<div class="row" id="singleProduct">
+					
 
 						@foreach ($products as $product)
-	
-							<product-card 
-								wishlist-id={{ Auth::user()->wishlist->id }} 
+							<single-product
+								wishlist-id={{ Auth::user()->wishlist->id }}
 								:product="{{ $product }}"
-								image={{ $product->images->first() }}
+								@if($product->images->count())
+									:image="{{$product->images->first()}}"
+								@else
+									:image="{{ '' }}"
+								@endif
 							>
-							</product-card>
+							</single-product>
 					
 						@endforeach					
 							

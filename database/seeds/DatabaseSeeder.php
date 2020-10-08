@@ -20,7 +20,7 @@ RoleTableSeeder::class,
             UserTableSeeder::class,
             PaymentTableSeeder::class,
             ShopTableSeeder::class,   
-            // ImageTableSeeder::class,
+            ImageTableSeeder::class,
         ]);
     }
 }

@@ -27,12 +27,10 @@ class CategoryTableSeeder extends Seeder
             // Category::create(['name' => "Summer Sales"]),
             // Category::create(['name' => "Winter Sales"]),
             // Category::create(['name' => "Trending"]),
-            Category::create(['name' => "Skirt"]),
             Category::create(['name' => "Hats"]),
             Category::create(['name' => "Socks"]),
             Category::create(['name' => "Gloves"]),
-            Category::create(['name' => "Unisex"]),
-            Category::create(['name' => "Men-Suits"])
+            Category::create(['name' => "Men-Suits"]),
         ]);
 
         $products = App\Product::all();

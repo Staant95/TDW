@@ -18,7 +18,7 @@ class HomepageController extends Controller
             Category::find(3)
         ]);
         $categories->map(function($item) {
-            $item->products = $item->products->slice(1,3);
+            $item->products = $item->products->slice(0,3);
         });
 
 

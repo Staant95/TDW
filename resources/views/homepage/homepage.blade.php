@@ -12,14 +12,11 @@
         </div>
     @endif
 
-    @include('homepage.components.hero')
     @include('homepage.components.banner')
-{{--    @include('homepage.components.product')--}}
     <div id="trendingListContainer">
         <trending-products-list wishlist-id={{ Auth::user()->wishlist->id }}></trending-products-list>
     </div>
     @include('homepage.components.mediumBanner')
-{{--    @include('homepage.popularProducts')--}}
     @include('homepage.components.saleProducts')
 
     @include('homepage.components.shopService')

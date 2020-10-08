@@ -22,7 +22,10 @@
 
                                 <div class="col-lg-6 col-md-6 col-12">
                                     <div class="list-image overlay">
-                                        <img src="https://via.placeholder.com/115x140" alt="#">
+                                        {{-- <img src="https://via.placeholder.com/115x140" alt="#"> --}}
+                                        <img src="{{ asset('storage/smallBanner/' . $category->name  . $product->id . '.jpg') }}" alt="#"
+                                        style="height: 200px!important; object-fit: cover;"
+                                        >
                                         <a href="/products/{{ $product->id }}" class="buy"
                                            style="display: flex; justify-items: center; align-items: center; padding: 0!important;">
 {{--                                            <i class="fa fa-shopping-bag"></i>--}}

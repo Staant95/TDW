@@ -22,7 +22,7 @@
                                 $categories = App\Category::limit(9)->get();
                             @endphp
                             @foreach($categories as $category)
-                            <li><a href="#"> {{ $category->name }} </a></li>
+                        <li><a href="{{ route('category.index', ['category' => $category->id]) }}"> {{ $category->name }} </a></li>
                             @endforeach
                         </ul>
                     </div>
@@ -36,9 +36,8 @@
                                 <div class="nav-inner">
                                     <ul class="nav main-menu menu navbar-nav">
 
-                                        <li><a href="#">New Arrivals</a></li>
-                                        <li><a href="#">Today's Deal</a></li>
-                                        <li><a href="#">Sell</a></li>
+                                        <li><a href="{{ route('category.index', ['category' => 8]) }}">New Arrivals</a></li>
+                                        <li><a href="{{ route('category.index', ['category' => 9]) }}">Today's Deals</a></li>
                                         <li><a href="/contact">Contact Us</a></li>
                                     </ul>
                                 </div>

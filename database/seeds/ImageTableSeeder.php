@@ -22,11 +22,11 @@ class ImageTableSeeder extends Seeder
 
             $category->products->each(function($product) use ($category) {
 
-                $medium = Http::get('https://source.unsplash.com/300x400/?' . $category->name);
-                $square = Http::get('https://source.unsplash.com/600x600/?' . $category->name);
+                // $medium = Http::get('https://source.unsplash.com/300x400/?' . $category->name);
+                // $square = Http::get('https://source.unsplash.com/600x600/?' . $category->name);
 
-                Storage::put( 'public/' . $category->name . '/' . $product->id  .'medium.jpg', $medium->body() );
-                Storage::put( 'public/' . $category->name . '/' . $product->id  .'square.jpg', $square->body() );
+                // Storage::put( 'public/' . $category->name . '/' . $product->id  .'medium.jpg', $medium->body() );
+                // Storage::put( 'public/' . $category->name . '/' . $product->id  .'square.jpg', $square->body() );
             
 
 
@@ -35,10 +35,10 @@ class ImageTableSeeder extends Seeder
                     'product_id' => $product->id
                 ]);
 
-                Image::create([
-                    'URL' => 'storage/' . $category->name . '/' . $product->id  .'square.jpg', 
-                    'product_id' => $product->id
-                ]);
+                // Image::create([
+                //     'URL' => 'storage/' . $category->name . '/' . $product->id  .'square.jpg', 
+                //     'product_id' => $product->id
+                // ]);
             
 
             });

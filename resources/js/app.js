@@ -59,7 +59,9 @@ export const EventBus = new Vue();
 Vue.component('cart-component', require('./components/CartComponent').default);
 Vue.component('trending-products-list', require('./components/TrendingProductsList').default);
 Vue.component('product-card', require('./components/ProductCard.vue').default);
+Vue.component('single-product', require('./components/SingleProduct.vue').default);
 
+new Vue({el: '#singleProduct'});
 new Vue({el: '#productCard'});
 new Vue({el: '#trendingListContainer'});
 

@@ -15,8 +15,8 @@
 								<!-- Images slider -->
 								<div class="flexslider-thumbnails">
 									<ul class="slides">
-										{{-- <li data-thumb="https://via.placeholder.com/570x520" rel="adjustX:10, adjustY:"> --}}
-											<img src="{{ asset($product->images->get(1)->URL) }}" alt="#">
+										<li data-thumb="https://via.placeholder.com/570x520" rel="adjustX:10, adjustY:">
+											<img src="https://via.placeholder.com/570x520" alt="#">
 										</li>
 									</ul>
 								</div>
@@ -101,24 +101,7 @@
 								<!-- Product Buy -->
 								<div class="product-buy">
 
-									{{-- <div class="quantity">
-										<h6>Quantity :</h6>
-										<!-- Input Order -->
-										<div class="input-group">
-											<div class="button minus">
-												<button type="button" class="btn btn-primary btn-number" data-type="minus" data-field="quant[1]">
-													<i class="ti-minus"></i>
-												</button>
-											</div>
-											<input type="text" name="quant[1]" class="input-number"  data-min="1" data-max="1000" value="1">
-											<div class="button plus">
-												<button type="button" class="btn btn-primary btn-number" data-type="plus" data-field="quant[1]">
-													<i class="ti-plus"></i>
-												</button>
-											</div>
-										</div>
-										<!--/ End Input Order -->
-									</div> --}}
+								
 
 
 									<div class="add-to-cart app-add-to-cart">
