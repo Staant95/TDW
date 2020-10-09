@@ -17,7 +17,8 @@
 
 <section class="shop checkout section">
     <div class="container">
-        <form class="row" action="{{ route('checkout.store') }}" method="post">
+
+        <form class="row" action="{{ route('checkout.store', ['total' => $finalPrice]) }}" method="post">
             @csrf
                 <div class="col-lg-8 col-12">
                     <div>
@@ -88,16 +89,23 @@
                         
                     </div>
                 </div>
+
+
+                
                 <div class="col-lg-4 col-12">
                     <div class="order-details">
                         <!-- Order Widget -->
                         <div class="single-widget">
-                            <h2>CART  TOTALS</h2>
+                            <h2>CART TOTALS</h2>
                             <div class="content">
                                 <ul>
                                     <li>Sub Total<span>{{ $total }}€</span></li>
-                                    <li>(+) Shipping<span>0.00€</span></li>
-                                    <li class="last">Total<span>{{ $total }}€</span></li>
+                                   
+                                    <li>(+) Shipping<span> {{ $shippingCost }}€</span></li>
+                                    @if ($coupon)
+                                        <li> (-) Coupon: <span> {{ $coupon->value }}€ </span> </li>
+                                    @endif
+                                    <li class="last">Total<span>{{ $finalPrice + $shippingCost }}€</span></li>
                                 </ul>
                             </div>
                         </div>
@@ -124,7 +132,26 @@
                     </div>
                 </div>
         </form>
+
+     
+        <div class="row mt-4">
+            <div class="col-lg-8 col-md-5 col-12">
+                <div class="left">
+                    <div class="coupon">
+                        <form action="{{ route('checkout.index') }}" method="get">
+                            <input required name="coupon" placeholder="Enter Your Coupon">
+                            <button class="btn">Apply</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
     </div>
+
+
 </section>
 <!--/ End Checkout -->
 @endsection

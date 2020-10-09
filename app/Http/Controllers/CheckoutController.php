@@ -5,26 +5,46 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use App\Cart;
-use App\Product;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
 use App\Order;
 use App\Address;
+use App\Coupon;
 
 class CheckoutController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    
+    public function index(Request $request)
     {
-        $cart = Auth::user()->cart;
+
+        $user = Auth::user();
+
+        $cart = $user->cart;
+
         $products = $cart->products;
 
         $total = $products->sum('price');
+
+        $finalPrice = $total;
+
+        $shippingCost = $total > 100 ? 0 : 10;
+
+        // when cart has no products
+        if($total === 0) $shippingCost = 0;
+
+
+        $coupon = null;
+
+        if($request->has('coupon') && $request->query('coupon') !== NULL) {
+
+            $coupon = $user->coupons->where('pivot.code', '=', $request->query('coupon'))->first();
+            
+            if($coupon !== NULL) {
+                $finalPrice -= $coupon->value;
+            } else {
+                return abort(404, 'Cannot find a coupon with that code');
+            }
+        }
 
         $payments = Auth::user()->payments;
 
@@ -35,7 +55,10 @@ class CheckoutController extends Controller
             'products' => $products,
             'cart' => $cart,
             'payments' => $payments,
-            'addresses' => $addresses
+            'addresses' => $addresses,
+            'shippingCost' => $shippingCost,
+            'coupon' => $coupon,
+            'finalPrice' => $finalPrice
         ]);
     }
 
@@ -43,19 +66,32 @@ class CheckoutController extends Controller
 
     public function store(Request $request)
     {
+
         $validated = $request->validate([
-            'address' => 'bail|required',
+            'address' => 'required',
             'payment' => 'required'
         ]);
 
+        if($request->has('coupon') && $request->query('coupon') !== NULL) {
+
+            $coupon = Auth::user()->coupons->where('pivot.code', '=', $request->query('coupon'))->first();
+            
+            if($coupon !== NULL) {
+                $coupon->users()->updateExistingPivot(Auth::id(), ['used' => 1]);
+                $coupon->users()->detach(Auth::id());
+            } else {
+                return abort(404, 'Cannot find a coupon with that code');
+            }
+        }
 
         $address = Address::find($validated['address']);
         
         $cart = Auth::user()->cart;
+
         $products = $cart->products;
-        $total = $products->sum('price');
-        $cart->products()->detach();
-        $count = $products->count();
+
+        $total = $request->input('total');
+
 
         $order = Order::create([
             'shipping_id' => 1,
@@ -65,12 +101,22 @@ class CheckoutController extends Controller
             'user_id' => Auth::id(),
             'address_id' => $address->id
         ]);
-        for ($i=0; $i < $count; $i++) { 
-            $order->products()->attach($products);
+
+
+        foreach($products as $product) { 
+            $order->products()->attach($product);
         }
         
-               
+        // clear cart
+        $cart->products()->detach();
+        
+        
         return redirect()->route('profile.orders');
+    }
+
+
+    public function coupon(Request $request) {
+
     }
 
  

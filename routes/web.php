@@ -7,10 +7,16 @@ use App\Category;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use App\Product;
-
+use Illuminate\Support\Facades\DB;
 
 Auth::routes();
 
+
+Route::get('testing', function() {
+
+
+
+});
 
 
 Route::redirect('/', 'home');

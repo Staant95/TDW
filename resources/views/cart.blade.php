@@ -50,16 +50,14 @@
 						<div class="total-amount">
 							<div class="row">
 
-									<div class="col-lg-8 col-md-5 col-12">
-										<div class="left">
-											<div class="coupon">
-												<form action="#" target="_blank">
-													<input name="Coupon" placeholder="Enter Your Coupon">
-													<button class="btn">Apply</button>
-												</form>
-											</div>
+								<div class="col-lg-8 col-md-5 col-12">
+									<div class="left">
+										<div class="coupon">
+											
 										</div>
 									</div>
+								</div>
+								
 									<div class="col-lg-4 col-md-7 col-12">
 										<div class="right">
 											<ul>
