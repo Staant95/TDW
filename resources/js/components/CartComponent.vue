@@ -92,15 +92,17 @@
             },
             addItem: function(productId) {
                 console.log(`Product id being added: ${productId.id}`)
+
                 axios.post(`http://localhost:8000/api/users/${this.userId}/cart/`, {
                     'product_id' : productId.id
                 })
                 .then(res => {
-                    this.products = [];
-                    res.data.forEach(el => {
-                        let temp = ( ({id, name, price, pivot: {quantity}}) => ({id, name, price, quantity}) )(el);
-                        this.products.push(temp);
-                    });
+                    console.log(res.data)
+                    // this.products = [];
+                    // res.data.forEach(el => {
+                    //     let temp = ( ({id, name, price, pivot: {quantity}}) => ({id, name, price, quantity}) )(el);
+                    //     this.products.push(temp);
+                    // });
                 })
                 .catch(err => console.log(`error in adding item ${err}`));
             }
@@ -111,9 +113,11 @@
                 let product = {id, name, price, quantity: 1};
 
                 let index = this.products.findIndex(el => el.id === data.id);
-
+                console.log(`Index of product from created ${index}`)
                 if(index !== -1) {
                     this.products[index].quantity = this.products[index].quantity + 1;
+
+                    this.addItem(product);
                 }
                 else {
                     this.addItem(product);
