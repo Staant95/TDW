@@ -20561,6 +20561,9 @@ Version:1.0
     margin-bottom: 5em!important;
 }
 
+#app-link {
+    color: #f7941d;
+}
 
 
 .app-add-to-cart {
