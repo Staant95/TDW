@@ -65,9 +65,9 @@ class CheckoutController extends Controller
             'user_id' => Auth::id(),
             'address_id' => $address->id
         ]);
-        for ($i=0; $i < $count; $i++) { 
-            $order->products()->attach($products);
-        }
+         
+        $order->products()->attach($products);
+        
         
                
         return redirect()->route('profile.orders');
