@@ -21,4 +21,9 @@ class Order extends Model
     public function address() {
         return $this->belongsTo('App\Address');
     }
+
+    public function products()
+    {
+        return $this->belongsToMany('App\Product');
+    }
 }

@@ -55,8 +55,9 @@ class CheckoutController extends Controller
         $products = $cart->products;
         $total = $products->sum('price');
         $cart->products()->detach();
+        $count = $products->count();
 
-        Order::create([
+        $order = Order::create([
             'shipping_id' => 1,
             'code' => Str::random(5),
             'expected' => Carbon::now()->add(5, 'day'),
@@ -64,6 +65,11 @@ class CheckoutController extends Controller
             'user_id' => Auth::id(),
             'address_id' => $address->id
         ]);
+        for ($i=0; $i < $count; $i++) { 
+            $order->products()->attach($products);
+        }
+        
+               
         return redirect()->route('profile.orders');
     }
 
