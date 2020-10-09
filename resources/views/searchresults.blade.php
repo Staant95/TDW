@@ -32,7 +32,7 @@
 												onclick="!this.input.checked"
 												>
 												<label class="checkbox-inline" for="low">
-													20$ - 50$ 
+													20€ - 50€ 
 												</label>
 											</div>
 											<div class="form-check">
@@ -40,7 +40,7 @@
 												{{ old('price') == 'medium' ? 'checked' : '' }}
 												>
 												<label class="checkbox-inline" for="medium">
-													50$ - 100$ 
+													50€ - 100€ 
 												</label>
 											</div>
 											<div class="form-check">
@@ -48,7 +48,7 @@
 												{{ old('price') == 'high' ? 'checked' : '' }}
 												>
 												<label class="checkbox-inline" for="high">
-													100$ - 500$ 
+													100€ - 500€ 
 												</label>
 											</div>
 

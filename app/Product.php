@@ -44,4 +44,9 @@ class product extends Model
     {
         return $this->belongsToMany('App\Wishlist');
     }
+
+    public function orders()
+    {
+        return $this->belongsToMany('App\Order');
+    }
 }
