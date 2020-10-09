@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\support\Facades\Auth;
+use Illuminate\Support\Str;
 use App\Coupon;
 
 class NewsletterController extends Controller
@@ -12,7 +13,8 @@ class NewsletterController extends Controller
 
         $coupon = Coupon::where('value', '=', 10)->first();
  
-        $coupon->users()->attach(Auth::id());
+        $coupon->users()->attach(Auth::id(), ['code' => Str::random(5)]);
+        
         // $coupon->users()->updateExistingPivot(Auth::id(), ['used' => 1]);
 
         

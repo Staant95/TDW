@@ -20,7 +20,7 @@
                     >
 
                     <div class="card-body">
-                        <h5 class="card-title">Coupon code: {{ $coupon->code }}</h5>
+                        <h5 class="card-title">Coupon code: {{ $coupon->pivot->code }}</h5>
                         <p class="card-text"> Coupon value: <strong>{{ $coupon->value }} €</strong> </p>
                     </div>
 
@@ -35,12 +35,16 @@
         
         <h3
         style="grid-column: 1/3; grid-row: 2/3; text-align: center;"
-        > <img src="{{ asset('storage/sad-face.svg') }}" style="height: 50px; width: 50px"> you don't have any coupons. <br>
+        > 
+        <img src="{{ asset('storage/sad-face.svg') }}" style="height: 50px; width: 50px"> you don't have any coupons. <br>
+            
+        @if(!$newsletterCoupon)
             <a href="/home#newsletter"
             style="text-decoration: underline!important ; color: #f7941d"
-            > Receive a 10€ coupon now! </a>
+            > Receive a 10€ coupon now! 
+            </a>
         </h3>
-        
+        @endif
         
     @endif
    

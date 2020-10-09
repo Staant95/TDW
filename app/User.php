@@ -75,7 +75,7 @@ class User extends Authenticatable
 
     public function coupons()
     {
-        return $this->belongsToMany('App\Coupon')->withPivot('used');
+        return $this->belongsToMany('App\Coupon')->withPivot('used', 'code');
     }
 
     public function payments()
