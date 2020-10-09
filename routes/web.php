@@ -11,21 +11,6 @@ use App\Product;
 
 Auth::routes();
 
-Route::get('testing', function(Faker $faker){
-
-    $pr = Product::find(10);
-   
-    $path = $pr->categories->first()->name . '/' . $pr->id . 'medium.jpg';
-
-    $img = Storage::get('public/'. $path);
-    dd($img);
-
-
-
-});
-
-
-
 
 
 Route::redirect('/', 'home');
@@ -50,6 +35,8 @@ Route::middleware('auth')->group(function() {
     Route::post('/categories/{category}', 'CategoryController@sort')->name('category.sort');
 
     Route::post('/reviews', 'ReviewController@store')->name('review.store');
+
+    Route::post('/newsletter', 'NewsletterController@store')->name('newsletter');
     
     Route::redirect('/profile', '/profile/orders')->name('profile');
     Route::get('/profile/orders', 'Profile\OrdersController@index')->name('profile.orders');
@@ -61,7 +48,7 @@ Route::middleware('auth')->group(function() {
     Route::get('/profile/addresses', 'Profile\AddressesController@index')->name('profile.addresses.index');
     Route::get('profile/addresses/create', 'Profile\AddressesController@create')->name('profile.addresses.create');
     Route::delete('/profile/addresses/{address}', 'Profile\AddressesController@destroy')->name('profile.addresses.destroy');
-
+    Route::get('/profile/coupons', 'Profile\CouponsController@index')->name('profile.coupons.index');
     
 
 });

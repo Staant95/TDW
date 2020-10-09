@@ -17,7 +17,7 @@ class CreateCouponUserTable extends Migration
             $table->id();
             $table->unsignedBigInteger('coupon_id');
             $table->unsignedBigInteger('user_id');
-            $table->integer('code');
+            $table->boolean('used')->default(false);
             $table->timestamps();
             $table->foreign('coupon_id')->references('id')->on('coupons');
             $table->foreign('user_id')->references('id')->on('users');

@@ -32,6 +32,9 @@
                     <a href="{{ route('profile.payments.index') }}">Payments</a>
                 </li>
                 <li class="list-group-item">
+                    <a href="{{ route('profile.coupons.index') }}">Coupons</a>
+                </li>
+                <li class="list-group-item">
                     <form 
                     action="{{ route('logout') }}" 
                     method="POST"

@@ -21,6 +21,7 @@ RoleTableSeeder::class,
             PaymentTableSeeder::class,
             ShopTableSeeder::class,   
             ImageTableSeeder::class,
+            CouponTableSeeder::class,
         ]);
     }
 }

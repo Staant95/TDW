@@ -10,6 +10,6 @@ class Coupon extends Model
     
     public function users()
         {
-            return $this->belongsToMany('App\User')->withPivot('code');
+            return $this->belongsToMany('App\User')->withPivot('used');
         }
 }

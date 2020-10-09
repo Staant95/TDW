@@ -21,11 +21,12 @@ class HomepageController extends Controller
             $item->products = $item->products->slice(0,3);
         });
 
-
+        
         return view('homepage.homepage')
             ->with([
                 // 'categories' => Category::limit(10)->get(),
-                'saleCategories' => $categories
+                'saleCategories' => $categories,
+               
             ]);
     }
 

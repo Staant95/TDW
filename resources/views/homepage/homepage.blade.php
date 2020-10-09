@@ -22,9 +22,7 @@
     @include('homepage.components.shopService')
     @include('homepage.components.newsletter')
 
-{{--    <div id="productsContainer">--}}
-{{--        <product-component></product-component>--}}
-{{--    </div>--}}
+
 <script>
     if(document.querySelector('.subscriptionAlert')) {
         const subscriptionAlert = document.querySelector('.subscriptionAlert');
