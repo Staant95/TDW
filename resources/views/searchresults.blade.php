@@ -124,11 +124,8 @@
 							<single-product
 								wishlist-id={{ Auth::user()->wishlist->id }}
 								:product="{{ $product }}"
-								@if($product->images->count())
-									:image="{{$product->images->first()}}"
-								@else
-									:image="{{ '' }}"
-								@endif
+								image={{ $product->images->first()->URL }}
+								
 							>
 							</single-product>
 					

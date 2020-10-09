@@ -15,7 +15,7 @@
                 <a :href="'/products/' + this.product.id">
                     <img
                         class="default-img"
-                        :src="'/' + this.imageURL"
+                        :src="'/' + this.image"
                         alt="#"
                     />
                 </a>
@@ -64,14 +64,11 @@ export default {
         wishlistId: String,
         image: {
             default: {},
-            type: Object
+            type: String
         }
     },
     mounted() {
-        this.imageURL = this.image
-            ? this.image.URL
-            : "https://via.placeholder.com/550x750";
-        console.log(this.image)
+       
     },
     methods: {
         emitAddToCartEvent: function(product) {
@@ -100,7 +97,7 @@ export default {
             csrf: document
                 .querySelector('meta[name="csrf-token"]')
                 .getAttribute("content"),
-            imageURL: ""
+           
         };
     }
 };

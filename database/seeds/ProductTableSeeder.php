@@ -12,7 +12,7 @@ class ProductTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        factory(App\Product::class, 112) // categories * chunks(8)
+        factory(App\Product::class, 120) // categories * chunks(8)
         ->create()
         ->each(function($product) use($faker) {
 
