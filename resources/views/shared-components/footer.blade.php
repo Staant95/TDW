@@ -26,16 +26,6 @@
                     </div>
                     <!-- End Single Widget -->
                 </div>
-                {{-- <div class="col-lg-2 col-md-6 col-12">
-                    <!-- Single Widget -->
-                    <div class="single-footer links">
-                        <h4>Customer Service</h4>
-                        <ul>
-                            <li><a href="{{ route('profile.payments.index') }}">Payment Methods</a></li>
-                        </ul>
-                    </div>
-                    <!-- End Single Widget -->
-                </div> --}}
                 <div class="col-lg-3 col-md-6 col-12">
                     <!-- Single Widget -->
                     <div class="single-footer social">

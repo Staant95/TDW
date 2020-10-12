@@ -70,7 +70,7 @@
                                 <i class="fa fa-envelope-open"></i>
                                 <h4 class="title">Email:</h4>
                                 <ul>
-                                    <li><a href="mailto:info@yourwebsite.com">info@eshop.com</a></li>
+                                    <li><a href="mailto:info@eshop.com">info@eshop.com</a></li>
                                 </ul>
                             </div>
                             <div class="single-info">
