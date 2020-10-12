@@ -31,6 +31,8 @@ Route::middleware('auth')->group(function() {
     
     Route::redirect('/profile', '/profile/orders')->name('profile');
     Route::get('/profile/orders', 'Profile\OrdersController@index')->name('profile.orders');
+    Route::get('/profile/orders/{order}', 'Profile\OrdersController@show')->name('profile.orders.show');
+    Route::delete('profile/orders/{order}', 'Profile\OrdersController@destroy')->name('profile.orders.destroy');
     Route::get('/profile/payments', 'Profile\PaymentsController@index')->name('profile.payments.index');
     Route::post('/profile/payments', 'Profile\PaymentsController@store')->name('profile.payments.store');
     Route::get('/profile/payments/create', 'Profile\PaymentsController@create')->name('profile.payments.create');

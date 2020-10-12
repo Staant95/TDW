@@ -4,6 +4,8 @@
 
 @section('panel-content')
 
+<div class="app-tab-content">
+
     @if($coupons->count())
 
     
@@ -47,6 +49,8 @@
         @endif
         
     @endif
+    
+</div>
    
 @endsection
 

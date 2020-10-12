@@ -4,9 +4,10 @@
     align-items: stretch;
 }
 .app-list-left {
-    width: 25vw;
+    /* width: 25vw; */
+    min-width: min-content;
+    width: 30vw;
 }
-
 .app-tab-content {
     margin:0 auto;
     width: 70vw;
@@ -116,3 +117,28 @@
 }
 
 
+@media only screen and (max-width: 480px) {
+    .app-menu-panel {
+        flex-direction: column;
+    }
+    .app-list-left {
+        width: 90vw;
+    }
+    .app-tab-content {
+        width: 90vw;
+        padding: 0px;
+        margin: 0px;
+        margin-top: 10px;
+        grid-template-columns: 340px;
+    }
+    .app-order {
+        width: 95%;
+    }
+    .app-payment {
+        width: 95%;
+    }
+
+    .app-tab-content > h3 {
+        width: 95%;
+    }
+}

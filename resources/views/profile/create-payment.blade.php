@@ -2,6 +2,9 @@
 
 @section('panel-content')
 
+<div class="app-tab-content">
+
+
 
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -37,5 +40,7 @@
         
         <button type="submit" class="btn btn-primary">Create</button>
     </form>
+
+</div>
 
 @endsection

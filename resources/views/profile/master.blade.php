@@ -46,7 +46,7 @@
             </ul>
 
 
-           <div class="app-tab-content">
+           <div>
 
              @yield('panel-content')
 

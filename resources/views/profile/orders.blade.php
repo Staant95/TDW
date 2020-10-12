@@ -4,28 +4,34 @@
 
 @section('panel-content')
 
+<div class="app-tab-content">
+
     @if ($orders->count())
 
       
         @foreach ($orders as $order)
-            
-            <div class="app-order">
 
-                <div class="card" style="height: 100%">
-                    <img 
-                    src="{{ asset('storage/box.svg') }}" 
-                    class="card-img-top" 
-                    alt=""
-                    style="width: 240px; height: 120px; margin: 10px auto;"
-                    >
-                    <div class="card-body">
-                    <h5 class="card-title">Order#: {{ $order->code }}</h5>
-                    <p class="card-text"> Expected day of delivery: <strong>{{ $order->expected }}</strong> </p>
-                    <p class="card-text"> Shipping company: <strong> Bartolini </strong></p>
-                    <p>Shipping address: <strong> {{ $order->address->street }} </strong> </p>
+            <form name="order" action="{{ route('profile.orders.show', ['order' => $order->id]) }}" method="GET">
+            
+                <div class="app-order" onclick="document.order.submit()">
+
+                    <div class="card" style="height: 100%">
+                        <img 
+                        src="{{ asset('storage/box.svg') }}" 
+                        class="card-img-top" 
+                        alt=""
+                        style="width: 240px; height: 120px; margin: 10px auto;"
+                        >
+                        <div class="card-body">
+                        <h5 class="card-title">Order#: {{ $order->code }}</h5>
+                        <p class="card-text"> Expected day of delivery: <strong>{{ $order->expected }}</strong> </p>
+                        <p class="card-text"> Shipping company: <strong> Bartolini </strong></p>
+                        <p>Shipping address: <strong> {{ $order->address->street }} </strong> </p>
+                        </div>
                     </div>
                 </div>
-            </div>
+
+            </form>
 
         @endforeach
 
@@ -41,6 +47,8 @@
         </p>  
 
     @endif
+    
+</div>
 
         
 

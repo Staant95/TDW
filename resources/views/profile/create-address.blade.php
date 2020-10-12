@@ -1,6 +1,8 @@
 @extends('profile.master')
 
 @section('panel-content')
+<div class="app-tab-content">
+
     <form method="POST" action="{{ route('profile.addresses.store', ['redirect' => request('redirect')]) }}" >
         @csrf  
         <div class="form-group">
@@ -18,4 +20,6 @@
         
         <button type="submit" class="btn btn-primary">Create</button>
   </form>
+  
+</div>
 @endsection

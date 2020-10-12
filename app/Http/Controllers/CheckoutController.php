@@ -108,7 +108,10 @@ class CheckoutController extends Controller
 
 
         foreach($products as $product) { 
-            $order->products()->attach($product);
+            $order->products()->attach($product, [
+                'price' => $product->price, 
+                'quantity' => $product->pivot->quantity
+            ]);
         }
         
         // clear cart

@@ -1,0 +1,40 @@
+.app-order-pane {
+    width: 70vw;
+    display: grid;
+    margin-top: 5px;
+    padding-left: 20px;
+}
+
+#overview {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.app-table-data {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+@media only screen and (max-width: 900px) {
+
+    .app-menu-panel {
+        flex-direction: column;
+    }
+    .app-list-products {
+        margin-top: 20px;
+    }
+
+    .app-list-left {
+        width: 100%;
+    }
+
+    .app-unit-price {
+        display: none;
+    }
+}

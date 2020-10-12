@@ -2,6 +2,8 @@
 
 @section('panel-content')
 
+<div class="app-tab-content">
+
     <div class="card app-payment" style="height: 100%">
         <a id="app-add-payment" href="{{ route('profile.addresses.create') }}">
             <img src="{{ asset('storage/plus.svg') }}" alt="" >
@@ -28,6 +30,7 @@
         </div>
 
     @endforeach
+</div>
 
 
 @endsection
