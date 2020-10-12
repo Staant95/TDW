@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section('title', 'Cart')
+
 @section('content')
 
 	@if($products->count())
@@ -13,7 +15,9 @@
 								<tr class="main-hading">
 									<th>PRODUCT</th>
 									<th>NAME</th>
-									<th class="text-center">PRICE</th>
+									<th class="text-center">UNIT PRICE</th>
+									<th class="text-center">QUANTITY</th>
+									<th class="text-center">TOTAL</th>
 									<th class="text-center"><i class="ti-trash remove-icon"></i></th>
 								</tr>
 							</thead>
@@ -27,6 +31,47 @@
 									</td>
 									<td class="price" data-title="Price"><span>{{ $product->price }}€ </span></td>
 									
+									<td class="qty" data-title="Qty">
+										<div class="input-group">
+
+											
+											<form action="{{ route('carts.products.update', ['cart' => Auth::user()->cart->id, 'product' => $product->id]) }}" method="POST">
+												@csrf
+												@method('PUT')
+												<div class="button minus">
+													
+														<input hidden type="text" value="1" class="btn btn-primary btn-number" name="minus">
+														
+														<button class="btn btn-primary btn-number" type="submit">
+															<i class="ti-minus"></i>
+														</button>
+												</div>
+											</form>
+
+											
+											<input type="text" name="quantity" class="input-number"  data-min="1" data-max="100" value="{{ $product->pivot->quantity }}">
+											
+											<form action="{{ route('carts.products.update', ['cart' => Auth::user()->cart->id, 'product' => $product->id]) }}" method="post">
+												@csrf
+												@method('PUT')
+												<div class="button plus">
+
+													<input hidden type="text" value="1" class="btn btn-primary btn-number" name="plus">
+														
+													<button class="btn btn-primary btn-number" type="submit">
+														<i class="ti-plus"></i>
+													</button>
+													
+												</div>
+
+											</form>
+
+										</div>
+									</td>
+
+
+									<td class="total-amount" data-title="Total"><span>{{ $product->pivot->quantity * $product->price }}€</span></td>
+
 									<td class="action" data-title="Remove">
 										<form action= "{{ route('carts.products.destroy', ['cart'=>Auth::user()->cart->id,'product'=>$product->id]) }}" method="POST">
 											
@@ -61,13 +106,13 @@
 									<div class="col-lg-4 col-md-7 col-12">
 										<div class="right">
 											<ul>
-												<li>Cart Subtotal<span>{{ $total }}</span></li>
+												<li>Cart Subtotal<span>{{ $total }}€</span></li>
 												@if($total > 100)
 													<li>Shipping<span>Free</span></li>
-													<li class="last">You Pay<span>{{ $total }}</span></li>									
+													<li class="last">You Pay<span>{{ $total }}€</span></li>									
 												@else
 													<li>Shipping<span>10</span></li>
-													<li class="last">You Pay<span>{{ $total + 10 }}</span></li>
+													<li class="last">You Pay<span>{{ $total + 10 }}€</span></li>
 												@endif
 											</ul>
 											<div class="button5">

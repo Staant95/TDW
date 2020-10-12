@@ -17,29 +17,25 @@ class CartProductController extends Controller
     {
         $cart = Cart::find($cart_id);
         $products= $cart->products;
-        $total = $products->sum('price');
+        
+        $total = 0;
+
+        foreach($products as $product) {
+            $total += ($product->price * $product->pivot->quantity);
+        }
+
         return view('cart')->with(['products' => $cart->products,
                                     'total' => $total]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+   
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+   
     public function store(Cart $cart,Request $request)
     {
+
+
+
         $product = $request->input('product');
         $products = $cart->products;
         if(! $products->contains($product))
@@ -47,38 +43,27 @@ class CartProductController extends Controller
             return redirect()->back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    
+    public function update(Cart $cart, Product $product, Request $request)
     {
-        //
+        if($request->has('minus')) {
+
+            $quantity = $cart->products->where('pivot.product_id', '=', $product->id)->first()->pivot->quantity;
+            if($quantity > 1) {
+                $quantity -= 1;
+                $cart->products()->updateExistingPivot($product->id, ['quantity' => $quantity]);
+            }
+
+        } else {
+
+            $quantity = $cart->products->where('pivot.product_id', '=', $product->id)->first()->pivot->quantity;
+            $quantity += 1;
+            $cart->products()->updateExistingPivot($product->id, ['quantity' => $quantity]);
+        }
+
+        return redirect()->route('carts.products.index', ['cart' => Auth::user()->cart->id]);
     }
 
     /**

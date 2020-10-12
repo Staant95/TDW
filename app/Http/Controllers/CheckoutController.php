@@ -21,9 +21,13 @@ class CheckoutController extends Controller
 
         $cart = $user->cart;
 
-        $products = $cart->products;
+        $products = $cart->products;       
 
-        $total = $products->sum('price');
+        $total = 0;
+        
+        foreach($products as $product) {
+            $total += ($product->price * $product->pivot->quantity);
+        }
 
         $finalPrice = $total;
 

@@ -20666,7 +20666,9 @@ Version:1.0
 }
 
 
-@charset "UTF-8";
+.app-quantity:hover {
+    color: #f7941d;
+}@charset "UTF-8";
 
 /*!
  * Font Awesome Free 5.14.0 by @fontawesome - https://fontawesome.com
