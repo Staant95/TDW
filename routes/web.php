@@ -2,28 +2,16 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use Faker\Generator as Faker;
-use App\Category;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Storage;
-use App\Product;
-use Illuminate\Support\Facades\DB;
 
 Auth::routes();
 
 
-Route::get('testing', function() {
-
-
-
-});
-
-
-Route::redirect('/', 'home');
-Route::view('/aboutus', 'aboutus');
-Route::view('/contact', 'contact');
 
 Route::middleware('auth')->group(function() {
+    
+    Route::redirect('/', 'home');
+    Route::view('/aboutus', 'aboutus');
+    Route::view('/contact', 'contact');
 
     Route::resource('/home', 'HomepageController');
     

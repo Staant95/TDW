@@ -14,34 +14,28 @@
                     </div>
                     <!-- End Single Widget -->
                 </div>
-                <div class="col-lg-2 col-md-6 col-12">
+                <div class="col-lg-4 col-md-8 col-12">
                     <!-- Single Widget -->
                     <div class="single-footer links">
                         <h4>Information</h4>
                         <ul>
                             <li><a href="/aboutus">About Us</a></li>
-                            <li><a href="#">Faq</a></li>
-                            <li><a href="#">Terms & Conditions</a></li>
                             <li><a href="/contact">Contact Us</a></li>
                             <li><a href="#">Help</a></li>
                         </ul>
                     </div>
                     <!-- End Single Widget -->
                 </div>
-                <div class="col-lg-2 col-md-6 col-12">
+                {{-- <div class="col-lg-2 col-md-6 col-12">
                     <!-- Single Widget -->
                     <div class="single-footer links">
                         <h4>Customer Service</h4>
                         <ul>
-                            <li><a href="#">Payment Methods</a></li>
-                            <li><a href="#">Money-back</a></li>
-                            <li><a href="#">Returns</a></li>
-                            <li><a href="#">Shipping</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="{{ route('profile.payments.index') }}">Payment Methods</a></li>
                         </ul>
                     </div>
                     <!-- End Single Widget -->
-                </div>
+                </div> --}}
                 <div class="col-lg-3 col-md-6 col-12">
                     <!-- Single Widget -->
                     <div class="single-footer social">
@@ -49,8 +43,8 @@
                         <!-- Single Widget -->
                         <div class="contact">
                             <ul>
-                                <li>NO. 342 - London Oxford Street.</li>
-                                <li>012 United Kingdom.</li>
+                                <li>NO. 12 - Via San Francesco.</li>
+                                <li>Roma.</li>
                                 <li>info@eshop.com</li>
                                 <li>+032 3456 7890</li>
                             </ul>
