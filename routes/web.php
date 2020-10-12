@@ -9,9 +9,6 @@ Auth::routes();
 
 Route::middleware('auth')->group(function() {
     
-    Route::redirect('/', 'home');
-    Route::view('/aboutus', 'aboutus');
-    Route::view('/contact', 'contact');
 
     Route::resource('/home', 'HomepageController');
     
@@ -44,6 +41,11 @@ Route::middleware('auth')->group(function() {
     Route::delete('/profile/addresses/{address}', 'Profile\AddressesController@destroy')->name('profile.addresses.destroy');
     Route::get('/profile/coupons', 'Profile\CouponsController@index')->name('profile.coupons.index');
     
+
+    Route::redirect('/', 'home');
+    Route::view('/aboutus', 'aboutus');
+    Route::view('/contact', 'contact');
+    Route::post('/email-success', function(){ return view('email-success');});
 
 });
 

@@ -14,7 +14,8 @@
                                 <h4>Get in touch</h4>
                                 <h3>Write us a message</h3>
                             </div>
-                            <form class="form" method="post" action="mail/mail.php">
+                            <form class="form" method="post" action="/email-success">
+                                @csrf
                                 <div class="row">
                                     <div class="col-lg-6 col-12">
                                         <div class="form-group">
@@ -69,15 +70,14 @@
                                 <i class="fa fa-envelope-open"></i>
                                 <h4 class="title">Email:</h4>
                                 <ul>
-                                    <li><a href="mailto:info@yourwebsite.com">info@yourwebsite.com</a></li>
-                                    <li><a href="mailto:info@yourwebsite.com">support@yourwebsite.com</a></li>
+                                    <li><a href="mailto:info@yourwebsite.com">info@eshop.com</a></li>
                                 </ul>
                             </div>
                             <div class="single-info">
                                 <i class="fa fa-location-arrow"></i>
                                 <h4 class="title">Our Address:</h4>
                                 <ul>
-                                    <li>KA-62/1, Travel Agency, 45 Grand Central Terminal, New York.</li>
+                                    <li>12 Via San Francesco, Roma.</li>
                                 </ul>
                             </div>
                         </div>
