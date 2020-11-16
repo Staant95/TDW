@@ -22,7 +22,7 @@
 
                             <input type="text" placeholder="Search me" name="product">
                             <button type="submit" style="background-color: #f7941d">
-                                <i class="ti-search"></i>
+                                <i style="color: white" class="ti-search"></i>
                             </button>
                         </form>
                     </div>
@@ -45,7 +45,7 @@
                         <form method="GET" action="{{ route('search') }}">
                             <input name="product" placeholder="Search Products">
                             <button class="btnn" style="background-color: #f7941d">
-                                <i class="ti-search"></i>
+                                <i style="color: white" class="ti-search"></i>
                             </button>
                         </form>
 
