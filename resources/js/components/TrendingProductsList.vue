@@ -120,7 +120,7 @@
                                                     <h5>{{ product.name }}</h5>
                                                     <div class="product-price">
                                                         <span
-                                                            >$
+                                                            >€
                                                             {{
                                                                 product.price
                                                             }}</span

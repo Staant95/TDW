@@ -21,7 +21,9 @@
                             @csrf
 
                             <input type="text" placeholder="Search me" name="product">
-                            <button type="submit"><i class="ti-search"></i></button>
+                            <button type="submit" style="background-color: #f7941d">
+                                <i class="ti-search"></i>
+                            </button>
                         </form>
                     </div>
                     <!--/ End Search Form -->
@@ -42,7 +44,9 @@
 
                         <form method="GET" action="{{ route('search') }}">
                             <input name="product" placeholder="Search Products">
-                            <button class="btnn"><i class="ti-search"></i></button>
+                            <button class="btnn" style="background-color: #f7941d">
+                                <i class="ti-search"></i>
+                            </button>
                         </form>
 
                     </div>

@@ -1,0 +1,38 @@
+.app-user-container {
+    display: flex;
+    margin-bottom: 3em;
+    margin-top: 3em
+}
+
+.app-user-name {
+    margin-top: 5em;
+    display: flex;
+
+}
+
+.app-user-info {
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+}
+
+.app-user-icon {
+    margin-left: 16px;
+    margin-right: 2em;
+    font-size: 3em;
+    text-align: center;
+    width: 40px;
+}
+
+.app-change {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px black solid ;
+}
+.app-change > i {
+    font-size: 1.5em;
+    padding-right: 8px;
+}
+

@@ -6,6 +6,11 @@
 
 <div class="app-tab-content">
 
+    <h1 style="margin-bottom: 1em">Your coupons</h1>
+
+
+
+
     @if($coupons->count())
 
     
@@ -23,7 +28,7 @@
 
                     <div class="card-body">
                         <h5 class="card-title">Coupon code: {{ $coupon->pivot->code }}</h5>
-                        <p class="card-text"> Coupon value: <strong>{{ $coupon->value }} €</strong> </p>
+                        <p class="card-text" style="font-size: 1.1em"> Coupon value: <strong>{{ $coupon->value }} €</strong> </p>
                     </div>
 
                 </div>

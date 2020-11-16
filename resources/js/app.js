@@ -19,6 +19,8 @@ require('./scripts/scrollup')
 require('./scripts/onepage-nav.min')
 require('./app-filter');
 
+window.copyToClipboard = require('./copyToClipboard');
+
 
 $('.menu').slicknav({
     prependTo:".mobile-nav",

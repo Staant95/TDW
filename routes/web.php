@@ -42,7 +42,7 @@ Route::middleware('auth')->group(function() {
     Route::get('profile/addresses/create', 'Profile\AddressesController@create')->name('profile.addresses.create');
     Route::delete('/profile/addresses/{address}', 'Profile\AddressesController@destroy')->name('profile.addresses.destroy');
     Route::get('/profile/coupons', 'Profile\CouponsController@index')->name('profile.coupons.index');
-    
+    Route::get('/profile/my-data', 'Profile\MyDataController@index')->name('profile.mydata');
 
     Route::redirect('/', 'home');
     Route::view('/aboutus', 'aboutus');

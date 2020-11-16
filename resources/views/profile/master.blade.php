@@ -5,7 +5,7 @@
 @section('content')
 
 
-    <div class="container mt-5">
+    {{-- <div class="container mt-5">
 
         <div style="display: flex; justify-content: center; align-items: center; flex-direction: column; widht: 70%; margin: 2em auto">
             <img src="{{ asset('storage/user.svg') }}"
@@ -16,46 +16,43 @@
                 Hi, {{ Auth::user()->name }}
             </h3>
         </div>
-    </div>
-
-    <div class="container-fluid app-menu-panel app-container">
-
-       
-            <ul class="list-group app-list-left" style="margin-top: 10px">
-                <li class="list-group-item">
-                    <a href="{{ route('profile.orders') }}">Orders</a>
-                </li>
-                <li class="list-group-item">
-                    <a href="{{ route('profile.addresses.index') }}">Addresses</a>
-                </li>
-                <li class="list-group-item">
-                    <a href="{{ route('profile.payments.index') }}">Payments</a>
-                </li>
-                <li class="list-group-item">
-                    <a href="{{ route('profile.coupons.index') }}">Coupons</a>
-                </li>
-                <li class="list-group-item">
-                    <form 
-                    action="{{ route('logout') }}" 
-                    method="POST"
-                    >
-                        @csrf
-                        <button class="app-logout-btn">Logout</button>
-                    </form>
-                </li>
-            </ul>
+    </div> --}}
 
 
-           <div>
+<div class="container app-main-container">
 
-             @yield('panel-content')
+    <nav id="app-nav">
+        <ul id="app-left-menu">
 
-           </div>
+            <li>
+                <a href="{{ route('profile.orders') }}">My orders</a>
+            </li>
 
-    </div>
+            <li>
+                <a href="{{ route('profile.mydata') }}">My data</a>
+            </li>
+
+            <li>
+                <a href="{{ route('profile.addresses.index') }}">My addresses</a>
+            </li>
+
+            <li>
+                <a href="{{ route('profile.payments.index') }}">My payment methods</a>
+            </li>
+
+            <li>
+                <a href="{{ route('profile.coupons.index') }}">My coupons</a>
+            </li>
+
+        </ul>
+    </nav>
 
 
+    @yield('panel-content')
 
+
+</div>
+   
   
 
 @endsection

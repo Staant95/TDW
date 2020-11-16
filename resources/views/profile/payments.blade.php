@@ -4,33 +4,59 @@
 
 <div class="app-tab-content">
 
-    <div class="card app-payment" style="height: 100%">
-        <a id="app-add-payment" href="{{ route('profile.payments.create') }}">
-            <img src="{{ asset('storage/plus.svg') }}" alt="" >
-            <p>Add payment method</p> 
-        </a>
-    </div>
+    <h1>Your payment methods</h1>
+    <p style="font-size: 1.2em; color: black; margin-bottom: 2em">
+        Add a payment method to speed up checkout process.
+    </p>
 
+    <div style="display: flex">
 
-    @foreach ($payments as $payment)
-        
         <div class="card app-payment" style="height: 100%">
-            <div class="card-body app-card-content">
-                <h5 class="card-title">{{ $payment->type }}</h5>
-                <p class="card-text"> {{ $payment->pivot->card_number }} </p>
-                <p class="card-text"> {{ Auth::user()->name }}  {{ Auth::user()->lastname }}</p>
-                <p class="card-text"> {{ $payment->pivot->expiration_date }} </p>
-                <div class="links">
-                    <form action="{{ route('profile.payments.destroy', ['payment' => $payment->id]) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="app-remove-btn">Remove</button>
-                    </form>
+            <a id="app-add-payment" href="{{ route('profile.payments.create') }}">
+                <i style="color: #f7941d;" class="fa fa-plus" aria-hidden="true"></i>
+                <p style="color: #f7941d;">Add payment method</p> 
+            </a>
+        </div>
+
+
+        @foreach ($payments as $payment)
+            
+            <div class="card app-payment" style="height: 100%">
+                <div class="card-body app-card-content">
+                    
+                    <h5 class="card-title">{{ $payment->type }}</h5>
+                    
+                    <h2 style="font-weight: 500; color: black" class="card-text"> {{ Auth::user()->name }}  {{ Auth::user()->lastname }}</h2>
+                    <div>
+                        <p style="font-weight: 500; color: black; font-size: 1.1em" class="card-text"> 
+                           Card number: <strong>{{ $payment->pivot->card_number }} </strong>
+                        </p>
+                        <p style="font-weight: 500; color: black; font-size: 1.1em" class="card-text"> 
+                            Expiration date: <strong> {{ $payment->pivot->expiration_date }} </strong>
+                        </p>
+
+                    </div>
+                    
+                    
+                    <div class="links" style="display: flex; margin-top: 1em">
+                        <form style="width: 25%" action="{{ route('profile.payments.destroy', ['payment' => $payment->id]) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="app-remove-btn">
+                                <i style="font-size: 1.7em;" class="fa fa-trash" aria-hidden="true"></i>
+                            </button>
+                        </form>
+                        <a class="app-action-btn" href="" style="width: 70%; margin-left: auto">
+                            <i style="font-size: 1.7em" class="fa fa-pencil" aria-hidden="true"></i>
+                            <span style="font-size: 1.7em; padding-left: 5px">Change</span>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
+            
+        @endforeach
         
-    @endforeach
+    </div>
     
 </div>
 
