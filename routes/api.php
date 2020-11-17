@@ -21,3 +21,10 @@ Route::get('categories/{category}/products', function(App\Category $category) {
 });
 
 Route::post('wishlists/{wishlist}/products', 'API\WishlistController@store');
+
+
+Route::delete('/products/{id}', 'API\DeleteModelController@product');
+Route::delete('/users/{id}', 'API\DeleteModelController@user');
+Route::delete('/orders/{id}', 'API\DeleteModelController@order');
+Route::delete('/roles/{id}', 'API\DeleteModelController@role');
+Route::delete('/permission/{id}', 'API\DeleteModelController@permission');

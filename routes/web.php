@@ -51,7 +51,19 @@ Route::middleware('auth')->group(function() {
 
 });
 
+// ADMIN ROUTES
 
+Route::get('/admin-panel', function() {
+    $models = ['users', 'products', 'orders', 'permissions', 'roles'];
+    return view('admin.index')->with('models', $models);
+});
+
+
+Route::resource('admin-panel/users', 'AdminPanel\UsersController');
+Route::resource('admin/products', 'AdminPanel\ProductsController');
+Route::resource('admin-panel/roles', 'AdminPanel\RolesController');
+Route::resource('admin-panel/permissions', 'AdminPanel\PermissionsController');
+Route::resource('admin-panel/orders', 'AdminPanel\OrdersController');
 
 
 

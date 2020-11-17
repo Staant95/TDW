@@ -55,7 +55,7 @@
 
             @foreach ($orders as $order)
 
-                <div class="app-order-header">
+                <div class="app-order-header" style="margin-top: 1em; margin-bottom: 5em;">
                     <h3 style="font-weight: 600; font-size: 1.75rem; letter-spacing: -0.28px"
                     >Order number: {{ $order->code }}</h3>
 
@@ -100,13 +100,14 @@
 
                            </div>
 
+                         
                         @endforeach
 
                     </div>
 
                 </div>
 
-
+                
             @endforeach
 
             

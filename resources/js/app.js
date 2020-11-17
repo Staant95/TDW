@@ -19,7 +19,7 @@ require('./scripts/scrollup')
 require('./scripts/onepage-nav.min')
 require('./app-filter');
 
-window.copyToClipboard = require('./copyToClipboard');
+// require('./admin-page');
 
 
 $('.menu').slicknav({

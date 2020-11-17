@@ -1,0 +1,98 @@
+.panel {
+    padding: 3em 0;
+    display: flex;
+    min-height: 800px; 
+}
+
+.panel__nav {
+    margin-top: 2em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    width: 10%;
+    
+    display: flex;
+    justify-content: center;
+    
+    &__item {
+        font-size: 1.2em;
+        padding-bottom: .5em;
+        cursor: pointer;
+    }
+
+    &__item--active {
+        color: #f7941d;
+    }
+
+}
+
+
+.main__content {
+    width: 90%;
+    padding: 3em;
+}
+
+.table-title {
+    margin-bottom: .5em;
+}
+
+.action-link {
+    font-size: 1.5em;
+    background-color: #f7941d;
+    padding-left: .5em;
+    padding-right: .5em;
+    padding-top: .45em;
+    padding-bottom: .25em;
+    border: 1px solid #f7941d;
+    border-radius: 10%;
+}
+
+
+
+.admin-table { 
+    margin-top: 2em;
+	width: 100%; 
+	border-collapse: collapse; 
+
+
+
+    &__header {
+        background-color: #fafafa;
+    }
+
+    &__row:nth-of-type(even) {
+        background: #fafafa;
+    }
+
+    &__data, &__head {
+        padding: 10px; 
+        border: 1px solid #ccc; 
+        text-align: left; 
+        font-size: 1.1em;
+    }
+
+    &__head {  
+        font-weight: bold;
+        font-size: 1.5em; 
+    }
+ 
+}
+
+
+
+.delete-link {
+    display: inline-block;
+    & > * {
+        font-size: 1.1em;
+        border: none;
+        background: none;
+    }
+}
+
+.action-links {
+    width: 20%;
+}
+
+.action-links > *{
+    padding: 0 .5em;
+    margin: 0 auto;
+}
