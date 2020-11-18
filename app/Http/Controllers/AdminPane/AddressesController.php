@@ -1,14 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\AdminPanel;
+namespace App\Http\Controllers\AdminPane;
 
 use App\Http\Controllers\Controller;
-use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Arr;
 
-class UsersController extends Controller
+class AddressesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,14 +14,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::paginate(20);
-        return view('admin.index')->with([
-            'modelName' => 'users',
-            'records' => $users,
-            'createLink' => route('users.create'),
-            'basePath' => route('users.index'),
-            'modelColumns' => Arr::except(Schema::getColumnListing('users'),[0,2,3,7,9])
-        ]);
+        //
     }
 
     /**
@@ -56,23 +46,7 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        $record = Arr::except(User::where('id', $id)->first()->getOriginal(), [
-                    'created_at',
-                    'updated_at',
-                    'remember_token',
-                    'email_verified_at',
-                ]);
-        $user = User::where('id', $id)->first(); 
-        
-        return view('admin.show')->with([
-            'record' => $record,
-            'basePath' => route('users.index'),
-            'modelName' => 'User',
-            'relationships' => [
-                'Orders' => $user->orders,
-                'Addresses' => $user->addresses
-            ]
-        ]);
+        //
     }
 
     /**
@@ -106,9 +80,6 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::where('id', $id)->first();
-        $user->cart->delete();
-        $user->delete();
-        return redirect()->back();
+        //
     }
 }

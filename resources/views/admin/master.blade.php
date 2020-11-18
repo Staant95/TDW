@@ -5,6 +5,7 @@
 
 @section('content')
 
+
 <h3 style="margin-top: 1em; margin-left: 1.4em">Welcome, {{ Auth::user()->name }}</h3>
 
 <div class="panel">
@@ -35,17 +36,21 @@
                 <li class="panel__nav__item"> 
                     <a href="http://localhost:8000/admin-panel/permissions"> Permissions</a>
                 </li>
-           
+            
         </ul>
     </nav>
 
     <main class="main__content">
+        
 
-        @yield('main-content')
+            @yield('main-content')
+
 
     </main>
 
 </div>
+
+
 
 
 @endsection

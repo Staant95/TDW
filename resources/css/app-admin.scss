@@ -80,17 +80,37 @@
 
 
 .delete-link {
-    display: inline-block;
-    & > * {
+    display: inline-block;    
+    & > * {        
         font-size: 1.1em;
         border: none;
         background: none;
+        color: #aa2d27;
+    }
+    i {
+        color: #aa2d27;
     }
 }
 
 .action-links {
     width: 20%;
 }
+#edit-link {
+    color: #239322;
+    i {
+        color: #239322;
+    }
+}
+
+#show-link {
+    color: #1b579b;
+    i {
+        color: #1b579b; 
+    }
+}
+
+
+
 
 .action-links > *{
     padding: 0 .5em;

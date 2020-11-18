@@ -27297,10 +27297,31 @@ readers do not read off random characters that represent icons */
   font-size: 1.1em;
   border: none;
   background: none;
+  color: #aa2d27;
+}
+
+.delete-link i {
+  color: #aa2d27;
 }
 
 .action-links {
   width: 20%;
+}
+
+#edit-link {
+  color: #239322;
+}
+
+#edit-link i {
+  color: #239322;
+}
+
+#show-link {
+  color: #1b579b;
+}
+
+#show-link i {
+  color: #1b579b;
 }
 
 .action-links > * {

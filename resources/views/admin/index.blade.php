@@ -45,12 +45,12 @@
                 
                 <td class="admin-table__data action-links">
                     
-                    <a href="{{ $basePath }}/{{ $item->id }}"> 
+                    <a id="show-link" href="{{ $basePath }}/{{ $item->id }}"> 
                         <i class="fa fa-eye" aria-hidden="true"></i> View 
                     </a>
 
 
-                    <a href="{{ $basePath }}/{{ $item->id }}/edit"> 
+                    <a id="edit-link" href="{{ $basePath }}/{{ $item->id }}/edit"> 
                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i>  Edit 
                     </a>
 
