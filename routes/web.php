@@ -57,7 +57,7 @@ Route::redirect('/admin-panel', '/admin-panel/users');
 
 
 Route::resource('/admin-panel/users', 'AdminPanel\UsersController');
-Route::resource('/admin/products', 'AdminPanel\ProductsController');
+Route::resource('/admin-panel/products', 'AdminPanel\ProductsController');
 Route::resource('/admin-panel/roles', 'AdminPanel\RolesController');
 Route::resource('/admin-panel/permissions', 'AdminPanel\PermissionsController');
 Route::resource('/admin-panel/orders', 'AdminPanel\OrdersController');

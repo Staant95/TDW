@@ -28,7 +28,7 @@ class UsersController extends Controller
     public function create()
     {
      
-        return view('admin.user-create')->with([
+        return view('admin.users.create')->with([
             'url' => route('users.store'),
             'roles' => Role::all()
         ]);
@@ -45,7 +45,7 @@ class UsersController extends Controller
         $user = User::create($fields);
 
         Cart::create(['user_id' => $user->id]);
-        
+
         return redirect()->route('users.index');
     }
 
@@ -92,7 +92,7 @@ class UsersController extends Controller
             'updated_at'
         ]);
 
-        return view('admin.edit')->with([
+        return view('admin.users.edit')->with([
             'user' => $user,
             'roles' => Role::all(),
             'url' => route('users.update', ['user' => $id])

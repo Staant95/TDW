@@ -27333,3 +27333,8 @@ readers do not read off random characters that represent icons */
   font-size: 16px;
 }
 
+#pagination-container > nav > ul {
+  display: flex;
+  justify-content: center;
+}
+

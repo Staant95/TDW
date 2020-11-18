@@ -19,8 +19,8 @@ class CreateFormatProductTable extends Migration
             $table->integer('quantity');
             $table->unsignedBigInteger('format_id');
             $table->unsignedBigInteger('product_id');
-            $table->foreign('format_id')->references('id')->on('formats');
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('format_id')->references('id')->on('formats')->onDelete('cascade');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         });
     }
 

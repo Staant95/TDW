@@ -76,6 +76,10 @@
 
 </table>
 
-{{ $records->links() }}
+<div id="pagination-container">
+
+    {{ $records->links() }}
+
+</div>
 
 @endsection

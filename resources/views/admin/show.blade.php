@@ -19,7 +19,7 @@
                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>  Edit 
                 </a>
 
-                {{-- need to pass link --}}
+                
                 <form action="{{ $basePath }}/{{ $record['id'] }}"  method="POST" class="delete-link">
                     @csrf
                     @method('DELETE')
@@ -90,7 +90,15 @@
                             @endphp
                             <a id="show-link" href="{{ $url }}"> 
                                 <i class="fa fa-eye" aria-hidden="true"></i> View 
-                            </a>        
+                            </a> 
+
+                            <form action="{{ $url }}"  method="POST" class="delete-link">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit"> 
+                                    <i class="fa fa-trash" aria-hidden="true"></i> Delete 
+                                </button>
+                            </form>       
                                 
                         </td>
                         
