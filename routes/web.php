@@ -53,15 +53,15 @@ Route::middleware('auth')->group(function() {
 
 // ADMIN ROUTES
 
-Route::redirect('admin-panel', 'admin-panel/users');
+Route::redirect('/admin-panel', '/admin-panel/users');
 
 
-Route::resource('admin-panel/users', 'AdminPanel\UsersController');
-Route::resource('admin/products', 'AdminPanel\ProductsController');
-Route::resource('admin-panel/roles', 'AdminPanel\RolesController');
-Route::resource('admin-panel/permissions', 'AdminPanel\PermissionsController');
-Route::resource('admin-panel/orders', 'AdminPanel\OrdersController');
-Route::resource('admin-panel/addresses', 'AdminPanel\AddressesController');
+Route::resource('/admin-panel/users', 'AdminPanel\UsersController');
+Route::resource('/admin/products', 'AdminPanel\ProductsController');
+Route::resource('/admin-panel/roles', 'AdminPanel\RolesController');
+Route::resource('/admin-panel/permissions', 'AdminPanel\PermissionsController');
+Route::resource('/admin-panel/orders', 'AdminPanel\OrdersController');
+Route::resource('/admin-panel/addresses', 'AdminPanel\AddressesController');
 
 
 

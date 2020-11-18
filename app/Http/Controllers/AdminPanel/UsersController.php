@@ -4,17 +4,14 @@ namespace App\Http\Controllers\AdminPanel;
 
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Arr;
 
 class UsersController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
         $users = User::paginate(20);
@@ -27,33 +24,34 @@ class UsersController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+     
+        return view('admin.user-create')->with([
+            'url' => route('users.store'),
+            'roles' => Role::all()
+        ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function store(Request $request)
     {
-        //
+      
+        $fields = Arr::except($request->all(), [
+            '_token'
+        ]);
+  
+        User::create([
+            'name' => $fields['name'],
+            'lastname' => 'smith',
+            'email' => $fields['email'],
+            'password' => $fields['password'],
+            // 'role_id' => $fields['role']
+        ]);
+        return redirect()->back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function show($id)
     {
         $record = Arr::except(User::where('id', $id)->first()->getOriginal(), [
@@ -63,47 +61,35 @@ class UsersController extends Controller
                     'email_verified_at',
                 ]);
         $user = User::where('id', $id)->first(); 
-        
+
+        // check if user have any orders and addresses
+        $orders = $user->orders->count() ? $user->orders : collect([]);
+        $addresses = $user->addresses->count() ? $user->addresses : collect([]);
+
         return view('admin.show')->with([
             'record' => $record,
             'basePath' => route('users.index'),
             'modelName' => 'User',
             'relationships' => [
-                'Orders' => $user->orders,
-                'Addresses' => $user->addresses
+                'Orders' => $orders,
+                'Addresses' => $addresses
             ]
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function destroy($id)
     {
         $user = User::where('id', $id)->first();

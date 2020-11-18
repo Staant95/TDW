@@ -27329,3 +27329,7 @@ readers do not read off random characters that represent icons */
   margin: 0 auto;
 }
 
+#create-form * {
+  font-size: 16px;
+}
+
