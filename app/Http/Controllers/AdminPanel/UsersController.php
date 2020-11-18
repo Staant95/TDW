@@ -63,17 +63,22 @@ class UsersController extends Controller
         $user = User::where('id', $id)->first(); 
 
         // check if user have any orders and addresses
-        $orders = $user->orders->count() ? $user->orders : collect([]);
-        $addresses = $user->addresses->count() ? $user->addresses : collect([]);
+        $relationships = [];
+
+        if($user->orders->count()) {            
+            $relationships['Orders'] = $user->orders;
+        } 
+
+        if($user->addresses->count()) {
+            $relationships['Addresses'] = $user->addresses;
+        } 
+        
 
         return view('admin.show')->with([
             'record' => $record,
             'basePath' => route('users.index'),
             'modelName' => 'User',
-            'relationships' => [
-                'Orders' => $orders,
-                'Addresses' => $addresses
-            ]
+            'relationships' => $relationships
         ]);
     }
 

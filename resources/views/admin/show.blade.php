@@ -34,7 +34,7 @@
 </table>
 
 
-@if (count($relationships['Orders']) && count($relationships['Addresses']) )
+@if (count($relationships))
     
     @foreach ($relationships as $relationName => $rowsOfRelation)
         <h3 class="mt-5">{{ $relationName }}</h3>
