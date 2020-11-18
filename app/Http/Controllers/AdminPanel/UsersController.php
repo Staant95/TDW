@@ -5,6 +5,7 @@ namespace App\Http\Controllers\AdminPanel;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Role;
+use App\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Arr;
@@ -41,14 +42,11 @@ class UsersController extends Controller
             '_token'
         ]);
   
-        User::create([
-            'name' => $fields['name'],
-            'lastname' => 'smith',
-            'email' => $fields['email'],
-            'password' => $fields['password'],
-            // 'role_id' => $fields['role']
-        ]);
-        return redirect()->back();
+        $user = User::create($fields);
+
+        Cart::create(['user_id' => $user->id]);
+        
+        return redirect()->route('users.index');
     }
 
     
@@ -85,13 +83,30 @@ class UsersController extends Controller
     
     public function edit($id)
     {
-        //
+        $user = User::where('id', $id)->first();
+        $user = Arr::except($user, [
+            'id',
+            'email_verified_at',
+            'remember_token',
+            'created_at',
+            'updated_at'
+        ]);
+
+        return view('admin.edit')->with([
+            'user' => $user,
+            'roles' => Role::all(),
+            'url' => route('users.update', ['user' => $id])
+        ]);
     }
 
    
     public function update(Request $request, $id)
     {
-        //
+        $fields = Arr::except($request->all(), ['_token', '_method']);
+
+        User::where('id', $id)->update($fields);
+
+        return redirect()->route('users.index');
     }
 
     
