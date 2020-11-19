@@ -18,8 +18,18 @@ class UserTableSeeder extends Seeder
                 App\Cart::create(['user_id' => $user->id]);
                 App\Wishlist::create(['user_id' => $user->id]);
             });
-        $me = App\User::create(['name' => 'Stas', 'lastname' => 'Bardosh', 'email' => 'stas@gmail.com', 'password' => Hash::make('secret')]);
+
+        $me = App\User::create([
+            'name' => 'Stas', 
+            'lastname' => 'Bardosh', 
+            'email' => 'stas@gmail.com', 
+            'password' => Hash::make('secret')
+        ]);
+
+
         $admin = App\Role::find(3);
+
+
         App\Address::create([
             'city' => 'Rieti',
             'street' => 'Viale T. Morroni',

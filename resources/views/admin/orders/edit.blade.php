@@ -8,40 +8,42 @@
     @csrf
     @method('PUT')
 
-    <div class="form-row">
+    <div class="form-row">  
+       
 
-        <div class="form-group col-md-6">
-          <label for="name">Name</label>
-          <input type="text" class="form-control" id="name" value="{{ $user->name }}" name="name">
+        <div class="form-group col-md-12">
+          <label for="address_id">User Address</label>
+          <select id="address_id" class="form-control" name="address_id">
+              @foreach ($addresses as $address)
+                  
+                  <option value="{{ $address->id }}"> {{ $address->street }}, {{ $address->city }}, {{ $address->zip }}</option>
+  
+              @endforeach
+          </select>
         </div>
   
-  
-        <div class="form-group col-md-6">
-          <label for="lastname">Lastname</label>
-          <input type="text" class="form-control" id="lastname" value="{{ $user->lastname }}" name="lastname">
-        </div>  
-  
     </div>
 
 
     <div class="form-row">
 
       <div class="form-group col-md-6">
-        <label for="email">Email</label>
-        <input type="email" class="form-control" id="email" name="email" value="{{ $user->email }}">
+        <label for="code">Order Code</label>
+        <input type="code" class="form-control" id="code" name="code" value="{{ $order->code }}">
       </div>
 
 
       <div class="form-group col-md-6">
-        <label for="password ">Password</label>
-        <input type="text" class="form-control" id="password" value="{{ $user->password }}" name="password">
+        <label for="expected ">Expected date of delivery</label>
+        <input type="date" class="form-control" id="expected" value="{{ $order->expected }}" name="expected">
       </div>
 
     </div>
 
+   
 
 
-
+{{-- 
     <div class="form-row">
 
       <div class="form-group col-md-4">
@@ -55,7 +57,7 @@
         </select>
       </div>
      
-    </div>
+    </div> --}}
 
 
    <div class="mt-5" style="display: flex; justify-content: center">

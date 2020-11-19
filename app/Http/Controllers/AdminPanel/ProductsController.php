@@ -28,7 +28,6 @@ class ProductsController extends Controller
     {
         return view('admin.products.create')->with([
             'url' => route('products.store'),
-            ''
             // taglia e colore
         ]);
     }

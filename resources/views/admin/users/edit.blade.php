@@ -31,19 +31,6 @@
         <input type="email" class="form-control" id="email" name="email" value="{{ $user->email }}">
       </div>
 
-
-      <div class="form-group col-md-6">
-        <label for="password ">Password</label>
-        <input type="text" class="form-control" id="password" value="{{ $user->password }}" name="password">
-      </div>
-
-    </div>
-
-
-
-
-    <div class="form-row">
-
       <div class="form-group col-md-4">
         <label for="role_id">Role</label>
         <select id="role_id" class="form-control" name="role_id">
@@ -54,8 +41,12 @@
             @endforeach
         </select>
       </div>
-     
+
+
     </div>
+
+
+
 
 
    <div class="mt-5" style="display: flex; justify-content: center">

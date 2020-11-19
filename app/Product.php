@@ -3,9 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class product extends Model
+class product extends Model implements HasMedia
 {
+    use InteractsWithMedia;
+
     public $guarded = [];
 
 

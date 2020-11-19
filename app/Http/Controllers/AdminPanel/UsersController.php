@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Role;
 use App\Cart;
+use App\Wishlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Arr;
@@ -45,6 +46,7 @@ class UsersController extends Controller
         $user = User::create($fields);
 
         Cart::create(['user_id' => $user->id]);
+        Wishlist::create(['user_id' => $user->id]);
 
         return redirect()->route('users.index');
     }
@@ -54,6 +56,7 @@ class UsersController extends Controller
     {
         $record = Arr::except(User::where('id', $id)->first()->getOriginal(), [
                     'created_at',
+                    'password',
                     'updated_at',
                     'remember_token',
                     'email_verified_at',
@@ -84,9 +87,11 @@ class UsersController extends Controller
     public function edit($id)
     {
         $user = User::where('id', $id)->first();
+
         $user = Arr::except($user, [
             'id',
             'email_verified_at',
+            'password',
             'remember_token',
             'created_at',
             'updated_at'
@@ -115,6 +120,6 @@ class UsersController extends Controller
         $user = User::where('id', $id)->first();
         $user->cart->delete();
         $user->delete();
-        return redirect()->back();
+        return redirect()->route('users.index');
     }
 }

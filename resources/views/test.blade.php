@@ -9,6 +9,17 @@
 </head>
 <body>
 
+    <h1>test img</h1>
+    <div>
+        @php
+            $prod = App\Product::where('id', 121)->first();
+            $url1 = $prod->getMedia()[0]->getUrl();
+            $url2 = $prod->getMedia()[1]->getUrl();
+        @endphp
+        <img src="{{ $url1 }}" alt="">
+        <img src="{{ $url2 }}" alt="">
+    </div>
+
 
 
 </body>
