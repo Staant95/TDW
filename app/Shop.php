@@ -8,10 +8,10 @@ class Shop extends Model
 {
     public $guarded = [];
 
-    public function products()
-    {
-        return $this->belongsToMany('App\Product')->withPivot('sale', 'start', 'end', 'price');
-    }
+    // public function products()
+    // {
+    //     return $this->belongsToMany('App\Product')->withPivot('sale', 'start', 'end', 'price');
+    // }
 
     public function shopdetails()
     {

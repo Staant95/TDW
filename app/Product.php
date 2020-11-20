@@ -18,16 +18,10 @@ class product extends Model implements HasMedia
         return $this->belongsToMany(Cart::class);
     }
 
-        
-    public function images()
-    {
-        return $this->hasMany('App\Image');
-    }
-
-    public function shops()
-    {
-        return $this->belongsToMany('App\Shop')->withPivot('sale', 'start', 'end', 'price');
-    }
+    // public function shops()
+    // {
+    //     return $this->belongsToMany('App\Shop')->withPivot('sale', 'start', 'end', 'price');
+    // }
 
     public function categories()
     {
