@@ -34,14 +34,24 @@ class product extends Model implements HasMedia
         return $this->belongsToMany('App\Category');
     }
 
-    public function formats()
+    public function brand()
     {
-        return $this->belongsToMany('App\Format')->withPivot('quantity');
+        return $this->belongsTo('App\Brand');
     }
 
     public function reviews()
     {
         return $this->hasMany('App\Review');
+    }
+
+    public function colours()
+    {
+        return $this->belongsToMany('App\Colour');
+    }
+
+    public function sizes()
+    {
+        return $this->belongsToMany('App\Size');
     }
 
     public function wishlists()
