@@ -11,8 +11,24 @@ class ColorTableSeeder extends Seeder
      *
      * @return void
      */
+    protected $colours = [
+        'White',
+        'Yellow',
+        'Black',
+        'Green',
+        'Blue',
+        'Violet',
+        'Brown',
+        'Red',
+        'Orange'            
+    ];
+
+    
     public function run()
     {
-        
+        foreach($this->colours as $colour) {
+            Colour::create(['type' => $colour]);
+        }
     }
+    
 }
