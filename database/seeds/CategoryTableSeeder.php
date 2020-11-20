@@ -2,143 +2,155 @@
 
 use Illuminate\Database\Seeder;
 use App\Category;
+use App\Product;
 use Faker\Generator as Faker;
 
 class CategoryTableSeeder extends Seeder
 {
-    private $categoriesAndProducts = [
-        'Camicie' => [
-          'camicia',
-          'camicia',
-          'camicia beige',
-          'camicetta',
-          'camicetta',
-          'marshall shirt'
+    private $macroCategories = [
+        'Abbigliamento' => [
+            'Camicie' => [
+                'camicia',
+                'camicia beige',
+                'camicia original',
+                'camicetta',
+                'camicetta original',
+                'marshall shirt'
+            ],
+            'Jeans' => [
+                'jeans skinny fit',
+                'mit graffiti',
+                'mit hohem bund',
+                'mit rissen',
+                'jeans skinny fit',
+                'jeans tapered fit'
+            ],
+            'Skirt' => [
+                'highrise',
+                'shorts',
+                'gonna jeanss',
+                'nukaty skirt',
+                'rock im koko',
+                'gonna jeans'
+            ],
+            'Socks' => [
+                'midcut',
+                'solid crew',
+                'jacjens',
+                'regular',
+                'kneehigh',
+                'sock checks'
+            ],
+            'Suits' => [
+                'cappotto corto',
+                'nuamaury',
+                'giacca completo',
+                'jprstuart',
+                'onlysmark',
+                'giacca'
+            ],
+            'Tshirt' => [
+                'polo black',
+                'tshirt',
+                't shirt',
+                'cutandsew tee',
+                'contrast pocket tee',
+                'edie'
+            ],
         ],
-      
-      
-        'Hats' => [
-          'barett',
-          'im leoparden',
-          'zum wenden',
-          'watch hat',
-          'berretto',
-          'berretto'
+        'Scarpe' => [
+            'Shoes' => [
+                'stan smith',
+                'sneakers',
+                'max aura',
+                'air force 1',
+                'rsx',
+                'smash v2'
+            ],
         ],
-      
-      
-        'Gloves' => [
-          'watch gloves',
-          'jack montana',
-          'sphere running',
-          'unisex',
-          'ottawa',
-          'gloves'
+        'Sports' => [
+            'Sport' => [
+                'lin',
+                'tuta set',
+                'tuta',
+                'crew logo',
+                'taino',
+                'collant'
+            ],        
         ],
-      
-        'Jeans' => [
-          'jeans skinny_fit',
-          'mit graffiti',
-          'mit hohem_bund',
-          'mit rissen_large.jpg',
-          'jeans skinny_fit',
-          'jeans tapered_fit'
+        'Accessori' => [
+            'Gloves' => [
+                'watch gloves',
+                'jack montana',
+                'sphere running',
+                'unisex',
+                'ottawa',
+                'gloves'
+            ], 
+            'Hats' => [
+                'barett',
+                'im leoparden',
+                'zum wenden',
+                'watch hat',
+                'berretto large',
+                'berretto'
+            ],
+            'Sunglasses' => [
+                'esky',
+                'sunglasses unisex',
+                'sun glasses',
+                'jackpot',
+                'likoma',
+                'sunglasses'
+            ],
         ],
-      
-        'Shoes' => [
-          'stan smith',
-          'sneakers large.jpg',
-          'max aura',
-          'air force_1',
-          'rsx',
-          'smash v2'
-        ],
-      
-        'Skirt' => [
-          'highrise',
-          'shorts',
-          'gonna jeans',
-          'nukaty skirt',
-          'rock im_koko',
-          'gonna jeans'
-        ],
-      
-        'Socks' => [
-          'midcut',
-          'solid crew',
-          'jacjens',
-          'regular',
-          'kneehigh',
-          'sock checks'
-        ],
-       'Sport' => [ 
-           'lin', 
-           'tuta', 
-           'tuta', 
-           'crew logo', 
-           'taino', 
-           'collant' 
-       ],
-
-        'Suits' => [
-          'cappotto corto',
-          'nuamaury',
-          'giacca',
-          'jprstuart',
-          'onlysmark',
-          'giacca'
-        ],
-
-        'Tshirt' => [
-          'polo black',
-          'tshirt',
-          'tshirt',
-          'cutandsew tee',
-          'contrast pocket_tee',
-          'edie'
-        ],
-
-        'Sunglasses' => [
-          'esky',
-          'sunglasses',
-          'sunglasses',
-          'jackpot',
-          'likoma',
-          'sunglasses'
-        ],
-        
-        'Underwear' => [
-          'modern bralette',
-          'boxer',
-          'plunge pushup',
-          'boxer',
-          'slip',
-          'basic thong',
-          'slip',
-          'perizoma'
+        'Intimo' => [
+            'Underwear' => [
+                'modern bralette',
+                'coulotte',
+                'plunge pushup',
+                'boxer',
+                'slip set',
+                'basic thong',
+                'slip',
+                'perizoma'
+            ]
         ]
-      ];
+    ];
+
+
 
 
 
     public function run(Faker $faker)
     {
-        
-        Category::create(['name' => 'Camicie']); // 1-8
-        Category::create(['name' => "Gloves"]); // 9-16
-        Category::create(['name' => "Hats"]);  // 17-24
-        Category::create(['name' => "Jeans"]); // 25-32
-        Category::create(['name' => "Shoes"]); // 32-40
-        Category::create(['name' => "Skirt"]); //41-48
-        Category::create(['name' => "Scoks"]);//49-56
-        Category::create(['name' => "Sport"]);//57-64
-        Category::create(['name' => "Suits"]);//65-72
-        Category::create(['name' => "Sunglasses"]); // 73-80
-        Category::create(['name' => 'Tshirt']); // 81-88
-        Category::create(['name' => "Underwear"]); // 89-96
-         
 
+        foreach($this->macroCategories as $macroCategory => $subCategories) {
 
-        
+            $currentCategory = Category::create(['name' => $macroCategory]);
+
+            foreach($subCategories as $category => $products) {
+
+                Category::create([
+                    'name' => $category, 
+                    'parent_id' => $currentCategory->id
+                    ]);
+                
+                foreach($products as $product) {
+
+                    $product = Product::create([
+                        'name' => $product,
+                        'price' => $faker->randomFloat(1, 20, 150),
+                        'description' => $faker->sentence(10),
+                        'brand_id' => $faker->numberBetween(1, 25)
+                    ]);
+                    
+                    $product->addMedia(storage_path('app/public/'))->toMediaCollection();
+                    
+                }
+
+            }
+
+        }
     }
 }

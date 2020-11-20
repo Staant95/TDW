@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Product;
 
 Auth::routes();
 
@@ -65,7 +66,12 @@ Route::middleware('auth')->group(function() {
 });
 
 
+Route::get('/testing', function() {
 
-Route::view('/test', 'test');
+    $products = Product::first();
+
+    return view('test')->with('products', $products);
+});
+
 
 

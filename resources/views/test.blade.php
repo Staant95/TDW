@@ -9,7 +9,7 @@
 </head>
 <body>
 
-    <h1>test img</h1>
+    {{-- <h1>test img</h1>
     <div>
         @php
             $prod = App\Product::where('id', 121)->first();
@@ -18,7 +18,16 @@
         @endphp
         <img src="{{ $url1 }}" alt="">
         <img src="{{ $url2 }}" alt="">
+    </div> --}}
+
+   {{-- @foreach ($products as $product)
+
+    <div>
+        
     </div>
+       
+   @endforeach --}}
+   {{ $products->name }}
 
 
 

@@ -14,13 +14,14 @@ class DatabaseSeeder extends Seeder
         $this->call([
 RoleTableSeeder::class,
             PermissionTableSeeder::class,
-            FormatTableSeeder::class,
-            ProductTableSeeder::class,
+            BrandTableSeeder::class,
+            // FormatTableSeeder::class,
+            // ProductTableSeeder::class,
             CategoryTableSeeder::class,
             UserTableSeeder::class,
             PaymentTableSeeder::class,
-            ShopTableSeeder::class,   
-            ImageTableSeeder::class,
+            // ShopTableSeeder::class,   
+            // ImageTableSeeder::class,
             CouponTableSeeder::class,
         ]);
     }
