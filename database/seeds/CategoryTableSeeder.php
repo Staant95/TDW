@@ -260,5 +260,8 @@ class CategoryTableSeeder extends Seeder
             }
 
         }
+
+
+        
     }
 }
