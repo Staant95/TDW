@@ -17,16 +17,98 @@
                             Categories
                         </label>
                         <input type="checkbox" hidden id="toggle-nav" checked="false">
-                        <ul class="main-category">
+                        
+                        
+                        {{-- <ul class="main-category">
                             @php
-                                $categories = App\Category::limit(9)->get();
+                                $categories = App\Category::where('parent_id', NULL)->get();
+                                $abbigliamento = $categories[0]->products;
                             @endphp
-                            @foreach($categories as $category)
-                        <li><a href="{{ route('category.index', ['category' => $category->id]) }}"> {{ $category->name }} </a></li>
+
+                            @foreach($categories as $index => $category)
+                                <li>
+                                    <a href="{{ route('category.index', ['category' => $category->id]) }}"> 
+                                        {{ $category->name }}  
+                                    </a>
+                                </li>
+                            @endforeach
+
+                            
+                        </ul> --}}
+
+                        @php
+                            $categories = App\Category::where('parent_id', NULL)->get();
+                            $temp = $categories[1];
+                            $categories[1] = $categories[3];
+                            $categories[3] = $temp;
+
+                            $abbigliamento = App\Category::where('parent_id', 1)->get();
+                            $accessori = App\Category::where('parent_id', 12)->get();
+                        @endphp
+
+                        <ul class="main-category">
+                            @foreach ($categories as $category)
+                                
+                                <li>
+                                    <a href="{{ $category->id }}"> {{ $category->name }}
+                                        @if ($category->id === 1 || $category->id === 12)
+                                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                        @endif
+                                    </a>
+
+                                    @if ($category->id === 1 )
+                                        
+                                        <ul class="sub-category">
+                                            @foreach ($abbigliamento as $subC)
+                                                <li>
+                                                    <a href="{{ $subC->id }}"> {{ $subC->name }} </a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    @endif
+
+
+                                    @if ($category->id === 12)
+
+                                        <ul class="sub-category">
+                                            @foreach ($accessori as $subC)
+                                                <li>
+                                                    <a href="{{ $subC->id }}"> {{ $subC->name }} </a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+
+                                    @endif
+                                </li>
                             @endforeach
                         </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     </div>
                 </div>
+
+
+
+
+
+
+
+
+
+
+
 
                 <div class="col-lg-9 col-12">
                     <div class="menu-area">
@@ -50,3 +132,5 @@
         </div>
     </div>
 </div>
+
+
