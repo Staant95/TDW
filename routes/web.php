@@ -68,7 +68,7 @@ Route::middleware('auth')->group(function() {
 
 Route::get('/testing', function() {
 
-    $products = Product::all();
+    $products = Product::first();
 
     return view('test')->with('products', $products);
 });

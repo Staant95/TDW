@@ -15,6 +15,8 @@ class DatabaseSeeder extends Seeder
 RoleTableSeeder::class,
             PermissionTableSeeder::class,
             BrandTableSeeder::class,
+            SizeTableSeeder::class,
+            ColorTableSeeder::class,
             // FormatTableSeeder::class,
             // ProductTableSeeder::class,
             CategoryTableSeeder::class,

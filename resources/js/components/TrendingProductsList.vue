@@ -73,7 +73,7 @@
                                                         <img
                                                             style="height: 357; object-fit:cover;"
                                                             class="default-img"
-                                                            :src="product.image"
+                                                            src="storage/1/bershka-camicia-large.jpg"
                                                             alt="Ops"
                                                         />
                                                     </a>
@@ -149,7 +149,7 @@ export default {
     },
     mounted() {
         console.log("wishlist id " + this.wishlistId);
-
+        
         this.getCategories();
     },
     methods: {

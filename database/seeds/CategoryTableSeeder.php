@@ -242,12 +242,18 @@ class CategoryTableSeeder extends Seeder
                         'name' => $product,
                         'price' => $faker->randomFloat(1, 20, 150),
                         'description' => $faker->sentence(10),
-                        'brand_id' => $faker->numberBetween(1, 25)
+                        'brand_id' => $faker->numberBetween(1, 25),
+                        'img_url' => ''
                     ]);
+
+                    
                     
                     $product->addMedia(
                         storage_path('app/public/' . $category . '/' . $this->fullProductName[$counter])
                         )->toMediaCollection();
+                        
+                    $product->update(['img_url' => $product->getFirstMediaUrl()]);
+
                     $counter = $counter + 1;
                 }
 
