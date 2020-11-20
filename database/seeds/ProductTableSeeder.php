@@ -2,6 +2,9 @@
 
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
+use App\Product;
+use App\Colour;
+use App\Size;
 
 class ProductTableSeeder extends Seeder
 {
@@ -12,6 +15,41 @@ class ProductTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        
+        $products = Product::all();
+        // assign all colors and sizes
+        $colors = Colour::all();
+
+        $clothSizes = Size::whereBetween('id', [1, 5])->get();
+        $shoeSizes = Size::whereBetween('id', [6, 13])->get();
+
+        foreach($products as $product) {
+
+            foreach($colors as $color) {
+                $product->colours()->attach($color->id);
+            }
+
+
+            if(strcmp($product->categories[0], 'Shoes')) {
+
+                foreach($shoeSizes as $size) {
+
+                    $product->sizes()->attach($size->id);
+
+                }
+                
+            } else {
+
+
+                foreach($clothSizes as $size) {
+                    
+                    $product->sizes()->attach($size->id);
+
+                }
+
+            }
+
+        }
+
+
     }
 }

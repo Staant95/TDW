@@ -6,13 +6,25 @@ use App\Size;
 
 class SizeTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run(Faker $faker))
+  
+    private $clotheSizes = [
+        's',
+        'm',
+        'l',
+        'xl',
+        'xxl'
+    ];
+
+
+    public function run(Faker $faker)
     {
-        
+        foreach($this->clotheSizes as $size) {
+
+            Size::create(['size' => $size]);
+        }
+
+        for($i = 35; $i < 43; $i++) {
+            Size::create(['size' => $i]);
+        }
     }
 }

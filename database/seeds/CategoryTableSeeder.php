@@ -231,7 +231,7 @@ class CategoryTableSeeder extends Seeder
 
             foreach($subCategories as $category => $products) {
 
-                Category::create([
+                $savedCategory = Category::create([
                     'name' => $category, 
                     'parent_id' => $currentCategory->id
                     ]);
@@ -242,17 +242,15 @@ class CategoryTableSeeder extends Seeder
                         'name' => $product,
                         'price' => $faker->randomFloat(1, 20, 150),
                         'description' => $faker->sentence(10),
-                        'brand_id' => $faker->numberBetween(1, 25),
-                        'img_url' => ''
+                        'brand_id' => $faker->numberBetween(1, 25)
                     ]);
 
-                    
+                    $product->categories()->attach($savedCategory->id);
                     
                     $product->addMedia(
                         storage_path('app/public/' . $category . '/' . $this->fullProductName[$counter])
                         )->toMediaCollection();
-                        
-                    $product->update(['img_url' => $product->getFirstMediaUrl()]);
+                     
 
                     $counter = $counter + 1;
                 }

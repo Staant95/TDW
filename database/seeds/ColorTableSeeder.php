@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
-use App\Color;
+use App\Colour;
 
 class ColorTableSeeder extends Seeder
 {

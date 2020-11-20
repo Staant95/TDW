@@ -20,7 +20,6 @@ class CreateProductsTable extends Migration
             $table->decimal('price', 5, 2);
             $table->text('description');
             $table->unsignedBigInteger('brand_id');
-            $table->string('img_url');
             });
     }
 
