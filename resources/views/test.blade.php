@@ -27,8 +27,15 @@
     </div>
        
    @endforeach --}}
-   {{ $products->name }}
+   
+   <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr">
+        @foreach ($products as $product)
+            <div>
 
+                <img style="width: 200px" src="{{ $product->getFirstMediaUrl() }}" alt="">
+            </div>
+        @endforeach
+    </div>
 
 
 </body>
