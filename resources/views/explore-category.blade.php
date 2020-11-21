@@ -65,7 +65,7 @@
                     <product-card
                         wishlist-id={{ Auth::user()->wishlist->id }}
                         :product="{{ $product }} "
-                        image={{$product->images->first()}}
+                        image={{ $product->getFirstMediaUrl() }}
                     >
 
                     </product-card>

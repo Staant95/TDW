@@ -18,7 +18,8 @@ class ProductController extends Controller
         return view('productsingle')
         ->with(['product' => $product ,
                 'rating' => $product->reviews->avg('stars'),
-                'formats' => $product->formats->all(),
+                'colors' => $product->colours,
+                'sizes' => $product->sizes,
                 'review' => $product->reviews->all()
         ]);
     }

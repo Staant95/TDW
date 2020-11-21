@@ -79,11 +79,28 @@
 
                     </div>
 
-                    <div class="sinlge-bar">
+                    <div class="sinlge-bar shopping">
                         <a href="{{ route('profile') }}" class="single-icon">
-                            {{-- Hi, {{ Auth::user()->name }}</i>--}}
+                           
                             <i class="fa fa-user-o" aria-hidden="true"></i>
                         </a>
+                        <div class="shopping-item">
+                            
+                            <div class="bottom">
+
+                                <a href="{{ route('profile.orders') }}" class="">Profile</a>
+
+                                <form style="width: 100%" action="{{ route('logout') }}" method="POST">
+                                    @csrf                        
+                                    <button type="submit" 
+                                    style="background-color: #fff; border:none; margin-top: 1em;"
+                                    >Logout</button>
+                                </form>
+
+                            </div>
+
+                        </div>
+
                     </div>
 
                     {{-- END CART--}}

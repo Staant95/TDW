@@ -9,10 +9,12 @@ use App\Order;
 
 class OrdersController extends Controller
 {
-    public function index() {
+    public function index(Request $request) {
         
+        $orders = Auth::user()->orders;
+
         return view('profile.orders')->with([
-            'orders' => Auth::user()->orders
+            'orders' => $orders
         ]);
     }
 
@@ -29,4 +31,7 @@ class OrdersController extends Controller
     public function destroy(Order $order) {
 
     }
+
+
+  
 }

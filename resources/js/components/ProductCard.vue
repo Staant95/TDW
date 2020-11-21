@@ -14,7 +14,7 @@
                 <a :href="'/products/' + this.product.id">
                     <img
                         class="default-img"
-                        :src="'/' + this.imageURL"
+                        :src="this.imageURL"
                         alt="#"
                     />
                 </a>
@@ -64,7 +64,7 @@ export default {
     },
     mounted() {
         this.imageURL = this.image
-            ? JSON.parse(this.image).URL
+            ? this.image
             : "https://via.placeholder.com/550x750";
     },
     methods: {

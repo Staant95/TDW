@@ -23,7 +23,7 @@
 
 
                     <a class="cart-img" href="#">
-                        <img src="https://via.placeholder.com/70x70" alt="#">
+                        <img style="height: 130px; width: 100px" :src="item.url" alt="#">
                     </a>
                     <h4><a href="#">{{ item.name }}</a></h4>
                     <p class="quantity">{{ item.quantity }} - <span class="amount"> {{ item.price }} </span></p>
@@ -55,7 +55,7 @@
             console.log(this.userId);
             axios.get(`http://127.0.0.1:8000/api/users/${this.userId}/cart`)
             .then(res => {
-                res.data.forEach(el => this.products.push((({id, name, price, pivot: {quantity}}) => ({id, name, price, quantity}))(el)))
+                res.data.forEach(el => this.products.push((({id, name, price, url , pivot: {quantity}}) => ({id, name, price, url, quantity}))(el)))
             }).catch(error => console.log(error.message));
 
         },

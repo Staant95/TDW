@@ -13,7 +13,7 @@ class HomepageController extends Controller
     {
 
         $categories = collect([
-            Category::find(1),
+            Category::find(5),
             Category::find(2),
             Category::find(3)
         ]);

@@ -23,10 +23,10 @@
                                 <div class="col-lg-6 col-md-6 col-12">
                                     <div class="list-image overlay">
                                         {{-- <img src="https://via.placeholder.com/115x140" alt="#"> --}}
-                                        <img src="{{ asset('storage/smallBanner/' . $category->name  . $product->id . '.jpg') }}" alt="#"
-                                        style="height: 200px!important; object-fit: cover;"
+                                        <img src="{{ $product->getFirstMediaUrl() }}" alt="#"
+                                        style="height: 250px!important; object-fit: cover;"
                                         >
-                                        <a href="/products/{{ $product->id }}" class="buy"
+                                        <a href="products/ {{ $product->id }}" class="buy"
                                            style="display: flex; justify-items: center; align-items: center; padding: 0!important;">
 {{--                                            <i class="fa fa-shopping-bag"></i>--}}
                                             <i style="width: 100%; padding: 0!important; margin: 0!important;" class="fa fa-shopping-bag" aria-hidden="true"></i>
@@ -36,7 +36,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-12 no-padding">
                                     <div class="content">
-                                        <h4 class="title"><a href="/products/{{ $product->id }}"> {{ $product->name }} </a></h4>
+                                        <h4 class="title"><a href="{{ $product->getFirstMediaUrl() }}"> {{ $product->name }}</a></h4>
                                         <p class="price with-discount"> {{ $product->price }} €</p>
                                     </div>
                                 </div>

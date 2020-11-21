@@ -73,7 +73,7 @@
                                                         <img
                                                             style="height: 357; object-fit:cover;"
                                                             class="default-img"
-                                                            src="storage/1/bershka-camicia-large.jpg"
+                                                            :src="product.url"
                                                             alt="Ops"
                                                         />
                                                     </a>

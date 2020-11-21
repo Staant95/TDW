@@ -61,7 +61,7 @@
                                         <ul class="sub-category">
                                             @foreach ($abbigliamento as $subC)
                                                 <li>
-                                                    <a href="{{ $subC->id }}"> {{ $subC->name }} </a>
+                                                    <a href="/categories/{{ $subC->id }}"> {{ $subC->name }} </a>
                                                 </li>
                                             @endforeach
                                         </ul>
@@ -73,7 +73,7 @@
                                         <ul class="sub-category">
                                             @foreach ($accessori as $subC)
                                                 <li>
-                                                    <a href="{{ $subC->id }}"> {{ $subC->name }} </a>
+                                                    <a href="/categories/{{ $subC->id }}"> {{ $subC->name }} </a>
                                                 </li>
                                             @endforeach
                                         </ul>
@@ -84,30 +84,8 @@
                         </ul>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
                     </div>
                 </div>
-
-
-
-
-
-
-
-
-
-
 
 
                 <div class="col-lg-9 col-12">
@@ -118,7 +96,7 @@
                                 <div class="nav-inner">
                                     <ul class="nav main-menu menu navbar-nav">
 
-                                        <li><a href="{{ route('category.index', ['category' => 8]) }}">New Arrivals</a></li>
+                                        <li><a href="{{ route('category.index', ['category' => 11]) }}">New Arrivals</a></li>
                                         <li><a href="{{ route('category.index', ['category' => 9]) }}">Today's Deals</a></li>
                                         <li><a href="/contact">Contact Us</a></li>
                                     </ul>

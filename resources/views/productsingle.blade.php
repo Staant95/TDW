@@ -16,7 +16,7 @@
 								<div class="flexslider-thumbnails">
 									<ul class="slides">
 										<li data-thumb="https://via.placeholder.com/570x520" rel="adjustX:10, adjustY:">
-											<img src="https://via.placeholder.com/570x520" alt="#">
+											<img src="{{ $product->getFirstMediaUrl() }}" alt="#">
 										</li>
 									</ul>
 								</div>
@@ -69,9 +69,9 @@
 								<div class="color">
 									<h4>Available Options <span>Color</span></h4>
 									<ul>										
-										@foreach($formats as $format)
+										@foreach($colors as $color)
 										<li>
-											<a href="#" style="background-color: {{ $format->color }}"><i class="ti-check"></i>
+											<a href="#" style="background-color: {{ $color->type }}"><i class="ti-check"></i>
 											</a>
 										</li>
 																						
@@ -85,8 +85,8 @@
 
 									<label class="mr-sm-2 sr-only" for="sizes">Sizes</label>
 									<select class="custom-select mr-sm-2" id="sizes">
-										@foreach ($formats as $format)
-											<option value="{{ $format->size }}"> {{ $format->size }}</option>
+										@foreach ($sizes as $size)
+											<option value="{{ $size }}"> {{ $size->size }}</option>
 										@endforeach
 										
 									</select>
@@ -116,7 +116,7 @@
 										<form action="{{ route('wishlists.products.store', ['wishlist' => Auth::user()->wishlist->id]) }}" method="post">
 											@csrf
 											<input type="text" hidden name="product" value="{{ $product->id }}">
-											<button type="submit" class="btn min"><i class="ti-heart"></i></button>
+											<button type="submit" class="btn min"><i style="color:white!important" class="ti-heart"></i></button>
 
 										
 										</form>

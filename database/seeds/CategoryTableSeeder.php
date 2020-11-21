@@ -251,7 +251,10 @@ class CategoryTableSeeder extends Seeder
                         storage_path('app/public/' . $category . '/' . $this->fullProductName[$counter])
                         )->toMediaCollection();
                      
+                    $product->url = $product->getFirstMediaUrl();
+                    $product->save();
 
+                    
                     $counter = $counter + 1;
                 }
 
