@@ -20,11 +20,16 @@ class SearchResultsController extends Controller
 
 
         $brands = $this->getBrands($products);
+        $colours = $this->getColours($products);
+        $sizes = $this->getSizes($products);
+        
 
         return view('searchresults')
             ->with([
                 'products' => $products,
-                'brands' => $brands
+                'brands' => $brands,
+                'colours' => $colours,
+                'sizes' => $sizes
             ]);
     }
 
@@ -35,6 +40,8 @@ class SearchResultsController extends Controller
         $request->flash();
 
         $formBrands = collect($request->except('_token', 'price', 'product'));
+        $formSizes = collect($request->except('_token', 'price', 'product', 'brand'));
+       
         
     
 
@@ -42,7 +49,9 @@ class SearchResultsController extends Controller
         
 
         
-        $brands = $this->getBrands($products); 
+        $brands = $this->getBrands($products);
+        $colours = $this->getColours($products);
+        $sizes = $this->getSizes($products); 
 
         if($request->has('price')) {
             $priceRange = $this->determinePriceRange($request->input('price'));
@@ -51,17 +60,70 @@ class SearchResultsController extends Controller
         }
         
         
-        
-        if($formBrands->count()) {
+   
+        //if($formBrands->isNotEmpty() && $formSizes->isNotEmpty()) {
+        //    $products = $this->filterByBoth($products, $formBrands, $formSizes);
+        //}
+        //elseif($formBrands->isNotEmpty()){
+        //    $products = $this->filterByBrand($products, $formBrands);
+        //}
+        //else{
+        //    $products = $this->filterBySize($products, $formSizes);
+        //}
+
+        if($formBrands->isNotEmpty()) {
             $products = $this->filterByBrand($products, $formBrands);
         }
-        
+
+        if($formSizes->isNotEmpty()) {
+            $products = $this->filterBySize($products, $formSizes);
+        }
+        dd($products);
         return view('searchresults')->with([
             'products' => $products,
-            'brands' => $brands
+            'brands' => $brands,
+            'colours' => $colours,
+            'sizes' => $sizes
         ]);
     }
 
+
+
+    private function getColours($products)
+    {
+
+        $colours = collect([]);
+        
+
+        foreach ($products as $product){
+            $colors = $product->colours;
+            foreach ($colors as $color){
+                $colours->push($color->type);
+            }
+                         
+        }
+
+
+        return $colours->unique();
+    }
+
+    private function getSizes($products)
+    {
+
+        $sizes = collect([]);
+        
+
+        foreach ($products as $product){
+            $taglies = $product->sizes;
+            foreach ($taglies as $taglie){
+                $sizes->push($taglie->size);
+            }
+                         
+        }
+
+
+        return $sizes->unique();
+    }
 
 
 
@@ -70,11 +132,10 @@ class SearchResultsController extends Controller
 
         $brands = collect([]);
 
-        $products->each(function ($product) use ($brands) {
-            $product->formats->each(function ($format) use ($brands) {
-                $brands->push($format->brand);
-            });
-        });
+        foreach ($products as $product){
+            $brands->push($product->brand->name);
+        }
+
 
         return $brands->unique();
     }
@@ -112,16 +173,45 @@ class SearchResultsController extends Controller
     {
         $result = collect([]);
 
-        $products->each(function($product) use ($result, $arrayOfBrands) {
-
-            $product->formats->each(function($format) use ($result, $arrayOfBrands, $product){
-
-                if($arrayOfBrands->contains($format->brand)) $result->push($product);
-
-            });
-            
-        });
-
+        foreach ($products as $product){
+            if($arrayOfBrands->contains($product->brand->name)) 
+                $result->push($product);
+        }
+        
         return $result;
     }
+
+    public function filterBySize($products, $sizes)
+    {
+        $result = collect([]);
+        
+        foreach ($products as $product){
+            $taglies = $product->sizes;
+                foreach ($taglies as $taglie){
+                    if($sizes->contains($taglie->size)) 
+                    $result->push($product);
+        }
+
+        }
+        
+        return $result;
+    }
+
+    public function filterByBoth($products, $sizes, $arrayOfBrands)
+    {
+        $result = collect([]);
+
+        foreach ($products as $product){
+            $taglies = $product->sizes;
+                foreach ($taglies as $taglie){
+                    if($arrayOfBrands->contains($product->brand->name) && $sizes->contains($taglie->size)) 
+                $result->push($product);
+                }
+
+        }
+        
+        return $result;
+    }
+
+
 }

@@ -88,6 +88,58 @@
 								
 							</ul>
 						</div>
+						<div class="single-widget category">
+							<h3 class="title">Colors</h3>
+
+							
+
+							<ul class="categor-list">
+
+								
+								@foreach ($colours as $colour)
+								
+
+										<li>										
+						
+											<input class="app-checkbox" type="checkbox" value="{{ $colour }}" id="{{ $colour }}" name="{{ $colour }}"
+											{{ old($colour) == $colour ? 'checked' : '' }}
+											>
+											<label for="{{ $colour }}"> {{ $colour }}</label>
+											
+										</li>
+									
+								@endforeach
+								
+								
+								
+							</ul>
+						</div>
+						<div class="single-widget category">
+							<h3 class="title">Sizes</h3>
+
+							
+
+							<ul class="categor-list">
+
+								
+								@foreach ($sizes as $size)
+								
+
+										<li>										
+						
+											<input class="app-checkbox" type="checkbox" value="{{ $size }}" id="{{ $size }}" name="{{ $size }}"
+											{{ old($size) == $size ? 'checked' : '' }}
+											>
+											<label for="{{ $size }}"> {{ $size }}</label>
+											
+										</li>
+									
+								@endforeach
+								
+								
+								
+							</ul>
+						</div>
 						<!--/ End Single Widget -->
 						
 						<div class="single-widget" style="display: flex; justify-content: center">
@@ -124,7 +176,7 @@
 							<single-product
 								wishlist-id={{ Auth::user()->wishlist->id }}
 								:product="{{ $product }}"
-								image={{ $product->images->first()->URL }}
+								
 								
 							>
 							</single-product>
