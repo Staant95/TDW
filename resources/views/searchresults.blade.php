@@ -61,47 +61,47 @@
 						</div>
 
 
-							<!-- Single Widget -->
 						<div class="single-widget category">
-							<h3 class="title">Brands</h3>
-
+						<div class="text-container">
+							<h3>Brands</h3>
 							
-
-							<ul class="categor-list">
-
-								
-								@foreach ($brands as $brand)
+								<div class="content hideContent">
+									<ul>
+										@foreach ($brands as $brand)
 								
 
-										<li>										
+											<li>										
 						
-											<input class="app-checkbox" type="checkbox" value="{{ $brand }}" id="{{ $brand }}" name="{{ $brand }}"
-											{{ old($brand) == $brand ? 'checked' : '' }}
+												<input class="app-checkbox" type="checkbox" value="{{ $brand }}" id="{{ $brand }}" name="brand"
+												{{ old($brand) == $brand ? 'checked' : '' }}
 											>
-											<label for="{{ $brand }}"> {{ $brand }}</label>
+												<label for="{{ $brand }}"> {{ $brand }}</label>
 											
 										</li>
 									
 								@endforeach
-								
-								
-								
-							</ul>
-						</div>
-						<div class="single-widget category">
-							<h3 class="title">Colors</h3>
+									
+								</ul>
+							</div>
+							<div class="show-more">
+								<a href="#">Show more</a>
+							</div>
+						</div>​
+					</div>
 
+
+					<div class="single-widget category">
+						<div class="text-container">
+							<h3>Colors</h3>
 							
-
-							<ul class="categor-list">
-
-								
-								@foreach ($colours as $colour)
+								<div class="content hideContent">
+									<ul>
+										@foreach ($colours as $colour)
 								
 
 										<li>										
 						
-											<input class="app-checkbox" type="checkbox" value="{{ $colour }}" id="{{ $colour }}" name="{{ $colour }}"
+											<input class="app-checkbox" type="checkbox" value="{{ $colour }}" id="{{ $colour }}" name="colour"
 											{{ old($colour) == $colour ? 'checked' : '' }}
 											>
 											<label for="{{ $colour }}"> {{ $colour }}</label>
@@ -110,10 +110,16 @@
 									
 								@endforeach
 								
-								
-								
-							</ul>
-						</div>
+									
+								</ul>
+							</div>
+							<div class="show-more">
+								<a href="#">Show more</a>
+							</div>
+						</div>​
+					</div>
+							
+						
 						<div class="single-widget category">
 							<h3 class="title">Sizes</h3>
 
@@ -127,7 +133,7 @@
 
 										<li>										
 						
-											<input class="app-checkbox" type="checkbox" value="{{ $size }}" id="{{ $size }}" name="{{ $size }}"
+											<input class="app-checkbox" type="checkbox" value="{{ $size }}" id="{{ $size }}" name="size"
 											{{ old($size) == $size ? 'checked' : '' }}
 											>
 											<label for="{{ $size }}"> {{ $size }}</label>
@@ -202,7 +208,23 @@
 		</div>
 	</div>
 </section>
-	
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script><script> $(".show-more a").on("click", function() {
+    var $this = $(this); 
+    var $content = $this.parent().prev("div.content");
+    var linkText = $this.text().toUpperCase();    
+
+    if(linkText === "SHOW MORE"){
+        linkText = "Show less";
+        $content.switchClass("hideContent", "showContent", 400);
+    } else {
+        linkText = "Show more";
+        $content.switchClass("showContent", "hideContent", 400);
+    };
+
+    $this.text(linkText);
+});​</script>
+
 
 
 
