@@ -5,37 +5,25 @@
 
 @section('content')
 
-
-<h3 style="margin-top: 1em; margin-left: 1.4em">Welcome, {{ Auth::user()->name }}</h3>
+<div id="back-link">
+    <a href="{{ route('home.index') }}">
+        <i class="fa fa-home" aria-hidden="true"></i>
+        Go back home
+    </a>
+</div>
 
 <div class="panel">
 
     <nav class="panel__nav">
         <ul class="panel__nav__list">
-            
-                <li class="panel__nav__item"> 
-                    <a href="http://localhost:8000/admin-panel/users"> Users </a>
-                </li>
-
-
-                <li class="panel__nav__item"> 
-                    <a href="http://localhost:8000/admin-panel/products"> Products </a>
-                </li>
-
-
-                <li class="panel__nav__item"> 
-                    <a href="http://localhost:8000/admin-panel/orders"> Orders </a>
-                </li>
-
-
-                <li class="panel__nav__item"> 
-                    <a href="http://localhost:8000/admin-panel/roles"> Roles </a>
-                </li>
-
-
-                <li class="panel__nav__item"> 
-                    <a href="http://localhost:8000/admin-panel/permissions"> Permissions</a>
-                </li>
+                @php
+                    $tables = ['users', 'products', 'roles', 'permissions', 'orders', 'sizes', 'colors']
+                @endphp
+                @foreach ($tables as $table)
+                    <li class="panel__nav__item"> 
+                        <a href="http://localhost:8000/admin-panel/{{ $table }}"> {{ ucfirst($table) }} </a>
+                    </li>
+                @endforeach
             
         </ul>
     </nav>

@@ -9,37 +9,22 @@
 </head>
 <body>
 
-    {{-- <h1>test img</h1>
-    <div>
-        @php
-            $prod = App\Product::where('id', 121)->first();
-            $url1 = $prod->getMedia()[0]->getUrl();
-            $url2 = $prod->getMedia()[1]->getUrl();
-        @endphp
-        <img src="{{ $url1 }}" alt="">
-        <img src="{{ $url2 }}" alt="">
-    </div> --}}
+    <form action="/testing/select" method="GET">
 
-   {{-- @foreach ($products as $product)
-
-    <div>
         
-    </div>
-       
-   @endforeach --}}
+        <label for="colors">Select a color</label>
+
+        <select class="custom-select" multiple name="colors[]">
+            <option selected>Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </select>
+        
+
+        <button type="submit">Push</button>
+
+    </form>
    
-   {{-- <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr">
-        @foreach ($products as $product)
-            <div>
-
-                <img style="width: 200px" src="{{ $product->getFirstMediaUrl() }}" alt="">
-            </div>
-        @endforeach
-    </div> --}}
-
-    <div>
-        <img src="{{ $products->getFirstMediaUrl() }}" alt="">
-    </div>
-
 </body>
 </html>

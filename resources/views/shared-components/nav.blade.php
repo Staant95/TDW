@@ -50,7 +50,7 @@
                             @foreach ($categories as $category)
                                 
                                 <li>
-                                    <a href="{{ $category->id }}"> {{ $category->name }}
+                                    <a href="/categories/{{ $category->id }}"> {{ $category->name }}
                                         @if ($category->id === 1 || $category->id === 12)
                                             <i class="fa fa-angle-right" aria-hidden="true"></i>
                                         @endif

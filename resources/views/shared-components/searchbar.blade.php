@@ -84,9 +84,29 @@
                            
                             <i class="fa fa-user-o" aria-hidden="true"></i>
                         </a>
-                        <div class="shopping-item">
+                        <div class="shopping-item" style="width: 200px!important; padding: 0!important">
+                            <ul class="bottom app-bottom">
+                                <li>
+                                    <a href="{{ route('profile.orders') }}" class="">Profile</a>
+                                </li>
+                                
+                                @if (Auth::user()->role_id === 3)
+                                    <li>
+                                        <a href="{{ route('admin.welcome') }}">Admin panel</a>
+                                    </li>
+                                @endif
+
+                                <li>
+                                    <form style="width: 100%" action="{{ route('logout') }}" method="POST">
+                                        @csrf                        
+                                        <button type="submit" id="app-logout-btn"
+                                        style=" font-size: 1em"
+                                        >Logout</button>
+                                    </form>
+                                </li>
+                            </ul>
                             
-                            <div class="bottom">
+                            {{-- <div class="bottom">
 
                                 <a href="{{ route('profile.orders') }}" class="">Profile</a>
 
@@ -97,7 +117,7 @@
                                     >Logout</button>
                                 </form>
 
-                            </div>
+                            </div> --}}
 
                         </div>
 

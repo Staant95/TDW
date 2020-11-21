@@ -11,32 +11,10 @@
     <div class="form-row">
 
         <div class="form-group col-md-6">
-          <label for="name">Name</label>
-          <input type="text" class="form-control" id="name" value="{{ $user->name }}" name="name">
-        </div>
-  
-  
-        <div class="form-group col-md-6">
-          <label for="lastname">Lastname</label>
-          <input type="text" class="form-control" id="lastname" value="{{ $user->lastname }}" name="lastname">
+          <label for="name">Role name</label>
+          <input type="text" class="form-control" id="name" value="{{ $role->name }}" name="name">
         </div>  
   
-    </div>
-
-
-    <div class="form-row">
-
-      <div class="form-group col-md-6">
-        <label for="email">Email</label>
-        <input type="email" class="form-control" id="email" name="email" value="{{ $user->email }}">
-      </div>
-
-
-      <div class="form-group col-md-6">
-        <label for="password ">Password</label>
-        <input type="text" class="form-control" id="password" value="{{ $user->password }}" name="password">
-      </div>
-
     </div>
 
 
@@ -45,11 +23,11 @@
     <div class="form-row">
 
       <div class="form-group col-md-4">
-        <label for="role_id">Role</label>
-        <select id="role_id" class="form-control" name="role_id">
-            @foreach ($roles as $role)
+        <label for="permission">Permissions</label>
+        <select id="permission" class="form-control" name="permissions[]" multiple size="8">
+            @foreach ($permissions as $permission)
                 
-                <option value="{{ $role->id }}"> {{ $role->name }}</option>
+                <option value="{{ $permission->id }}"> {{ $permission->action }}</option>
 
             @endforeach
         </select>
@@ -61,7 +39,7 @@
    <div class="mt-5" style="display: flex; justify-content: center">
        <button type="submit" 
        style="background-color: #28a745; border: 1px solid #28a745; border-radius: 5%; color: white; padding: 1em">
-       Edit user</button>
+       Edit role</button>
    </div>
 
 

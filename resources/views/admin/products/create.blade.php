@@ -24,6 +24,42 @@
   
     </div>
 
+    <div class="form-row"> 
+
+      <div class="form-group col-md-6">
+        <div>
+
+          <label for="colors">Select one or more colors</label>
+  
+          <select id="colors" class="custom-select form-control" size="5" multiple name="colors[]">
+            <option value="" selected>Please choose one or more colors</option>
+            @foreach ($colors as $color)
+              <option value="{{ $color->id }}">{{ $color->type }}</option>
+            @endforeach
+  
+          </select>
+        </div>
+
+      </div>
+
+
+      <div class="form-group col-md-6">
+        <label for="sizes">Select one or more sizes</label>
+        <select id="sizes" class="custom-select form-control" size="5" multiple name="sizes[]">
+            <option value="" selected>Please choose one or more sizes</option>
+          @foreach ($sizes as $size)
+            <option value="{{ $size->id }}">{{ $size->size }}</option>
+          @endforeach
+
+
+        </select>
+      </div>
+      
+      
+
+    </div>
+
+   
 
     <div class="form-row">
 

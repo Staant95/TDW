@@ -11,8 +11,25 @@ class CategoryController extends Controller
 
     public function index(Category $category) {
 
+        $products = collect([]);
 
-        $products = $category->products;
+        if($category->parent_id === NULL) {
+
+            $subCategories = Category::where('parent_id', $category->id)->get();            
+
+            foreach($subCategories as $category) {
+                $products->push(
+                    $category->products
+                );
+            }
+            
+            $products = $products->flatten(1);
+
+        } else {
+
+            $products = $category->products;
+        }
+
 
         return view('explore-category')->with([
             'products' => $products

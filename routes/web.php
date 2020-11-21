@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 use App\Product;
 
 Auth::routes();
@@ -52,7 +53,7 @@ Route::middleware('auth')->group(function() {
 
     // ADMIN ROUTES
     
-    Route::redirect('/admin-panel', '/admin-panel/users');
+    Route::view('/admin-panel', 'admin.welcome')->name('admin.welcome');
     
     
     Route::resource('/admin-panel/users', 'AdminPanel\UsersController');
@@ -61,6 +62,8 @@ Route::middleware('auth')->group(function() {
     Route::resource('/admin-panel/permissions', 'AdminPanel\PermissionsController');
     Route::resource('/admin-panel/orders', 'AdminPanel\OrdersController');
     Route::resource('/admin-panel/addresses', 'AdminPanel\AddressesController');
+    Route::resource('/admin-panel/sizes', 'AdminPanel\SizesController');
+    Route::resource('/admin-panel/colors', 'AdminPanel\ColorsController');
 
     
 });
@@ -71,6 +74,11 @@ Route::get('/testing', function() {
     $products = Product::first();
 
     return view('test')->with('products', $products);
+});
+
+
+Route::get('/testing/select', function(Request $request) {
+    dd($request->query());
 });
 
 

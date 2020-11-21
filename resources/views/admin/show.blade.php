@@ -6,7 +6,7 @@
     <tbody>
         @foreach($record as $key => $val)
             <tr class="admin-table__row">
-                <td class="admin-table__head" style="width: 10%">{{ $key }}</td>
+                <td class="admin-table__head" style="width: 10%">{{ ucfirst($key) }}</td>
                 <td class="admin-table__data">{{ $val }}</td>
             </tr>
         @endforeach
@@ -49,7 +49,17 @@
                     <th class="admin-table__head">Id</th>
 
                     @php
-                        $cols = Arr::except($rowsOfRelation[0]->getOriginal(), ['created_at', 'updated_at', 'id']);
+                        $cols = Arr::except($rowsOfRelation[0]->getOriginal(), [
+                            'created_at', 
+                            'updated_at', 
+                            'id',
+                            'pivot_product_id',
+                            'pivot_size_id',
+                            'pivot_colour_id',
+                            'shipping_id',
+                            'pivot_role_id',
+                            'pivot_permission_id'
+                            ]);
                         
                     @endphp
                     @foreach ($cols as $col => $val)
@@ -69,7 +79,17 @@
         
                 @foreach ($rowsOfRelation as $record)
                 @php
-                    $columns = Arr::except($record->getOriginal(), ['created_at', 'updated_at', 'id']);
+                    $columns = Arr::except($record->getOriginal(), [
+                        'created_at', 
+                        'updated_at', 
+                        'id',
+                        'pivot_product_id',
+                        'pivot_size_id',
+                        'pivot_colour_id',
+                        'shipping_id',
+                        'pivot_role_id',
+                        'pivot_permission_id'
+                        ]);
                 @endphp
 
                     <tr class="admin-table__row">
