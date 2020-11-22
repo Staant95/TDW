@@ -60,34 +60,90 @@
 
 						</div>
 
-
-							<!-- Single Widget -->
 						<div class="single-widget category">
-							<h3 class="title">Brands</h3>
-
+						<h3>Brands</h3>
+							<div class="container-filters">
 							
-
-							<ul class="categor-list">
-
+								<label id="showMore" for="show-more-brands">Show more</label>
+								<input id="show-more-brands" type="checkbox" style="display: none;">
+								<ul class="list brand-list">
 								
-								@foreach ($brands as $brand)
+									@foreach ($brands as $brand)
 								
 
-										<li>										
-						
-											<input class="app-checkbox" type="checkbox" value="{{ $brand }}" id="{{ $brand }}" name="{{ $brand }}"
-											{{ old($brand) == $brand ? 'checked' : '' }}
-											>
-											<label for="{{ $brand }}"> {{ $brand }}</label>
-											
-										</li>
+									<li class="list-items">										
+				
+										<input class="app-checkbox" type="checkbox" value="{{ $brand }}" id="{{ $brand }}" name="brand"
+										{{ old($brand) == $brand ? 'checked' : '' }}
+									>
+										<label for="{{ $brand }}"> {{ $brand }}</label>
 									
-								@endforeach
+									</li>
+							
+									@endforeach
 								
-								
-								
-							</ul>
+								</ul>
+					
+							</div>
 						</div>
+
+						
+						<div class="single-widget category">
+							<h3>Colors</h3>
+								<div class="container-filters">
+								
+									<label id="showMore" for="show-more-colors">Show more</label>
+									<input id="show-more-colors" type="checkbox" style="display: none;">
+									<ul class="list color-list">
+									
+										@foreach ($colours as $colour)
+									
+	
+										<li class="list-items">										
+					
+											<input class="app-checkbox" type="checkbox" value="{{ $colour }}" id="{{ $colour }}" name="colour"
+											{{ old($colour) == $colour ? 'checked' : '' }}
+										>
+											<label for="{{ $colour }}"> {{ $colour }}</label>
+										
+										</li>
+								
+										@endforeach
+									
+									</ul>
+						
+								</div>
+							</div>
+
+							<div class="single-widget category">
+								<h3>Sizes</h3>
+									<div class="container-filters">
+									
+										<label id="showMore" for="show-more-sizes">Show more</label>
+										<input id="show-more-sizes" type="checkbox" style="display: none;">
+										<ul class="list size-list">
+										
+											@foreach ($sizes as $size)
+										
+		
+											<li class="list-items">										
+						
+												<input class="app-checkbox" type="checkbox" value="{{ $size }}" id="{{ $size }}" name="size"
+												{{ old($size) == $size ? 'checked' : '' }}
+											>
+												<label for="{{ $size }}"> {{ $size }}</label>
+											
+											</li>
+									
+											@endforeach
+										
+										</ul>
+							
+									</div>
+								</div>
+							
+					
+						
 						<!--/ End Single Widget -->
 						
 						<div class="single-widget" style="display: flex; justify-content: center">
@@ -124,7 +180,7 @@
 							<single-product
 								wishlist-id={{ Auth::user()->wishlist->id }}
 								:product="{{ $product }}"
-								image={{ $product->images->first()->URL }}
+								image={{ $product->url }}
 								
 							>
 							</single-product>
@@ -150,7 +206,23 @@
 		</div>
 	</div>
 </section>
-	
+
+<script> $(".show-more a").on("click", function() {
+    var $this = $(this); 
+    var $content = $this.parent().prev("div.content");
+    var linkText = $this.text().toUpperCase();    
+
+    if(linkText === "SHOW MORE"){
+        linkText = "Show less";
+        $content.switchClass("hideContent", "showContent", 400);
+    } else {
+        linkText = "Show more";
+        $content.switchClass("showContent", "hideContent", 400);
+    };
+
+    $this.text(linkText);
+});​</script>
+
 
 
 

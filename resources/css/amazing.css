@@ -1,0 +1,33 @@
+
+.container-filters {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    padding-top: 0.8em;
+}
+
+.list {
+    list-style-type: none;
+    order: -1;
+}
+
+.list-items:nth-child(n + 3){
+    display: none;
+}
+
+#showMore {
+    color: rgb(28, 28, 223);
+    text-decoration: underline;
+}
+
+#show-more-brands:checked + .brand-list>li {
+    display: list-item;
+}
+
+#show-more-colors:checked + ul>li {
+    display: list-item;
+}
+
+#show-more-sizes:checked + ul>li {
+    display: list-item;
+}
