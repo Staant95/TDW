@@ -60,92 +60,90 @@
 
 						</div>
 
-
 						<div class="single-widget category">
-						<div class="text-container">
-							<h3>Brands</h3>
+						<h3>Brands</h3>
+							<div class="container">
 							
-								<div class="content hideContent">
-									<ul>
-										@foreach ($brands as $brand)
+								<label id="showMore" for="show-more-brands">Show more</label>
+								<input id="show-more-brands" type="checkbox" style="display: none;">
+								<ul class="list brand-list">
+								
+									@foreach ($brands as $brand)
 								
 
-											<li>										
-						
-												<input class="app-checkbox" type="checkbox" value="{{ $brand }}" id="{{ $brand }}" name="brand"
-												{{ old($brand) == $brand ? 'checked' : '' }}
-											>
-												<label for="{{ $brand }}"> {{ $brand }}</label>
-											
-										</li>
+									<li class="list-items">										
+				
+										<input class="app-checkbox" type="checkbox" value="{{ $brand }}" id="{{ $brand }}" name="brand"
+										{{ old($brand) == $brand ? 'checked' : '' }}
+									>
+										<label for="{{ $brand }}"> {{ $brand }}</label>
 									
-								@endforeach
-									
+									</li>
+							
+									@endforeach
+								
 								</ul>
+					
 							</div>
-							<div class="show-more">
-								<a href="#">Show more</a>
-							</div>
-						</div>​
-					</div>
+						</div>
 
-
-					<div class="single-widget category">
-						<div class="text-container">
-							<h3>Colors</h3>
-							
-								<div class="content hideContent">
-									<ul>
-										@foreach ($colours as $colour)
-								
-
-										<li>										
 						
+						<div class="single-widget category">
+							<h3>Colors</h3>
+								<div class="container">
+								
+									<label id="showMore" for="show-more-colors">Show more</label>
+									<input id="show-more-colors" type="checkbox" style="display: none;">
+									<ul class="list color-list">
+									
+										@foreach ($colours as $colour)
+									
+	
+										<li class="list-items">										
+					
 											<input class="app-checkbox" type="checkbox" value="{{ $colour }}" id="{{ $colour }}" name="colour"
 											{{ old($colour) == $colour ? 'checked' : '' }}
-											>
+										>
 											<label for="{{ $colour }}"> {{ $colour }}</label>
-											
+										
 										</li>
+								
+										@endforeach
 									
-								@endforeach
-								
+									</ul>
+						
+								</div>
+							</div>
+
+							<div class="single-widget category">
+								<h3>Sizes</h3>
+									<div class="container">
 									
-								</ul>
-							</div>
-							<div class="show-more">
-								<a href="#">Show more</a>
-							</div>
-						</div>​
-					</div>
-							
+										<label id="showMore" for="show-more-sizes">Show more</label>
+										<input id="show-more-sizes" type="checkbox" style="display: none;">
+										<ul class="list size-list">
+										
+											@foreach ($sizes as $size)
+										
+		
+											<li class="list-items">										
 						
-						<div class="single-widget category">
-							<h3 class="title">Sizes</h3>
-
-							
-
-							<ul class="categor-list">
-
-								
-								@foreach ($sizes as $size)
-								
-
-										<li>										
-						
-											<input class="app-checkbox" type="checkbox" value="{{ $size }}" id="{{ $size }}" name="size"
-											{{ old($size) == $size ? 'checked' : '' }}
+												<input class="app-checkbox" type="checkbox" value="{{ $size }}" id="{{ $size }}" name="size"
+												{{ old($size) == $size ? 'checked' : '' }}
 											>
-											<label for="{{ $size }}"> {{ $size }}</label>
+												<label for="{{ $size }}"> {{ $size }}</label>
 											
-										</li>
+											</li>
 									
-								@endforeach
-								
-								
-								
-							</ul>
-						</div>
+											@endforeach
+										
+										</ul>
+							
+									</div>
+								</div>
+							
+					
+						
 						<!--/ End Single Widget -->
 						
 						<div class="single-widget" style="display: flex; justify-content: center">
@@ -209,7 +207,7 @@
 	</div>
 </section>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script><script> $(".show-more a").on("click", function() {
+<script> $(".show-more a").on("click", function() {
     var $this = $(this); 
     var $content = $this.parent().prev("div.content");
     var linkText = $this.text().toUpperCase();    
