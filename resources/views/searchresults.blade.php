@@ -62,7 +62,7 @@
 
 						<div class="single-widget category">
 						<h3>Brands</h3>
-							<div class="container">
+							<div class="container-filters">
 							
 								<label id="showMore" for="show-more-brands">Show more</label>
 								<input id="show-more-brands" type="checkbox" style="display: none;">
@@ -90,7 +90,7 @@
 						
 						<div class="single-widget category">
 							<h3>Colors</h3>
-								<div class="container">
+								<div class="container-filters">
 								
 									<label id="showMore" for="show-more-colors">Show more</label>
 									<input id="show-more-colors" type="checkbox" style="display: none;">
@@ -117,7 +117,7 @@
 
 							<div class="single-widget category">
 								<h3>Sizes</h3>
-									<div class="container">
+									<div class="container-filters">
 									
 										<label id="showMore" for="show-more-sizes">Show more</label>
 										<input id="show-more-sizes" type="checkbox" style="display: none;">
@@ -180,7 +180,7 @@
 							<single-product
 								wishlist-id={{ Auth::user()->wishlist->id }}
 								:product="{{ $product }}"
-								
+								image={{ $product->url }}
 								
 							>
 							</single-product>

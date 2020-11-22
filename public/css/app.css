@@ -20921,7 +20921,7 @@ Version:1.0
 }
 
 
-.container {
+.container-filters {
     display: flex;
     flex-direction: column;
     padding-left: 0;
