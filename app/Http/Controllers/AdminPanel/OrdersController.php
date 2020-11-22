@@ -54,7 +54,9 @@ class OrdersController extends Controller
             ]
         );
 
-        $relationships = [];
+        $order = Order::where('id', $id)->first();
+
+        $relationships['Products'] = $order->products;
 
         return view('admin.show', [
             'modelName' => 'Orders',

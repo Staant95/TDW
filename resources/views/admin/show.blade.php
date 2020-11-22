@@ -58,7 +58,13 @@
                             'pivot_colour_id',
                             'shipping_id',
                             'pivot_role_id',
-                            'pivot_permission_id'
+                            'pivot_permission_id',
+                            'brand_id',
+                            'pivot_order_id',
+                            'pivot_price',
+                            'pivot_quantity',
+                            'pivot_created_at',
+                            'pivot_updated_at'
                             ]);
                         
                     @endphp
@@ -88,7 +94,13 @@
                         'pivot_colour_id',
                         'shipping_id',
                         'pivot_role_id',
-                        'pivot_permission_id'
+                        'pivot_permission_id',
+                        'brand_id',
+                        'pivot_order_id',
+                        'pivot_price',
+                        'pivot_quantity',
+                        'pivot_created_at',
+                        'pivot_updated_at'
                         ]);
                 @endphp
 
