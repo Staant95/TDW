@@ -36,7 +36,6 @@ class SearchResultsController extends Controller
     public function filter(Request $request)
     { 
 
-        // put old values in session
         $request->flash();
 
         $formBrands = collect($request->except('_token', 'price', 'product', 'size'));

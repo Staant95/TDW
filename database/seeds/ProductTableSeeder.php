@@ -29,7 +29,7 @@ class ProductTableSeeder extends Seeder
             }
 
 
-            if(strcmp($product->categories[0], 'Shoes')) {
+            if($product->categories[0]->name == 'Shoes') {
 
                 foreach($shoeSizes as $size) {
 

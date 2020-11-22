@@ -102,7 +102,7 @@
 										<li class="list-items">										
 					
 											<input class="app-checkbox" type="checkbox" value="{{ $colour }}" id="{{ $colour }}" name="colour"
-											{{ old($colour) == $colour ? 'checked' : '' }}
+											{{ old($colour) === $colour ? 'checked' : '' }}
 										>
 											<label for="{{ $colour }}"> {{ $colour }}</label>
 										
@@ -136,7 +136,7 @@
 											</li>
 									
 											@endforeach
-										
+											
 										</ul>
 							
 									</div>
@@ -169,7 +169,6 @@
 			</script>
 
 
-
 			<div class="col-lg-9 col-md-8 col-12">
 				@if ($products->count())
 				
@@ -177,13 +176,20 @@
 					
 
 						@foreach ($products as $product)
-							<single-product
+							{{-- <single-product
 								wishlist-id={{ Auth::user()->wishlist->id }}
 								:product="{{ $product }}"
 								image={{ $product->url }}
 								
 							>
-							</single-product>
+							</single-product> --}}
+							<product-card
+                        wishlist-id={{ Auth::user()->wishlist->id }}
+                        :product="{{ $product }} "
+                        image={{ $product->getFirstMediaUrl() }}
+                    >
+
+                    </product-card>
 					
 						@endforeach					
 							

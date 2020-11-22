@@ -106,18 +106,6 @@
                                 </li>
                             </ul>
                             
-                            {{-- <div class="bottom">
-
-                                <a href="{{ route('profile.orders') }}" class="">Profile</a>
-
-                                <form style="width: 100%" action="{{ route('logout') }}" method="POST">
-                                    @csrf                        
-                                    <button type="submit" 
-                                    style="background-color: #fff; border:none; margin-top: 1em;"
-                                    >Logout</button>
-                                </form>
-
-                            </div> --}}
 
                         </div>
 
