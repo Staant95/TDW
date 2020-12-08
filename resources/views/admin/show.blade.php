@@ -14,10 +14,12 @@
             <td class="admin-table__head">Actions:</td>
             <td class="admin-table__data action-links">
 
-
+                @if (!Route::is('orders.show'))
+                    
                 <a id="edit-link" href="{{ $basePath }}/{{ $record['id'] }}/edit"> 
                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>  Edit 
                 </a>
+                @endif
 
                 
                 <form action="{{ $basePath }}/{{ $record['id'] }}"  method="POST" class="delete-link">
@@ -72,8 +74,11 @@
                         <th class="admin-table__head">{{ ucfirst($col) }}</th>
                     @endforeach
                     
-                    
+                    @if (!Route::is('orders.show'))
                     <th class="admin-table__head">Actions</th>
+
+                    @endif
+                    
                 </tr>
             </thead>
         
@@ -113,13 +118,15 @@
                                 <td class="admin-table__data">{{ $val }}</td>
                             @endforeach
                         
-                        
+                        @if (!Route::is('orders.show'))
+                            
                         <td class="admin-table__data action-links">
                             @php
                                 $routeName = strtolower($relationName) . ".show";
                                 $url = route($routeName, [Str::singular(strtolower($relationName)) => $record->id]);
                                 
                             @endphp
+                                
                             <a id="show-link" href="{{ $url }}"> 
                                 <i class="fa fa-eye" aria-hidden="true"></i> View 
                             </a> 
@@ -131,8 +138,9 @@
                                     <i class="fa fa-trash" aria-hidden="true"></i> Delete 
                                 </button>
                             </form>       
-                                
                         </td>
+                        @endif 
+                                
                         
                     </tr>
                 @endforeach

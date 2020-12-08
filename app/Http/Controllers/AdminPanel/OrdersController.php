@@ -110,6 +110,6 @@ class OrdersController extends Controller
     {
         Order::where('id', $id)->first()->delete();
 
-        return redirect()->route('orders.index');
+        return redirect()->route('users.index');
     }
 }

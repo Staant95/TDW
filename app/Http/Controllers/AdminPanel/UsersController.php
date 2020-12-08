@@ -73,7 +73,10 @@ class UsersController extends Controller
         if($user->addresses->count()) {
             $relationships['Addresses'] = $user->addresses;
         } 
-        
+
+        if($user->orders->count()) {
+            $relationships['Orders'] = $user->orders;
+        }
 
         return view('admin.show')->with([
             'record' => $record,
