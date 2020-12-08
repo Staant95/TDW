@@ -14,13 +14,12 @@ class ColorsController extends Controller
     public function index()
     {
         $colors = Colour::paginate(20);
-
         return view('admin.index')->with([
             'modelName' => 'colors',
             'records' => $colors,
             'createLink' => route('colors.create'),
             'basePath' => route('colors.index'),
-            'modelColumns' => Arr::except(Schema::getColumnListing('colours'),[0,1,3])
+            'modelColumns' => Arr::except(Schema::getColumnListing('colours'),[0,1,2])
         ]);
     }
 

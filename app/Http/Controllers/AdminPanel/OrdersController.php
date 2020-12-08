@@ -30,16 +30,18 @@ class OrdersController extends Controller
     public function create()
     {
         return view('admin.orders.create')->with([
-            'url' => route('orders.store')
+            'url' => route('orders.store'),
+            'users' => User::all(),
         ]);
     }
 
 
     public function store(Request $request)
     {
-        Order::create(Arr::except($requst->all(), ['_token']));
+        dd($request->all());
+        // Order::create(Arr::except($request->all(), ['_token']));
 
-        return redirect()->route('orders.index');
+        // return redirect()->route('orders.index');
     }
 
 

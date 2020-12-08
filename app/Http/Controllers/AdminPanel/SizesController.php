@@ -20,7 +20,7 @@ class SizesController extends Controller
             'records' => $sizes,
             'createLink' => route('sizes.create'),
             'basePath' => route('sizes.index'),
-            'modelColumns' => Arr::except(Schema::getColumnListing('sizes'),[0,1,3])
+            'modelColumns' => Arr::except(Schema::getColumnListing('sizes'),[0,1,2])
         ]);
     }
 

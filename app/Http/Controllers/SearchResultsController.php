@@ -15,8 +15,7 @@ class SearchResultsController extends Controller
     {
         $products = collect([]);
 
-
-        $products = Product::where('name', 'like', $request->query('product') . '%')->get();
+        $products = Product::where('name', 'like', '%' . $request->query('product') . '%')->get();
 
 
         $brands = $this->getBrands($products);
@@ -45,7 +44,7 @@ class SearchResultsController extends Controller
         
     
 
-        $products = Product::where('name', 'like', $request->query('product') . '%')->get();
+        $products = Product::where('name', 'like', '%' . $request->query('product') . '%')->get();
         
 
         

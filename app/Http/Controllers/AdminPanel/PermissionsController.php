@@ -15,13 +15,12 @@ class PermissionsController extends Controller
     public function index()
     {
         $permissions = Permission::paginate(20);
-
         return view('admin.index')->with([
             'modelName' => 'permissions',
             'records' => $permissions,
             'createLink' => route('permissions.create'),
             'basePath' => route('permissions.index'),
-            'modelColumns' => Arr::except(Schema::getColumnListing('permissions'),[1,2,3])
+            'modelColumns' => Arr::except(Schema::getColumnListing('permissions'),[0,2,3])
         ]);
     }
 

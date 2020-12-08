@@ -5,19 +5,30 @@
 
 @section('content')
 
-<div id="back-link">
+{{-- <div id="back-link">
     <a href="{{ route('home.index') }}">
         <i class="fa fa-home" aria-hidden="true"></i>
         Go back home
     </a>
-</div>
+</div> --}}
 
 <div class="panel">
 
     <nav class="panel__nav">
+
+    <div id="back-link">
+        <a href="{{ route('home.index') }}">
+            <i class="fa fa-home" aria-hidden="true"></i>
+            Go back home
+        </a>
+    </div>
+
+    <h3 style="color: white">Admin Panel</h3>
+
+    <hr class="app__divider">
         <ul class="panel__nav__list">
                 @php
-                    $tables = ['users', 'products', 'roles', 'permissions', 'orders', 'sizes', 'colors']
+                    $tables = ['users', 'products', 'roles', 'permissions', 'orders', 'sizes', 'colors', 'addresses']
                 @endphp
                 @foreach ($tables as $table)
                     <li class="panel__nav__item"> 

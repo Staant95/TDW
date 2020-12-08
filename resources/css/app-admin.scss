@@ -1,21 +1,25 @@
 .panel {
-    padding: 3em 0;
     display: flex;
-    min-height: 800px; 
+    min-height: 1200px; 
 }
 
 .panel__nav {
-    margin-top: 1em;
+    padding-top: 1em;
+    min-height: 100%; 
+    position: relative;
     padding-bottom: 1em;
-    width: 10%;
+    width: 15%;
     
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
     
     &__item {
-        font-size: 1.2em;
+        font-size: 1.5em;
         padding-bottom: .5em;
         cursor: pointer;
+        color: white;
     }
 
     &__item--active {
@@ -28,6 +32,10 @@
 .main__content {
     width: 90%;
     padding: 1em;
+    margin-top: 5.5em;
+    height: 100%;
+    margin-left: 3em;
+    margin-bottom: 3em;
 }
 
 .table-title {
@@ -150,16 +158,14 @@
     color: #f7941d;
 }
 
-
 #back-link {
-    margin-top: 1.5em;
-    margin-left: 1em;
+    padding: 1em;
+    margin-bottom: 2em;
 }
 
-
 #back-link > a {  
-    padding: 1em;
     background-color: #f7941d;
+    padding: 1em;
     border: #f7941d solid 1px;
     border-radius: 7%;
 
@@ -167,4 +173,14 @@
     i {
         color: black;
     }
+}
+
+
+.panel__nav{
+    background-color: #212121;
+}
+
+.app__divider {
+    width: 100%;
+    background: #575757;
 }
