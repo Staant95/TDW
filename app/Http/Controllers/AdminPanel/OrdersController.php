@@ -38,6 +38,7 @@ class OrdersController extends Controller
 
     public function store(Request $request)
     {
+        // shipping_id(1), user_id, address_id, expected_date, total, code(generate)
         dd($request->all());
         // Order::create(Arr::except($request->all(), ['_token']));
 

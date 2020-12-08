@@ -23,12 +23,11 @@
         </a>
     </div>
 
-    <h3 style="color: white">Admin Panel</h3>
 
     <hr class="app__divider">
         <ul class="panel__nav__list">
                 @php
-                    $tables = ['users', 'products', 'roles', 'permissions', 'orders', 'sizes', 'colors', 'addresses']
+                    $tables = ['users', 'products', 'roles', 'permissions', 'sizes', 'colors', 'addresses']
                 @endphp
                 @foreach ($tables as $table)
                     <li class="panel__nav__item"> 

@@ -27403,7 +27403,7 @@ readers do not read off random characters that represent icons */
 
 #back-link {
   padding: 1em;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
 }
 
 #back-link > a {

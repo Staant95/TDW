@@ -13,13 +13,13 @@
 
         <div class="form-group col-md-6">
           <label for="city">City</label>
-          <input type="text" class="form-control" id="city" placeholder="City" name="city">
+          <input type="text" class="form-control" id="city" placeholder="City" name="city" value="{{ $address->city }}">
         </div>
   
   
         <div class="form-group col-md-6">
           <label for="street">Street</label>
-          <input type="text" class="form-control" id="street" placeholder="Street name" name="street">
+          <input type="text" class="form-control" id="street" placeholder="Street name" name="street" value="{{ $address->street }}">
         </div>  
   
     </div>
@@ -29,14 +29,16 @@
 
       <div class="form-group col-md-6">
         <label for="zip">Zip</label>
-        <input type="text" class="form-control" id="zip" placeholder="Zip code" name="zip">
+        <input type="text" class="form-control" id="zip" placeholder="Zip code" name="zip" value="{{ $address->zip }}">
       </div>
 
       <div class="form-group col-md-6">
         <label for="user_id">User</label>
         <select id="user_id" class="form-control" name="user_id">
             @foreach ($users as $user)
-                
+                @if ($address->user_id === $user->id)
+                  <option selected value="{{ $user->id }}"> {{ $user->name }}</option>
+                @endif
                 <option value="{{ $user->id }}"> {{ $user->name }}</option>
 
             @endforeach

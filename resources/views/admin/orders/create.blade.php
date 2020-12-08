@@ -11,7 +11,7 @@
     <div class="form-row">
 
 
-      <div class="form-group col-md-4">
+      <div class="form-group col-md-6">
         <label for="user">User</label>
         <select id="user" class="form-control" name="user">
             @foreach ($users as $user)
@@ -23,6 +23,16 @@
       </div>
   
   
+      <div class="form-group col-md-6">
+        <label for="user">User address</label>
+        <select id="user" class="form-control" name="user" required>
+            @foreach ($users as $user)
+                
+                <option value="{{ $user->id }}"> {{ $user->name }}</option>
+
+            @endforeach
+        </select>
+      </div>
   
     </div>
 
