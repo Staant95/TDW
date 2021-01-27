@@ -76,7 +76,7 @@ class CategoryTableSeeder extends Seeder
                 'crew logo',
                 'taino',
                 'collant'
-            ],        
+            ],
         ],
         'Accessori' => [
             'Gloves' => [
@@ -86,7 +86,7 @@ class CategoryTableSeeder extends Seeder
                 'unisex',
                 'ottawa',
                 'gloves'
-            ], 
+            ],
             'Hats' => [
                 'barett',
                 'im leoparden',
@@ -126,6 +126,7 @@ class CategoryTableSeeder extends Seeder
         'pimkie-camicetta-large.jpg',
         'solid-camicetta_original-large.jpg',
         'twistedtailor-marshall_shirt-large.jpg',
+        'camicia-elegante.jpg',
 
 
         'bershka-jeans_skinny_fit-large.jpg',
@@ -216,7 +217,7 @@ class CategoryTableSeeder extends Seeder
         'moschino-basic_thong-large.jpg',
         'moschino-slip-large.jpg',
         'oysho-perizoma-large.jpg',
-        
+
     ];
 
 
@@ -232,10 +233,10 @@ class CategoryTableSeeder extends Seeder
             foreach($subCategories as $category => $products) {
 
                 $savedCategory = Category::create([
-                    'name' => $category, 
+                    'name' => $category,
                     'parent_id' => $currentCategory->id
                     ]);
-                
+
                 foreach($products as $index => $product) {
 
                     $product = Product::create([
@@ -246,15 +247,15 @@ class CategoryTableSeeder extends Seeder
                     ]);
 
                     $product->categories()->attach($savedCategory->id);
-                    
+
                     $product->addMedia(
                         storage_path('app/public/' . $category . '/' . $this->fullProductName[$counter])
                         )->toMediaCollection();
-                     
+
                     $product->url = $product->getFirstMediaUrl();
                     $product->save();
 
-                    
+
                     $counter = $counter + 1;
                 }
 
@@ -263,6 +264,6 @@ class CategoryTableSeeder extends Seeder
         }
 
 
-        
+
     }
 }
