@@ -32,7 +32,7 @@
 
 									<div class="rating-main">
 
-										<ul class="rating">										
+										<ul class="rating">
 
 											@foreach(range(1,5) as $i)
 												<span class="fa-stack" style="width:1em">
@@ -49,17 +49,17 @@
 												@php $rating--; @endphp
 												</span>
 											@endforeach
-											
+
 										</ul>
 
 										<a href="#" class="total-review">({{ $product->reviews->count() }})</a>
 									</div>
 
-										
-									
+
+
 									<p class="price">
 										<span class="discount">{{ $product['price'] }}€</span>
-										<s></s> 
+										<s></s>
 									</p>
 									<p class="description">{{ $product['description'] }}</p>
 
@@ -68,13 +68,13 @@
 
 								<div class="color">
 									<h4>Available Options <span>Color</span></h4>
-									<ul>										
+									<ul>
 										@foreach($colors as $color)
 										<li>
-											<a href="#" style="background-color: {{ $color->type }}"><i class="ti-check"></i>
-											</a>
+											<a href="#" style="background-color: {{ $color->type }}"><i class="ti-check"></i></a>
+
 										</li>
-																						
+
 										@endforeach
 									</ul>
 								</div>
@@ -88,20 +88,20 @@
 										@foreach ($sizes as $size)
 											<option value="{{ $size }}"> {{ $size->size }}</option>
 										@endforeach
-										
+
 									</select>
 
 								</div>
-								
-								
+
+
 								<!--/ End Color -->
-						
+
 								<!-- Size -->
 								<!--/ End Size -->
 								<!-- Product Buy -->
 								<div class="product-buy">
 
-								
+
 
 
 									<div class="add-to-cart app-add-to-cart">
@@ -110,7 +110,7 @@
 											<input type="text" hidden name="product" value="{{ $product->id }}">
 											<button type="submit" class="btn btn-primary">Add to cart</button>
 										</form>
-											
+
 
 
 										<form action="{{ route('wishlists.products.store', ['wishlist' => Auth::user()->wishlist->id]) }}" method="post">
@@ -118,11 +118,11 @@
 											<input type="text" hidden name="product" value="{{ $product->id }}">
 											<button type="submit" class="btn min"><i style="color:white!important" class="ti-heart"></i></button>
 
-										
+
 										</form>
-										
+
 									</div>
-									
+
 									<p class="cat">Category :
 										<a href="#">{{ $product->categories->first()->name }}</a>
 									</p>
@@ -149,14 +149,14 @@
 												<div class="col-12">
 													<div class="ratting-main">
 														<div class="avg-ratting">
-														
+
 															<h4>{{ $product->reviews->avg('stars') }} <span>(Overall)</span></h4>
 															<span>Based on {{ $product->reviews->count() }} Comments</span>
 
 														</div>
 														<!-- Single Rating -->
-														
-														@foreach($review as $review) 																	
+
+														@foreach($review as $review)
 														<div class="single-rating">
 															<div class="rating-author">
 																<img src="https://via.placeholder.com/200x200" alt="#">
@@ -165,7 +165,7 @@
 																<h6>{{ $review->user->name }}</h6>
 																<div class="ratings">
 																	<ul class="rating">
-																	@php $singlerating = $review->stars; @endphp  
+																	@php $singlerating = $review->stars; @endphp
 
 																		@foreach(range(1,5) as $i)
 																			<span class="fa-stack" style="width:1em">
@@ -184,21 +184,21 @@
 																	</ul>
 																	<div class="rate-count">(<span>{{ $review->stars }}</span>)</div>
 																</div>
-																
+
 																<p>{{ $review->description }}</p>
 															</div>
 														</div>
 														@endforeach
 														<!--/ End Single Rating -->
-														
+
 													</div>
 													<!-- Review -->
 													<div class="comment-review">
 														<div class="add-review">
 															<h5>Add A Review</h5>
-															
+
 														</div>
-														
+
 
 
 
@@ -214,7 +214,7 @@
 														<h4>Your Rating</h4>
 
 														<div class="review-inner">
-															<div class="stars">																
+															<div class="stars">
 																  <input class="star star-5" id="star-5" type="radio" name="star" value="5" />
 																  <label class="star star-5" for="star-5"></label>
 																  <input class="star star-4" id="star-4" type="radio" name="star" value="4" />
@@ -230,7 +230,7 @@
 
 
 														<div class="row">
-											
+
 															<div class="col-lg-12 col-12">
 																<div class="form-group">
 																	<label>Write a review</label>
