@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Product;
-use App\Format;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use App\Category;
+use Illuminate\Support\Arr;
 
 class SearchResultsController extends Controller
 {
@@ -34,13 +32,14 @@ class SearchResultsController extends Controller
 
         $request->flash();
 
-        $formBrands = collect($request->except('_token', 'price', 'product', 'size'));
+        $formBrands = collect($request->only('brand')); // ok
 
-        $formSizes = collect($request->except('_token', 'price', 'product', 'brand'));
+        $formSizes = collect($request->only('size'));
 
         $products = Product::where('name', 'like', '%' . $request->query('product') . '%')->get();
 
-        $brands = $this->getBrands($products);
+        $brands = $this->getBrands($products); // ok
+
         $colours = $this->getColours($products);
         $sizes = $this->getSizes($products);
 
@@ -50,27 +49,26 @@ class SearchResultsController extends Controller
             $products = $this->filterByPrice($products, $priceRange);
         }
 
-//        if($formBrands->isNotEmpty()) {
-//            $products = $this->filterByBrand($products, $formBrands);
-//        }
-//
-//        if($formSizes->isNotEmpty()) {
-//            $products = $this->filterBySize($products, $formSizes);
-//        }
+        if($formBrands->has('brand')) {
+            $products = $this->filterByBrand($products, $formBrands);
+        }
 
-        return view('searchresults')->with([
+        $returnData = [
             'products' => $products,
             'brands' => $brands,
             'colours' => $colours,
-            'sizes' => $sizes
-        ]);
+            'sizes' => $sizes,
+        ];
+
+
+        if($formBrands->count())  $returnData['selectedBrands'] = $formBrands->first();
+
+        if($formSizes->count())  $returnData['selectedSizes'] = $formSizes->first();
+
+
+        return view('searchresults')->with($returnData);
     }
 
-
-
-    private function putInputValuesInSession($key, $arrayOfValues, Request  $request) {
-        $request->session()->put($key, $arrayOfValues);
-    }
 
     private function getColours($products)
     {
@@ -157,8 +155,9 @@ class SearchResultsController extends Controller
         $result = collect([]);
 
         foreach ($products as $product){
-            if($arrayOfBrands->contains($product->brand->name))
+            if( in_array($product->brand->name, $arrayOfBrands->get('brand'))) {
                 $result->push($product);
+            }
         }
 
         return $result;

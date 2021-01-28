@@ -73,8 +73,10 @@
 									<li class="list-items">
 
 										<input class="app-checkbox" type="checkbox" value="{{ $brand }}" id="brand" name="brand[]"
-
-									>
+                                            @isset($selectedBrands)
+                                                {{ in_array($brand, @$selectedBrands) ? 'checked' : '' }}
+                                            @endisset
+									    >
 										<label for="{{ $brand }}"> {{ $brand }}</label>
 
 									</li>
@@ -86,33 +88,6 @@
 							</div>
 						</div>
 
-
-						<div class="single-widget category">
-							<h3>Colors</h3>
-								<div class="container-filters">
-
-									<label id="showMore" for="show-more-colors">Show more</label>
-									<input id="show-more-colors" type="checkbox" style="display: none;">
-									<ul class="list color-list">
-
-										@foreach ($colours as $colour)
-
-
-										<li class="list-items">
-
-											<input class="app-checkbox" type="checkbox" value="{{ $colour }}" id="colour" name="colour[]"
-
-										>
-											<label for="{{ $colour }}"> {{ $colour }}</label>
-
-										</li>
-
-										@endforeach
-
-									</ul>
-
-								</div>
-							</div>
 
 							<div class="single-widget category">
 								<h3>Sizes</h3>
@@ -128,8 +103,10 @@
 											<li class="list-items">
 
 												<input class="app-checkbox" type="checkbox" value="{{ $size }}" id="size" name="size[]"
-
-											>
+                                                @isset($selectedSizes)
+                                                    {{ in_array($size, @$selectedSizes) ? 'checked' : '' }}
+                                                    @endisset
+											    >
 												<label for="{{ $size }}"> {{ $size }}</label>
 
 											</li>
@@ -141,7 +118,32 @@
 									</div>
 								</div>
 
+                        <div class="single-widget category">
+                            <h3>Colors</h3>
+                            <div class="container-filters">
 
+                                <label id="showMore" for="show-more-colors">Show more</label>
+                                <input id="show-more-colors" type="checkbox" style="display: none;">
+                                <ul class="list color-list">
+
+                                    @foreach ($colours as $colour)
+
+
+                                        <li class="list-items">
+
+                                            <input class="app-checkbox" type="checkbox" value="{{ $colour }}" id="colour" name="colour[]"
+
+                                            >
+                                            <label for="{{ $colour }}"> {{ $colour }}</label>
+
+                                        </li>
+
+                                    @endforeach
+
+                                </ul>
+
+                            </div>
+                        </div>
 
 						<!--/ End Single Widget -->
 
